@@ -3,609 +3,463 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Español en Paraguay — Nivel A0</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,700;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Español en Paraguay — Małgosia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #f5f0e8;
-  --bg2: #ede7d9;
-  --bg3: #e3dccf;
-  --card: #faf7f2;
-  --text: #1a1410;
-  --text2: #6b5e4e;
-  --text3: #9c8b7a;
-  --green: #2d6a4f;
-  --green2: #40916c;
-  --green3: #95d5b2;
-  --green4: #d8f3dc;
-  --amber: #b5451b;
-  --amber2: #e76f51;
-  --amber3: #fca986;
-  --amber4: #fff0ea;
-  --purple: #4a3f6b;
-  --purple2: #7b6fa0;
-  --purple3: #c8b8e8;
-  --purple4: #f0ebfa;
-  --border: rgba(26,20,16,0.1);
-  --border2: rgba(26,20,16,0.2);
-  --shadow: 0 2px 16px rgba(26,20,16,0.08);
-  --shadow2: 0 8px 32px rgba(26,20,16,0.12);
-  --radius: 16px;
-  --radius2: 24px;
+:root{
+  --ink:#1c1510;--ink2:#5c4d3c;--ink3:#9c8b78;
+  --paper:#faf6ef;--paper2:#f2ebe0;--paper3:#e8dfd0;
+  --terra:#c4521a;--terra2:#e07840;--terra3:#f5c4a0;--terra4:#fdf0e8;
+  --verde:#2a6048;--verde2:#3d8a68;--verde3:#a8d4bc;--verde4:#edf6f1;
+  --cielo:#2856a0;--cielo2:#4a7abf;--cielo3:#b8d0ee;--cielo4:#edf2fb;
+  --violeta:#6040a0;--violeta2:#8060c0;--violeta3:#ccc0e8;--violeta4:#f5f2fc;
+  --oro:#c08020;--oro2:#e0a840;--oro3:#f5dca0;--oro4:#fdf8ec;
+  --r:14px;--r2:20px;--sh:0 2px 12px rgba(28,21,16,0.08);--sh2:0 8px 32px rgba(28,21,16,0.14);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  font-size: 15px;
-  line-height: 1.6;
-}
-h1,h2,h3 { font-family: 'Fraunces', serif; font-weight: 500; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;font-size:15px;line-height:1.6}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:400}
 
 /* LAYOUT */
-.app { display: flex; min-height: 100vh; }
-.sidebar {
-  width: 260px; flex-shrink: 0;
-  background: var(--card);
-  border-right: 1px solid var(--border);
-  padding: 24px 0;
-  position: sticky; top: 0; height: 100vh;
-  overflow-y: auto;
-  display: flex; flex-direction: column;
-}
-.main { flex: 1; padding: 32px; max-width: 820px; }
+.shell{display:flex;min-height:100vh}
+.side{width:270px;flex-shrink:0;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+.main{flex:1;padding:32px 36px;max-width:880px}
 
 /* SIDEBAR */
-.brand {
-  padding: 0 20px 24px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 16px;
-}
-.brand h1 { font-size: 18px; color: var(--green); line-height: 1.2; }
-.brand p { font-size: 12px; color: var(--text3); margin-top: 4px; }
-
-.overall-progress { padding: 0 20px 20px; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
-.overall-progress .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text3); margin-bottom: 8px; }
-.xp-bar { background: var(--bg2); border-radius: 99px; height: 6px; margin-bottom: 6px; }
-.xp-fill { height: 6px; border-radius: 99px; background: linear-gradient(90deg, var(--green2), var(--green3)); transition: width 0.6s ease; }
-.xp-label { font-size: 12px; color: var(--text2); display: flex; justify-content: space-between; }
-.streak { display: flex; align-items: center; gap: 6px; margin-top: 10px; font-size: 13px; color: var(--amber); }
-.streak-count { font-weight: 500; font-size: 16px; }
-
-.nav-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text3); padding: 0 20px; margin: 8px 0 4px; }
-.nav-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 9px 20px; cursor: pointer;
-  transition: all 0.15s; position: relative;
-  font-size: 14px; color: var(--text2);
-  border: none; background: none; width: 100%; text-align: left;
-}
-.nav-item:hover { background: var(--bg2); color: var(--text); }
-.nav-item.active { background: var(--green4); color: var(--green); font-weight: 500; }
-.nav-item.active::before { content:''; position:absolute; left:0; top:4px; bottom:4px; width:3px; background:var(--green2); border-radius:0 3px 3px 0; }
-.nav-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; background: var(--bg2); flex-shrink: 0; }
-.nav-item.active .nav-icon { background: var(--green3); }
-.nav-stars { margin-left: auto; display: flex; gap: 2px; }
-.star { width: 7px; height: 7px; border-radius: 50%; background: var(--bg3); }
-.star.lit { background: var(--amber2); }
+.brand{padding:24px 20px 18px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.brand-title{font-family:'Playfair Display',serif;font-size:20px;line-height:1.2;color:var(--paper);margin-bottom:2px}
+.brand-sub{font-size:11px;color:var(--ink3);letter-spacing:0.5px}
+.xp-area{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.xp-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--ink3);margin-bottom:6px}
+.xp-track{background:rgba(255,255,255,0.1);border-radius:99px;height:4px;margin-bottom:5px}
+.xp-fill{height:4px;border-radius:99px;background:linear-gradient(90deg,var(--terra),var(--oro2));transition:width 0.5s}
+.xp-nums{display:flex;justify-content:space-between;font-size:11px;color:var(--ink3)}
+.level-badge{display:inline-block;margin-top:7px;background:var(--terra);color:white;font-size:10px;padding:2px 9px;border-radius:99px;font-weight:500}
+.nav-section{padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-section-lbl{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink3);padding:4px 20px 6px}
+.nb{display:flex;align-items:center;gap:8px;padding:8px 20px;width:100%;border:none;background:none;font-family:'Outfit',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);cursor:pointer;text-align:left;transition:all 0.15s;position:relative}
+.nb:hover{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.9)}
+.nb.active{background:rgba(196,82,26,0.2);color:var(--terra2)}
+.nb.active::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:3px;background:var(--terra);border-radius:0 3px 3px 0}
+.nb-icon{font-size:14px;width:18px;text-align:center}
+.nb-badge{margin-left:auto;font-size:10px;background:rgba(255,255,255,0.1);padding:1px 7px;border-radius:99px}
+.nb.active .nb-badge{background:var(--terra);color:white}
+.side-stats{padding:12px 20px;margin-top:auto;border-top:1px solid rgba(255,255,255,0.08);display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.ss{text-align:center}
+.ss-n{font-family:'Playfair Display',serif;font-size:20px;color:var(--terra2)}
+.ss-l{font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:0.5px}
 
 /* PAGES */
-.page { display: none; }
-.page.active { display: block; animation: fadeIn 0.3s ease; }
-@keyframes fadeIn { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
-
-/* PAGE HEADER */
-.page-header { margin-bottom: 28px; }
-.page-header h2 { font-size: 28px; color: var(--text); margin-bottom: 4px; }
-.page-header p { color: var(--text2); font-size: 15px; }
-.badge { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 99px; font-weight: 500; margin-left: 8px; vertical-align: middle; }
-.badge.green { background: var(--green4); color: var(--green); }
-.badge.amber { background: var(--amber4); color: var(--amber); }
-.badge.purple { background: var(--purple4); color: var(--purple); }
+.page{display:none}
+.page.active{display:block;animation:fadeUp 0.3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.page-head{margin-bottom:24px}
+.page-head h2{font-size:30px;color:var(--ink);margin-bottom:3px}
+.page-head p{color:var(--ink2);font-size:14px}
+.chip{display:inline-block;font-size:11px;padding:3px 9px;border-radius:99px;font-weight:500;margin-left:8px;vertical-align:middle}
+.chip-terra{background:var(--terra4);color:var(--terra)}
+.chip-verde{background:var(--verde4);color:var(--verde)}
+.chip-cielo{background:var(--cielo4);color:var(--cielo)}
+.chip-oro{background:var(--oro4);color:var(--oro)}
+.chip-violeta{background:var(--violeta4);color:var(--violeta)}
 
 /* DASHBOARD */
-.dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 28px; }
-.stat-card {
-  background: var(--card); border-radius: var(--radius); border: 1px solid var(--border);
-  padding: 20px; text-align: center;
-}
-.stat-card .num { font-family: 'Fraunces', serif; font-size: 36px; color: var(--green); font-weight: 300; }
-.stat-card .lbl { font-size: 12px; color: var(--text3); margin-top: 4px; }
+.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.dstat{background:white;border-radius:var(--r);border:1px solid var(--paper3);padding:16px;text-align:center;box-shadow:var(--sh)}
+.dstat-n{font-family:'Playfair Display',serif;font-size:30px;color:var(--terra);font-weight:400}
+.dstat-l{font-size:11px;color:var(--ink3);margin-top:2px;text-transform:uppercase;letter-spacing:0.5px}
+.tip-banner{background:var(--ink);color:var(--paper);border-radius:var(--r2);padding:18px 22px;margin-bottom:22px;display:flex;gap:14px;align-items:flex-start}
+.tip-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.tip-title{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:3px}
+.tip-text{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+.dash-tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.dash-tab{padding:7px 16px;border-radius:99px;border:1px solid var(--paper3);background:white;font-size:13px;cursor:pointer;color:var(--ink2);transition:all 0.15s;font-family:'Outfit',sans-serif}
+.dash-tab:hover{border-color:var(--terra2);color:var(--terra)}
+.dash-tab.active{background:var(--terra);color:white;border-color:var(--terra)}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.mod-card{background:white;border-radius:var(--r2);border:1px solid var(--paper3);padding:18px;cursor:pointer;transition:all 0.2s;box-shadow:var(--sh);position:relative;overflow:hidden}
+.mod-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
+.mod-card.c-terra::before{background:var(--terra)}
+.mod-card.c-verde::before{background:var(--verde)}
+.mod-card.c-cielo::before{background:var(--cielo)}
+.mod-card.c-violeta::before{background:var(--violeta)}
+.mod-card.c-oro::before{background:var(--oro)}
+.mod-card.c-purple::before{background:var(--violeta)}
+.mod-card.c-amber::before{background:var(--oro)}
+.mod-card.c-green::before{background:var(--verde)}
+.mod-card:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.mc-icon{font-size:28px;margin-bottom:8px}
+.mc-title{font-family:'Playfair Display',serif;font-size:14px;margin-bottom:3px}
+.mc-count{font-size:11px;color:var(--ink3)}
+.mc-bar{margin-top:10px;background:var(--paper2);border-radius:99px;height:4px}
+.mc-fill{height:4px;border-radius:99px;transition:width 0.5s}
+.mc-fill.c-terra,.mc-fill.c-amber{background:var(--terra)}
+.mc-fill.c-verde,.mc-fill.c-green{background:var(--verde)}
+.mc-fill.c-cielo{background:var(--cielo)}
+.mc-fill.c-violeta,.mc-fill.c-purple{background:var(--violeta)}
+.mc-fill.c-oro{background:var(--oro)}
+.mc-stars{margin-top:6px;font-size:12px}
 
-.tip-box {
-  background: var(--green4); border-radius: var(--radius); border: 1px solid var(--green3);
-  padding: 16px 20px; margin-bottom: 20px;
-  font-size: 14px; color: var(--green); line-height: 1.7;
-}
-.tip-box strong { display: block; font-family: 'Fraunces', serif; font-size: 16px; margin-bottom: 4px; }
-
-.modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
-.module-card {
-  background: var(--card); border-radius: var(--radius); border: 1px solid var(--border);
-  padding: 18px; cursor: pointer; transition: all 0.2s;
-  position: relative; overflow: hidden;
-}
-.module-card:hover { border-color: var(--green3); transform: translateY(-2px); box-shadow: var(--shadow2); }
-.module-card .mc-icon { font-size: 28px; margin-bottom: 10px; }
-.module-card .mc-title { font-family: 'Fraunces', serif; font-size: 16px; margin-bottom: 4px; }
-.module-card .mc-count { font-size: 12px; color: var(--text3); }
-.module-card .mc-progress { margin-top: 12px; background: var(--bg2); border-radius: 99px; height: 4px; }
-.module-card .mc-fill { height: 4px; border-radius: 99px; background: var(--green2); transition: width 0.5s; }
-.module-card .mc-stars { margin-top: 8px; display: flex; gap: 3px; }
-.module-card .ms { font-size: 14px; }
-
-/* FLASHCARDS */
-.lesson-selector { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-.lesson-btn {
-  padding: 6px 14px; border-radius: 99px; border: 1px solid var(--border2);
-  background: var(--card); font-size: 13px; cursor: pointer; color: var(--text2);
-  transition: all 0.15s; font-family: 'DM Sans', sans-serif;
-}
-.lesson-btn:hover { border-color: var(--green2); color: var(--green); }
-.lesson-btn.active { background: var(--green); color: white; border-color: var(--green); }
-
-.fc-area { perspective: 1000px; margin-bottom: 20px; }
-.fc-wrap {
-  background: var(--card); border-radius: var(--radius2); border: 1px solid var(--border);
-  padding: 48px 32px; text-align: center; cursor: pointer;
-  min-height: 260px; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 12px;
-  transition: transform 0.15s, box-shadow 0.15s; box-shadow: var(--shadow);
-  position: relative; user-select: none;
-}
-.fc-wrap:hover { transform: translateY(-2px); box-shadow: var(--shadow2); }
-.fc-cat-tag {
-  position: absolute; top: 16px; left: 16px;
-  font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
-  color: var(--text3); background: var(--bg2); padding: 3px 10px; border-radius: 99px;
-}
-.fc-num { position: absolute; top: 16px; right: 16px; font-size: 12px; color: var(--text3); }
-.fc-word { font-family: 'Fraunces', serif; font-size: 38px; font-weight: 500; color: var(--text); }
-.fc-pron { font-size: 15px; color: var(--green2); font-style: italic; }
-.fc-translation { font-size: 20px; color: var(--text2); display: none; }
-.fc-note-tag {
-  font-size: 12px; background: var(--amber4); color: var(--amber);
-  padding: 4px 12px; border-radius: 99px; display: none;
-}
-.fc-mnemonic {
-  font-size: 13px; color: var(--purple2); background: var(--purple4);
-  border-radius: 12px; padding: 10px 16px; text-align: left;
-  max-width: 400px; display: none; line-height: 1.6;
-}
-.fc-mnemonic strong { color: var(--purple); display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
-.fc-hint { font-size: 12px; color: var(--text3); }
-.fc-flipped .fc-translation { display: block; }
-.fc-flipped .fc-note-tag { display: inline-block; }
-.fc-flipped .fc-mnemonic { display: block; }
-.fc-flipped .fc-hint { display: none; }
-.fc-flipped .fc-word { color: var(--green); }
-
-.fc-controls { display: flex; gap: 10px; align-items: center; justify-content: center; }
-.fc-btn {
-  padding: 10px 22px; border-radius: 12px; border: 1px solid var(--border2);
-  background: var(--card); font-size: 14px; cursor: pointer; color: var(--text);
-  transition: all 0.15s; font-family: 'DM Sans', sans-serif;
-}
-.fc-btn:hover { background: var(--bg2); }
-.fc-btn.good { background: var(--green); color: white; border-color: var(--green); }
-.fc-btn.good:hover { background: var(--green2); }
-.fc-btn.bad { background: var(--amber4); color: var(--amber); border-color: var(--amber3); }
-.rating-btns { display: none; gap: 10px; justify-content: center; margin-top: 12px; }
-.rating-btns.show { display: flex; }
-.know-btn, .dontknow-btn {
-  padding: 10px 28px; border-radius: 12px; border: none;
-  font-size: 14px; cursor: pointer; font-family: 'DM Sans', sans-serif;
-  transition: all 0.15s;
-}
-.know-btn { background: var(--green); color: white; }
-.know-btn:hover { background: var(--green2); }
-.dontknow-btn { background: var(--amber4); color: var(--amber); border: 1px solid var(--amber3); }
-.dontknow-btn:hover { background: var(--amber3); }
+/* FISZKI */
+.filter-row{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.fbtn{padding:5px 13px;border-radius:99px;border:1px solid var(--paper3);background:white;font-size:12px;cursor:pointer;color:var(--ink2);transition:all 0.15s;font-family:'Outfit',sans-serif}
+.fbtn:hover{border-color:var(--terra);color:var(--terra)}
+.fbtn.active{background:var(--terra);color:white;border-color:var(--terra)}
+.card-wrap{background:white;border-radius:var(--r2);border:1px solid var(--paper3);min-height:280px;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;box-shadow:var(--sh);position:relative;overflow:hidden;margin-bottom:14px}
+.card-wrap:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.card-bar{height:5px}
+.card-bar.c-terra,.card-bar.c-amber{background:linear-gradient(90deg,var(--terra),var(--oro2))}
+.card-bar.c-verde,.card-bar.c-green{background:linear-gradient(90deg,var(--verde),var(--verde2))}
+.card-bar.c-cielo{background:linear-gradient(90deg,var(--cielo),var(--cielo2))}
+.card-bar.c-violeta,.card-bar.c-purple{background:linear-gradient(90deg,var(--violeta),var(--violeta2))}
+.card-bar.c-oro{background:linear-gradient(90deg,var(--oro),var(--oro2))}
+.card-inner{padding:32px 36px;text-align:center;min-height:275px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.card-tag{position:absolute;top:14px;left:14px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--ink3);background:var(--paper2);padding:2px 9px;border-radius:99px}
+.card-num{position:absolute;top:14px;right:14px;font-size:11px;color:var(--ink3)}
+.card-es{font-family:'Playfair Display',serif;font-size:40px;color:var(--ink);transition:color 0.2s}
+.card-pron{font-size:15px;color:var(--terra2);font-style:italic}
+.card-hint{font-size:12px;color:var(--ink3);margin-top:6px}
+.card-pl{font-size:20px;color:var(--ink2);display:none}
+.card-note-tag{font-size:12px;background:var(--terra4);color:var(--terra);padding:4px 12px;border-radius:99px;display:none}
+.card-mnem{font-size:13px;color:var(--violeta2);background:var(--violeta4);border-radius:var(--r);padding:10px 14px;max-width:440px;text-align:left;line-height:1.6;display:none}
+.card-mnem strong{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--violeta);margin-bottom:3px}
+.card-ctx{font-size:13px;color:var(--verde2);background:var(--verde4);border-radius:var(--r);padding:10px 14px;max-width:440px;text-align:left;display:none;line-height:1.5}
+.card-ctx strong{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--verde);margin-bottom:2px}
+.flipped .card-pl{display:block}
+.flipped .card-note-tag{display:inline-block}
+.flipped .card-mnem{display:block}
+.flipped .card-ctx{display:block}
+.flipped .card-hint{display:none}
+.flipped .card-es{color:var(--terra)}
+.rate-row{display:none;gap:10px;justify-content:center;margin-bottom:14px}
+.rate-row.show{display:flex}
+.rate-btn{padding:10px 26px;border-radius:var(--r);border:none;font-size:14px;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:500;transition:all 0.15s}
+.btn-no{background:var(--paper2);color:var(--ink2)}
+.btn-no:hover{background:var(--paper3)}
+.btn-yes{background:var(--verde);color:white}
+.btn-yes:hover{background:var(--verde2)}
+.nav-row{display:flex;gap:10px;justify-content:center;align-items:center}
+.nav-fc-btn{padding:8px 18px;border-radius:var(--r);border:1px solid var(--paper3);background:white;font-size:13px;cursor:pointer;color:var(--ink2);font-family:'Outfit',sans-serif;transition:all 0.15s}
+.nav-fc-btn:hover{border-color:var(--ink2)}
+.fc-counter{font-size:13px;color:var(--ink3);min-width:60px;text-align:center}
 
 /* QUIZ */
-.quiz-wrap { max-width: 600px; }
-.quiz-q {
-  background: var(--card); border-radius: var(--radius2); border: 1px solid var(--border);
-  padding: 32px; text-align: center; margin-bottom: 20px; box-shadow: var(--shadow);
-}
-.quiz-q .q-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text3); margin-bottom: 12px; }
-.quiz-q .q-text { font-family: 'Fraunces', serif; font-size: 28px; color: var(--text); margin-bottom: 6px; }
-.quiz-q .q-pron { font-size: 14px; color: var(--green2); font-style: italic; }
-.quiz-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-.quiz-opt {
-  padding: 14px 16px; border-radius: var(--radius); border: 1px solid var(--border2);
-  background: var(--card); font-size: 14px; cursor: pointer; text-align: left;
-  transition: all 0.15s; color: var(--text); font-family: 'DM Sans', sans-serif;
-  line-height: 1.4;
-}
-.quiz-opt:hover:not(:disabled) { border-color: var(--green2); background: var(--green4); }
-.quiz-opt.correct { background: var(--green4); border-color: var(--green2); color: var(--green); }
-.quiz-opt.wrong { background: var(--amber4); border-color: var(--amber3); color: var(--amber); }
-.quiz-feedback {
-  padding: 14px 18px; border-radius: var(--radius); font-size: 14px;
-  margin-bottom: 14px; line-height: 1.6; display: none;
-}
-.quiz-feedback.ok { background: var(--green4); color: var(--green); border: 1px solid var(--green3); display: block; }
-.quiz-feedback.err { background: var(--amber4); color: var(--amber); border: 1px solid var(--amber3); display: block; }
-.quiz-feedback .mnemonic { margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.08); font-size: 13px; color: var(--purple2); }
-.quiz-score-bar { display: flex; gap: 10px; margin-bottom: 20px; align-items: center; }
-.qscore { padding: 6px 14px; border-radius: 99px; font-size: 13px; }
-.qscore.ok { background: var(--green4); color: var(--green); }
-.qscore.err { background: var(--amber4); color: var(--amber); }
-.quiz-type-sel { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
-.qtype-btn {
-  padding: 6px 14px; border-radius: 99px; font-size: 13px; cursor: pointer;
-  border: 1px solid var(--border2); background: var(--card); color: var(--text2);
-  font-family: 'DM Sans', sans-serif; transition: all 0.15s;
-}
-.qtype-btn.active { background: var(--purple); color: white; border-color: var(--purple); }
+.quiz-wrap{max-width:620px}
+.quiz-meta{display:flex;gap:8px;margin-bottom:16px;align-items:center;flex-wrap:wrap}
+.qm-pill{padding:4px 12px;border-radius:99px;font-size:12px}
+.qm-ok{background:var(--verde4);color:var(--verde)}
+.qm-err{background:var(--terra4);color:var(--terra)}
+.qm-tot{margin-left:auto;font-size:12px;color:var(--ink3)}
+.qt-row{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.qt-btn{padding:5px 13px;border-radius:99px;border:1px solid var(--paper3);background:white;font-size:12px;cursor:pointer;color:var(--ink2);transition:all 0.15s;font-family:'Outfit',sans-serif}
+.qt-btn.active{background:var(--violeta);color:white;border-color:var(--violeta)}
+.qcard{background:white;border-radius:var(--r2);border:1px solid var(--paper3);padding:28px;text-align:center;margin-bottom:16px;box-shadow:var(--sh)}
+.qcard-lbl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--ink3);margin-bottom:8px}
+.qcard-word{font-family:'Playfair Display',serif;font-size:32px;color:var(--ink);margin-bottom:5px}
+.qcard-pron{font-size:13px;color:var(--terra2);font-style:italic}
+.qcard-ctx{font-size:12px;color:var(--ink3);margin-top:6px}
+.q-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.q-opt{padding:12px 14px;border-radius:var(--r);border:1px solid var(--paper3);background:white;font-size:13px;cursor:pointer;text-align:left;color:var(--ink);font-family:'Outfit',sans-serif;transition:all 0.15s;line-height:1.4}
+.q-opt:hover:not(:disabled){border-color:var(--cielo2);background:var(--cielo4)}
+.q-opt.correct{background:var(--verde4);border-color:var(--verde2);color:var(--verde)}
+.q-opt.wrong{background:var(--terra4);border-color:var(--terra2);color:var(--terra)}
+.q-feedback{padding:12px 16px;border-radius:var(--r);font-size:13px;margin-bottom:12px;line-height:1.6;display:none}
+.q-feedback.ok{background:var(--verde4);color:var(--verde);border:1px solid var(--verde3);display:block}
+.q-feedback.err{background:var(--terra4);color:var(--terra);border:1px solid var(--terra3);display:block}
+.q-feedback .qmnem{margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,0.08);font-size:12px;color:var(--violeta2)}
+.next-btn{padding:11px 28px;border-radius:var(--r);background:var(--ink);color:white;border:none;font-size:14px;cursor:pointer;font-family:'Outfit',sans-serif;font-weight:500;transition:all 0.15s}
+.next-btn:hover{background:var(--ink2)}
 
 /* DIALOGI */
-.dialog-sel { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-.dialog-scene {
-  background: var(--card); border-radius: var(--radius2); border: 1px solid var(--border);
-  padding: 24px; box-shadow: var(--shadow); margin-bottom: 16px;
-}
-.dialog-scene-title {
-  font-family: 'Fraunces', serif; font-size: 18px; margin-bottom: 4px;
-}
-.dialog-scene-sub { font-size: 12px; color: var(--text3); margin-bottom: 20px; }
-.bubble { display: flex; gap: 10px; margin-bottom: 14px; align-items: flex-start; }
-.bubble.right { flex-direction: row-reverse; }
-.av {
-  width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 500;
-}
-.av.you { background: var(--green3); color: var(--green); }
-.av.them { background: var(--purple3); color: var(--purple); }
-.btext {
-  padding: 10px 14px; border-radius: 14px; max-width: 75%;
-  font-size: 14px; line-height: 1.5;
-}
-.bubble.left .btext { background: var(--bg2); color: var(--text); border-radius: 4px 14px 14px 14px; }
-.bubble.right .btext { background: var(--green); color: white; border-radius: 14px 4px 14px 14px; }
-.bes { font-weight: 500; }
-.bpron { font-size: 11px; font-style: italic; opacity: 0.75; margin-top: 2px; }
-.bpl { font-size: 12px; opacity: 0.65; margin-top: 1px; }
-.dialog-tip {
-  background: var(--amber4); border-radius: var(--radius); border: 1px solid var(--amber3);
-  padding: 12px 16px; font-size: 13px; color: var(--amber); margin-top: 12px; line-height: 1.6;
-}
-.dialog-tip strong { display: block; margin-bottom: 2px; }
+.dialog-sel{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.dialog-scene{background:white;border-radius:var(--r2);border:1px solid var(--paper3);padding:22px;box-shadow:var(--sh);margin-bottom:14px}
+.dialog-scene-title{font-family:'Playfair Display',serif;font-size:17px;margin-bottom:2px}
+.dialog-scene-sub{font-size:11px;color:var(--ink3);margin-bottom:18px}
+.bubble{display:flex;gap:8px;margin-bottom:12px;align-items:flex-start}
+.bubble.right{flex-direction:row-reverse}
+.av{width:32px;height:32px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500}
+.av.you{background:var(--verde3);color:var(--verde)}
+.av.them{background:var(--violeta3);color:var(--violeta)}
+.btext{padding:9px 13px;border-radius:12px;max-width:76%;font-size:13px;line-height:1.5}
+.bubble.left .btext{background:var(--paper2);color:var(--ink);border-radius:4px 12px 12px 12px}
+.bubble.right .btext{background:var(--verde);color:white;border-radius:12px 4px 12px 12px}
+.bes{font-weight:500}
+.bpron{font-size:11px;font-style:italic;opacity:0.75;margin-top:1px}
+.bpl{font-size:11px;opacity:0.65;margin-top:1px}
+.dialog-tip{background:var(--amber4,#fff0ea);border-radius:var(--r);border:1px solid var(--terra3);padding:10px 14px;font-size:12px;color:var(--terra);margin-top:10px;line-height:1.6}
+.dialog-tip strong{display:block;margin-bottom:2px}
 
 /* GRAMATYKA */
-.gram-grid { display: grid; gap: 16px; }
-.gram-card {
-  background: var(--card); border-radius: var(--radius); border: 1px solid var(--border);
-  padding: 20px; box-shadow: var(--shadow);
-}
-.gram-title { font-family: 'Fraunces', serif; font-size: 18px; margin-bottom: 14px; }
-.gram-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.gram-table th {
-  text-align: left; padding: 7px 10px; background: var(--bg2);
-  color: var(--text3); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
-  border-bottom: 1px solid var(--border);
-}
-.gram-table td { padding: 9px 10px; border-bottom: 1px solid var(--border); }
-.gram-table td.es { color: var(--green); font-weight: 500; }
-.gram-table td.pron { color: var(--green2); font-style: italic; font-size: 13px; }
-.gram-example {
-  font-size: 13px; background: var(--green4); border-radius: 10px;
-  padding: 10px 14px; margin-top: 12px; color: var(--green); line-height: 1.6;
-}
-.gram-mnemonic {
-  font-size: 13px; background: var(--purple4); border-radius: 10px;
-  padding: 10px 14px; margin-top: 8px; color: var(--purple2); line-height: 1.6;
-}
-.gram-mnemonic strong { color: var(--purple); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 3px; }
+.gram-grid{display:grid;gap:14px}
+.gram-card{background:white;border-radius:var(--r);border:1px solid var(--paper3);padding:18px;box-shadow:var(--sh)}
+.gram-title{font-family:'Playfair Display',serif;font-size:17px;margin-bottom:12px}
+.gram-table{width:100%;border-collapse:collapse;font-size:13px}
+.gram-table th{text-align:left;padding:6px 8px;background:var(--paper2);color:var(--ink3);font-size:10px;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--paper3)}
+.gram-table td{padding:8px 8px;border-bottom:1px solid var(--paper3)}
+.gram-table td.es{color:var(--verde);font-weight:500}
+.gram-table td.pron{color:var(--verde2);font-style:italic;font-size:12px}
+.gram-example{font-size:12px;background:var(--verde4);border-radius:8px;padding:8px 12px;margin-top:10px;color:var(--verde);line-height:1.6}
+.gram-mnemonic{font-size:12px;background:var(--violeta4);border-radius:8px;padding:8px 12px;margin-top:6px;color:var(--violeta2);line-height:1.6}
+.gram-mnemonic strong{color:var(--violeta);font-size:10px;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:2px}
 
-/* NUMBERS */
-.numbers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; margin-bottom: 16px; }
-.num-card {
-  background: var(--card); border-radius: var(--radius); border: 1px solid var(--border);
-  padding: 14px 10px; text-align: center; cursor: pointer; transition: all 0.2s;
-}
-.num-card:hover { border-color: var(--green2); background: var(--green4); }
-.num-card .num-n { font-family: 'Fraunces', serif; font-size: 24px; color: var(--green); font-weight: 300; }
-.num-card .num-es { font-size: 13px; font-weight: 500; color: var(--text); margin-top: 2px; }
-.num-card .num-pron { font-size: 11px; color: var(--text3); font-style: italic; }
+/* LICZBY */
+.num-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:8px;margin-bottom:18px}
+.num-card{background:white;border-radius:var(--r);border:1px solid var(--paper3);padding:12px 8px;text-align:center;cursor:pointer;transition:all 0.2s}
+.num-card:hover{border-color:var(--verde2);background:var(--verde4)}
+.num-n{font-family:'Playfair Display',serif;font-size:22px;color:var(--verde);font-weight:300}
+.num-es{font-size:12px;font-weight:500;color:var(--ink);margin-top:2px}
+.num-pron{font-size:10px;color:var(--ink3);font-style:italic}
 
 /* CIEKAWOSTKI */
-.facts-grid { display: grid; gap: 14px; }
-.fact-card {
-  background: var(--card); border-radius: var(--radius); border: 1px solid var(--border);
-  padding: 20px; display: flex; gap: 16px; align-items: flex-start;
-}
-.fact-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
-.fact-title { font-family: 'Fraunces', serif; font-size: 16px; margin-bottom: 6px; }
-.fact-text { font-size: 14px; color: var(--text2); line-height: 1.7; }
-.fact-text em { color: var(--green); font-style: normal; font-weight: 500; }
+.facts-grid{display:grid;gap:12px}
+.fact-card{background:white;border-radius:var(--r);border:1px solid var(--paper3);padding:18px;display:flex;gap:14px;align-items:flex-start}
+.fact-icon{font-size:26px;flex-shrink:0;margin-top:2px}
+.fact-title{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:5px}
+.fact-text{font-size:13px;color:var(--ink2);line-height:1.7}
 
 /* POSTĘP */
-.progress-page {}
-.progress-modules { display: grid; gap: 12px; }
-.prog-row {
-  background: var(--card); border-radius: var(--radius); border: 1px solid var(--border);
-  padding: 16px 20px; display: flex; align-items: center; gap: 16px;
-}
-.prog-icon { font-size: 24px; width: 44px; text-align: center; }
-.prog-info { flex: 1; }
-.prog-name { font-weight: 500; margin-bottom: 6px; }
-.prog-bar { background: var(--bg2); border-radius: 99px; height: 8px; }
-.prog-fill { height: 8px; border-radius: 99px; background: var(--green2); transition: width 0.5s; }
-.prog-pct { font-size: 13px; color: var(--text3); min-width: 36px; text-align: right; }
-.prog-stars-big { display: flex; gap: 4px; margin-top: 4px; }
-.prog-star { font-size: 16px; }
-.mastery-section { margin-top: 24px; }
-.mastery-title { font-family: 'Fraunces', serif; font-size: 18px; margin-bottom: 14px; }
-.mastery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
-.mastery-word {
-  background: var(--card); border-radius: 10px; border: 1px solid var(--border);
-  padding: 10px 12px; font-size: 13px;
-}
-.mastery-word .mw-es { font-weight: 500; color: var(--green); }
-.mastery-word .mw-pl { font-size: 12px; color: var(--text3); }
-.mastery-word .mw-stars { font-size: 12px; margin-top: 4px; }
+.prog-grid{display:grid;gap:10px;margin-bottom:20px}
+.prog-row{background:white;border-radius:var(--r);border:1px solid var(--paper3);padding:14px 18px;display:flex;align-items:center;gap:14px;box-shadow:var(--sh)}
+.prog-icon{font-size:22px;width:36px;text-align:center}
+.prog-info{flex:1}
+.prog-name{font-weight:500;margin-bottom:5px;font-size:13px}
+.prog-bar{background:var(--paper2);border-radius:99px;height:6px}
+.prog-fill{height:6px;border-radius:99px;transition:width 0.5s}
+.prog-pct{font-size:12px;color:var(--ink3);min-width:36px;text-align:right}
+.prog-stars{display:flex;gap:2px;margin-top:4px;font-size:12px}
+.mastered-title{font-family:'Playfair Display',serif;font-size:18px;margin:20px 0 12px}
+.mastered-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.mastered-word{background:white;border-radius:var(--r);border:1px solid var(--paper3);padding:9px 12px}
+.mw-es{font-weight:500;color:var(--terra);font-size:13px}
+.mw-pl{font-size:11px;color:var(--ink3);margin-top:1px}
+.mw-stars{font-size:10px;margin-top:3px}
 
-/* NEXT BTN */
-.next-btn {
-  display: inline-block; padding: 12px 28px; border-radius: 12px;
-  background: var(--green); color: white; border: none;
-  font-size: 15px; cursor: pointer; font-family: 'DM Sans', sans-serif;
-  transition: all 0.15s;
-}
-.next-btn:hover { background: var(--green2); }
-.next-btn:disabled { opacity: 0.4; cursor: default; }
+/* PRON LEGEND */
+.pron-legend{font-size:11px;color:var(--ink3);background:var(--paper2);border-radius:var(--r);padding:7px 12px;margin-bottom:14px;line-height:1.6}
 
-/* RESPONSIVE */
-@media (max-width: 700px) {
-  .sidebar { display: none; }
-  .main { padding: 16px; }
-  .mobile-nav { display: flex; }
-}
-.mobile-nav {
-  display: none; position: fixed; bottom: 0; left: 0; right: 0;
-  background: var(--card); border-top: 1px solid var(--border);
-  padding: 8px; gap: 4px; z-index: 100; flex-wrap: wrap; justify-content: center;
-}
-.mob-btn {
-  padding: 6px 10px; border-radius: 8px; border: none; background: none;
-  font-size: 11px; cursor: pointer; color: var(--text2); font-family: 'DM Sans', sans-serif;
-  display: flex; flex-direction: column; align-items: center; gap: 2px;
-}
-.mob-btn.active { color: var(--green); background: var(--green4); }
-
-.empty-state { text-align: center; padding: 40px; color: var(--text3); }
-.empty-state .big { font-size: 48px; margin-bottom: 12px; }
-
-/* Confetti-like celebration */
-@keyframes pop { 0%{transform:scale(0.5);opacity:0} 60%{transform:scale(1.15)} 100%{transform:scale(1);opacity:1} }
-.celebration { animation: pop 0.4s ease forwards; }
+/* MOBILE */
+@media(max-width:700px){.side{display:none}.main{padding:14px;padding-bottom:72px}.mob-nav{display:flex}.dash-grid{grid-template-columns:1fr 1fr}}
+.mob-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,0.1);padding:5px;gap:2px;z-index:100;flex-wrap:wrap;justify-content:center}
+.mob-btn{padding:5px 8px;border-radius:7px;border:none;background:none;font-size:10px;cursor:pointer;color:rgba(255,255,255,0.45);font-family:'Outfit',sans-serif;display:flex;flex-direction:column;align-items:center;gap:1px}
+.mob-btn.active{color:var(--terra2);background:rgba(196,82,26,0.15)}
 </style>
 </head>
 <body>
-
-<div class="app">
-<!-- SIDEBAR -->
-<nav class="sidebar">
+<div class="shell">
+<nav class="side">
   <div class="brand">
-    <h1>🇵🇾 Español<br>en Paraguay</h1>
-    <p>Nivel A0 — dla mieszkanki Asunción</p>
+    <div class="brand-title">🇵🇾 Español<br>— Małgosia</div>
+    <div class="brand-sub">Asunción · A0 → A1 · 1000+ słów</div>
   </div>
-  <div class="overall-progress">
-    <div class="label">Twój postęp</div>
-    <div class="xp-bar"><div class="xp-fill" id="xpFill" style="width:0%"></div></div>
-    <div class="xp-label"><span id="xpVal">0 XP</span><span id="xpMax">cel: 500 XP</span></div>
-    <div class="streak">🔥 <span class="streak-count" id="streakCount">0</span> dni z rzędu</div>
+  <div class="xp-area">
+    <div class="xp-label">Postęp nauki</div>
+    <div class="xp-track"><div class="xp-fill" id="xpFill" style="width:0%"></div></div>
+    <div class="xp-nums"><span id="xpVal">0 słów</span><span id="xpTarget">cel: 100</span></div>
+    <span class="level-badge" id="levelBadge">Początkująca</span>
   </div>
-
-  <div class="nav-label">Nauka</div>
-  <button class="nav-item active" onclick="showPage('dashboard')">
-    <span class="nav-icon">🏠</span> Strona główna
-  </button>
-  <button class="nav-item" onclick="showPage('fiszki')">
-    <span class="nav-icon">🃏</span> Fiszki
-    <span class="nav-stars" id="nav-stars-fiszki"></span>
-  </button>
-  <button class="nav-item" onclick="showPage('quiz')">
-    <span class="nav-icon">🧠</span> Quiz
-  </button>
-  <button class="nav-item" onclick="showPage('dialogi')">
-    <span class="nav-icon">💬</span> Dialogi
-  </button>
-  <button class="nav-item" onclick="showPage('gramatyka')">
-    <span class="nav-icon">📐</span> Gramatyka
-  </button>
-  <button class="nav-item" onclick="showPage('liczby')">
-    <span class="nav-icon">🔢</span> Liczby
-  </button>
-  <div class="nav-label">Więcej</div>
-  <button class="nav-item" onclick="showPage('ciekawostki')">
-    <span class="nav-icon">🧩</span> Jak zapamiętać?
-  </button>
-  <button class="nav-item" onclick="showPage('postep')">
-    <span class="nav-icon">📊</span> Mój postęp
-  </button>
+  <div class="nav-section">
+    <div class="nav-section-lbl">Start</div>
+    <button class="nb active" onclick="goPage('dashboard')"><span class="nb-icon">🏠</span>Strona główna</button>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-lbl">Poziom A0 — Paragwaj</div>
+    <button class="nb" onclick="goPage('fiszki');setSource('a0')"><span class="nb-icon">🃏</span>Fiszki A0<span class="nb-badge" id="nb-a0">93</span></button>
+    <button class="nb" onclick="goPage('dialogi')"><span class="nb-icon">💬</span>Dialogi</button>
+    <button class="nb" onclick="goPage('gramatyka')"><span class="nb-icon">📐</span>Gramatyka</button>
+    <button class="nb" onclick="goPage('liczby')"><span class="nb-icon">🔢</span>Liczby i czas</button>
+    <button class="nb" onclick="goPage('ciekawostki')"><span class="nb-icon">🧩</span>Jak zapamiętać?</button>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-lbl">1000 słów — sytuacje</div>
+    <button class="nb" onclick="goPage('fiszki');setSource('mil')"><span class="nb-icon">🃏</span>Wszystkie 1000<span class="nb-badge" id="nb-mil">342</span></button>
+    <button class="nb" onclick="goSit('poranek')"><span class="nb-icon">🌅</span>Poranek w domu</button>
+    <button class="nb" onclick="goSit('sklep')"><span class="nb-icon">🛒</span>Sklep i targ</button>
+    <button class="nb" onclick="goSit('transport')"><span class="nb-icon">🚌</span>Transport</button>
+    <button class="nb" onclick="goSit('ludzie')"><span class="nb-icon">👥</span>Ludzie i relacje</button>
+    <button class="nb" onclick="goSit('zdrowie')"><span class="nb-icon">🏥</span>Zdrowie</button>
+    <button class="nb" onclick="goSit('miasto')"><span class="nb-icon">🏙️</span>Miasto</button>
+    <button class="nb" onclick="goSit('jedzenie')"><span class="nb-icon">🍽️</span>Jedzenie</button>
+    <button class="nb" onclick="goSit('praca')"><span class="nb-icon">💼</span>Praca i sprawy</button>
+    <button class="nb" onclick="goSit('przyroda')"><span class="nb-icon">🌿</span>Przyroda PY</button>
+    <button class="nb" onclick="goSit('uczucia')"><span class="nb-icon">💬</span>Uczucia</button>
+    <button class="nb" onclick="goSit('pytania')"><span class="nb-icon">❓</span>Pytania i struktury</button>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-lbl">Ćwiczenia i wyniki</div>
+    <button class="nb" onclick="goPage('quiz')"><span class="nb-icon">🧠</span>Quiz</button>
+    <button class="nb" onclick="goPage('postep')"><span class="nb-icon">📊</span>Mój postęp</button>
+  </div>
+  <div class="side-stats">
+    <div class="ss"><div class="ss-n" id="sm-known">0</div><div class="ss-l">Znasz</div></div>
+    <div class="ss"><div class="ss-n" id="sm-sessions">0</div><div class="ss-l">Sesji</div></div>
+    <div class="ss"><div class="ss-n" id="sm-quiz">—</div><div class="ss-l">Quiz%</div></div>
+  </div>
 </nav>
 
-<!-- MAIN -->
 <main class="main">
 
 <!-- DASHBOARD -->
 <div class="page active" id="page-dashboard">
-  <div class="page-header">
-    <h2>Witaj z powrotem! 👋</h2>
-    <p>Twoja codzinna nauka hiszpańskiego w Asunción</p>
+  <div class="page-head">
+    <h2>Dzień dobry, Małgosiu! 🇵🇾</h2>
+    <p>Twój kompletny program — A0 + 1000 słów w sytuacjach z Asunción</p>
   </div>
-
-  <div class="tip-box">
-    <strong>💡 Wskazówka dnia — jak działa twój mózg</strong>
-    Najlepiej uczyć się w <b>małych dawkach, codziennie</b>. 15 minut dziennie przez 30 dni = lepszy efekt niż 7 godzin raz w tygodniu. Mózg utrwala wiedzę podczas snu — ucz się wieczorem przed snem!
+  <div class="dash-grid">
+    <div class="dstat"><div class="dstat-n" id="d-total">435</div><div class="dstat-l">Słów łącznie</div></div>
+    <div class="dstat"><div class="dstat-n" id="d-known">0</div><div class="dstat-l">Znasz dobrze</div></div>
+    <div class="dstat"><div class="dstat-n" id="d-sessions">0</div><div class="dstat-l">Sesji nauki</div></div>
+    <div class="dstat"><div class="dstat-n" id="d-quiz">—</div><div class="dstat-l">Wynik quiz</div></div>
   </div>
-
-  <div class="dashboard-grid">
-    <div class="stat-card">
-      <div class="num" id="stat-words">0</div>
-      <div class="lbl">słów w bazie</div>
-    </div>
-    <div class="stat-card">
-      <div class="num" id="stat-known">0</div>
-      <div class="lbl">znasz dobrze</div>
-    </div>
-    <div class="stat-card">
-      <div class="num" id="stat-sessions">0</div>
-      <div class="lbl">sesji nauki</div>
-    </div>
-    <div class="stat-card">
-      <div class="num" id="stat-quiz">0%</div>
-      <div class="lbl">wynik w quizie</div>
+  <div class="tip-banner">
+    <div class="tip-icon">🧠</div>
+    <div>
+      <div class="tip-title">Twój styl: Wzrokowiec + Słuchowiec + Kontekst</div>
+      <div class="tip-text">Każde słowo ma wymowę (mów na głos!), mnemonikę (absurdalne skojarzenie) i przykład z życia w Asunción. Twój mózg zapamiętuje przez SENS i EMOCJE — nie przez suche listy.</div>
     </div>
   </div>
-
-  <h3 style="font-family:'Fraunces',serif;font-size:20px;margin-bottom:14px">Moduły tematyczne</h3>
-  <div class="modules-grid" id="modules-grid"></div>
+  <div class="dash-tabs">
+    <button class="dash-tab active" onclick="setDashTab('a0',this)">Moduły A0</button>
+    <button class="dash-tab" onclick="setDashTab('mil',this)">Sytuacje 1000 słów</button>
+  </div>
+  <div class="cards-grid" id="dash-cards"></div>
 </div>
 
 <!-- FISZKI -->
 <div class="page" id="page-fiszki">
-  <div class="page-header">
-    <h2>Fiszki <span class="badge green">Spaced Repetition</span></h2>
-    <p>Kliknij kartę, żeby zobaczyć tłumaczenie. Potem oceń czy znałaś słowo.</p>
+  <div class="page-head">
+    <h2>Fiszki <span class="chip chip-terra">Spaced Repetition</span></h2>
+    <p>Kliknij kartę → odkryj → oceń. System śledzi Twoje wyniki.</p>
   </div>
-  <div class="lesson-selector" id="lesson-sel"></div>
-  <div class="fc-area">
-    <div class="fc-wrap" id="fcCard" onclick="flipFC()">
-      <span class="fc-cat-tag" id="fcCat"></span>
-      <span class="fc-num" id="fcNum"></span>
-      <div class="fc-word" id="fcWord"></div>
-      <div class="fc-pron" id="fcPron"></div>
-      <div class="fc-translation" id="fcTrans"></div>
-      <div class="fc-note-tag" id="fcNote"></div>
-      <div class="fc-mnemonic" id="fcMnem"><strong>💡 Jak zapamiętać?</strong><span id="fcMnemText"></span></div>
-      <div class="fc-hint">Kliknij, żeby odkryć ✨</div>
+  <div class="pron-legend">Wymowa w [ ] — <strong>WIELKIE</strong> litery = akcent. Np. [GRA-sjas] = akcent na GRA</div>
+  <div class="filter-row" id="fc-filter"></div>
+  <div class="card-wrap" id="fcCard" onclick="flipCard()">
+    <div class="card-bar c-terra" id="fcBar"></div>
+    <div class="card-inner">
+      <span class="card-tag" id="fcTag"></span>
+      <span class="card-num" id="fcNum"></span>
+      <div class="card-es" id="fcEs"></div>
+      <div class="card-pron" id="fcPron"></div>
+      <div class="card-pl" id="fcPl"></div>
+      <div class="card-note-tag" id="fcNote"></div>
+      <div class="card-ctx" id="fcCtx"><strong>🌆 W Asunción</strong><span id="fcCtxTxt"></span></div>
+      <div class="card-mnem" id="fcMnem"><strong>💡 Jak zapamiętać</strong><span id="fcMnemTxt"></span></div>
+      <div class="card-hint">Kliknij, żeby odkryć ✨</div>
     </div>
   </div>
-  <div class="rating-btns" id="ratingBtns">
-    <button class="dontknow-btn" onclick="rateCard(false)">😕 Nie znałam</button>
-    <button class="know-btn" onclick="rateCard(true)">✅ Znałam!</button>
+  <div class="rate-row" id="rateRow">
+    <button class="rate-btn btn-no" onclick="rateCard(false)">😕 Jeszcze nie</button>
+    <button class="rate-btn btn-yes" onclick="rateCard(true)">✅ Znam!</button>
   </div>
-  <div class="fc-controls" id="fcControls">
-    <button class="fc-btn" onclick="prevFC()">← Poprzednia</button>
-    <button class="fc-btn" onclick="nextFC()">Następna →</button>
+  <div class="nav-row" id="navRow">
+    <button class="nav-fc-btn" onclick="prevCard()">← Poprzednia</button>
+    <span class="fc-counter" id="fcCounter">1 / 1</span>
+    <button class="nav-fc-btn" onclick="nextCard()">Następna →</button>
   </div>
 </div>
 
 <!-- QUIZ -->
 <div class="page" id="page-quiz">
-  <div class="page-header">
-    <h2>Quiz <span class="badge purple">Testuj wiedzę</span></h2>
-    <p>Sprawdź co zapamiętałaś. Im więcej robisz quizów, tym lepiej zapamiętasz!</p>
+  <div class="page-head">
+    <h2>Quiz <span class="chip chip-violeta">Sprawdź wiedzę</span></h2>
+    <p>Quiz sytuacyjny — słowa w kontekście Twojego życia w Asunción.</p>
   </div>
   <div class="quiz-wrap">
-    <div class="quiz-score-bar">
-      <span class="qscore ok" id="qScOk">✅ 0</span>
-      <span class="qscore err" id="qScErr">❌ 0</span>
-      <span style="font-size:13px;color:var(--text3);margin-left:auto" id="qProgress">Pytanie 1</span>
+    <div class="quiz-meta">
+      <span class="qm-pill qm-ok" id="qOk">✅ 0</span>
+      <span class="qm-pill qm-err" id="qErr">❌ 0</span>
+      <span class="qm-tot" id="qProg">Pytanie 1</span>
     </div>
-    <div class="quiz-type-sel">
-      <button class="qtype-btn active" onclick="setQType('es_pl',this)">ES → PL</button>
-      <button class="qtype-btn" onclick="setQType('pl_es',this)">PL → ES</button>
-      <button class="qtype-btn" onclick="setQType('mixed',this)">Mieszany</button>
+    <div class="qt-row">
+      <button class="qt-btn active" onclick="setQT('es_pl',this)">ES → PL</button>
+      <button class="qt-btn" onclick="setQT('pl_es',this)">PL → ES</button>
+      <button class="qt-btn" onclick="setQT('ctx',this)">Sytuacja</button>
+      <button class="qt-btn" onclick="setQT('mix',this)">Mix</button>
     </div>
-    <div class="lesson-selector" id="quiz-lesson-sel" style="margin-bottom:16px"></div>
-    <div class="quiz-q">
-      <div class="q-label" id="qLabel">Jak powiedzieć po hiszpańsku?</div>
-      <div class="q-text" id="qText"></div>
-      <div class="q-pron" id="qPron"></div>
+    <div class="filter-row" id="quiz-filter"></div>
+    <div class="qcard">
+      <div class="qcard-lbl" id="qLbl">Przetłumacz na polski</div>
+      <div class="qcard-word" id="qWord"></div>
+      <div class="qcard-pron" id="qPron"></div>
+      <div class="qcard-ctx" id="qCtx"></div>
     </div>
-    <div class="quiz-opts" id="qOpts"></div>
-    <div class="quiz-feedback" id="qFeedback"></div>
-    <div style="text-align:center">
-      <button class="next-btn" id="qNextBtn" onclick="nextQuiz()" style="display:none">Następne pytanie →</button>
-    </div>
+    <div class="q-opts" id="qOpts"></div>
+    <div class="q-feedback" id="qFeedback"></div>
+    <div style="text-align:center"><button class="next-btn" id="qNext" onclick="nextQuiz()" style="display:none">Następne →</button></div>
   </div>
 </div>
 
 <!-- DIALOGI -->
 <div class="page" id="page-dialogi">
-  <div class="page-header">
-    <h2>Dialogi <span class="badge amber">Życie codzienne</span></h2>
-    <p>Realne rozmowy z Asunción — z wymową i tłumaczeniem każdej linii.</p>
+  <div class="page-head">
+    <h2>Dialogi <span class="chip chip-oro">Życie w Asunción</span></h2>
+    <p>Realne rozmowy z wymową i tłumaczeniem każdej linii.</p>
   </div>
-  <div class="dialog-sel" id="dialog-sel"></div>
-  <div id="dialog-container"></div>
+  <div class="dialog-sel" id="dialogSel"></div>
+  <div id="dialogContainer"></div>
 </div>
 
 <!-- GRAMATYKA -->
 <div class="page" id="page-gramatyka">
-  <div class="page-header">
-    <h2>Gramatyka <span class="badge green">Podstawy</span></h2>
-    <p>Minimalna gramatyka, żeby się porozumieć. Nie wkuwaj reguł — ucz się przez przykłady!</p>
+  <div class="page-head">
+    <h2>Gramatyka <span class="chip chip-verde">Podstawy</span></h2>
+    <p>Minimalna gramatyka żeby się porozumieć — ucz się przez przykłady!</p>
   </div>
-  <div class="gram-grid" id="gram-container"></div>
+  <div class="gram-grid" id="gramContainer"></div>
 </div>
 
 <!-- LICZBY -->
 <div class="page" id="page-liczby">
-  <div class="page-header">
-    <h2>Liczby i czas <span class="badge amber">Rynek i zakupy</span></h2>
-    <p>Niezbędne do zakupów w guaraníes, do godzin i dat.</p>
+  <div class="page-head">
+    <h2>Liczby i czas <span class="chip chip-oro">Zakupy w guaraníes</span></h2>
+    <p>Niezbędne do zakupów, godzin i dat.</p>
   </div>
-  <h3 style="font-family:'Fraunces',serif;margin-bottom:14px;font-size:18px">Liczby 1–100</h3>
-  <div class="numbers-grid" id="numbers-grid"></div>
-  <h3 style="font-family:'Fraunces',serif;margin:24px 0 14px;font-size:18px">Dni tygodnia</h3>
-  <div class="numbers-grid" id="days-grid"></div>
-  <h3 style="font-family:'Fraunces',serif;margin:24px 0 14px;font-size:18px">Miesiące</h3>
-  <div class="numbers-grid" id="months-grid"></div>
-  <h3 style="font-family:'Fraunces',serif;margin:24px 0 14px;font-size:18px">Godziny</h3>
-  <div class="gram-grid" id="time-grid"></div>
+  <h3 style="font-family:'Playfair Display',serif;margin-bottom:12px;font-size:17px">Liczby 1–1 000 000</h3>
+  <div class="num-grid" id="numGrid"></div>
+  <h3 style="font-family:'Playfair Display',serif;margin:20px 0 12px;font-size:17px">Dni tygodnia</h3>
+  <div class="num-grid" id="daysGrid"></div>
+  <h3 style="font-family:'Playfair Display',serif;margin:20px 0 12px;font-size:17px">Miesiące</h3>
+  <div class="num-grid" id="monthsGrid"></div>
+  <h3 style="font-family:'Playfair Display',serif;margin:20px 0 12px;font-size:17px">Godziny i czas</h3>
+  <div class="gram-grid" id="timeGrid"></div>
 </div>
 
 <!-- CIEKAWOSTKI -->
 <div class="page" id="page-ciekawostki">
-  <div class="page-header">
+  <div class="page-head">
     <h2>Jak zapamiętać? 🧩</h2>
-    <p>Techniki oparte na tym, jak naprawdę działa pamięć. Używaj ich przy każdym słowie!</p>
+    <p>Techniki oparte na tym jak naprawdę działa pamięć i mózg.</p>
   </div>
-  <div class="facts-grid" id="facts-container"></div>
+  <div class="facts-grid" id="factsContainer"></div>
 </div>
 
 <!-- POSTĘP -->
 <div class="page" id="page-postep">
-  <div class="page-header">
+  <div class="page-head">
     <h2>Mój postęp 📊</h2>
-    <p>Śledź swoje wyniki i odkryj co jeszcze warto powtórzyć.</p>
+    <p>Śledź wyniki i odkryj co warto powtórzyć.</p>
   </div>
-  <div class="progress-modules" id="progress-modules"></div>
-  <div class="mastery-section">
-    <div class="mastery-title">Słowa które znasz dobrze ⭐</div>
-    <div class="mastery-grid" id="mastery-grid"></div>
-  </div>
+  <div class="prog-grid" id="progGrid"></div>
+  <div class="mastered-title">Słowa które znasz dobrze ⭐</div>
+  <div class="mastered-grid" id="masteredGrid"></div>
 </div>
 
 </main>
 </div>
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav">
-  <button class="mob-btn active" onclick="showPage('dashboard')">🏠<span>Start</span></button>
-  <button class="mob-btn" onclick="showPage('fiszki')">🃏<span>Fiszki</span></button>
-  <button class="mob-btn" onclick="showPage('quiz')">🧠<span>Quiz</span></button>
-  <button class="mob-btn" onclick="showPage('dialogi')">💬<span>Dialogi</span></button>
-  <button class="mob-btn" onclick="showPage('gramatyka')">📐<span>Gram.</span></button>
-  <button class="mob-btn" onclick="showPage('liczby')">🔢<span>Liczby</span></button>
-  <button class="mob-btn" onclick="showPage('ciekawostki')">🧩<span>Pamięć</span></button>
-  <button class="mob-btn" onclick="showPage('postep')">📊<span>Postęp</span></button>
+<div class="mob-nav">
+  <button class="mob-btn active" onclick="goPage('dashboard')">🏠<span>Start</span></button>
+  <button class="mob-btn" onclick="goPage('fiszki');setSource('a0')">🃏<span>A0</span></button>
+  <button class="mob-btn" onclick="goPage('fiszki');setSource('mil')">📚<span>1000</span></button>
+  <button class="mob-btn" onclick="goPage('quiz')">🧠<span>Quiz</span></button>
+  <button class="mob-btn" onclick="goPage('dialogi')">💬<span>Dialogi</span></button>
+  <button class="mob-btn" onclick="goPage('gramatyka')">📐<span>Gram.</span></button>
+  <button class="mob-btn" onclick="goPage('liczby')">🔢<span>Liczby</span></button>
+  <button class="mob-btn" onclick="goPage('postep')">📊<span>Postęp</span></button>
 </div>
 
 <script>
-// ============================================================
-// DATA
-// ============================================================
+// DATA PLACEHOLDER - will be injected
 const modules = [
   { id:'powitania', icon:'👋', name:'Powitania i pożegnania', color:'green' },
   { id:'zwroty', icon:'🗣️', name:'Zwroty codzienne', color:'green' },
@@ -619,7 +473,6 @@ const modules = [
   { id:'czasowniki', icon:'⚡', name:'Czasowniki podstawowe', color:'green' },
   { id:'guarani', icon:'🦜', name:'Guaraní w życiu codziennym', color:'purple' },
 ];
-
 const vocab = [
   // POWITANIA
   {es:'Hola',pron:'[O-la]',pl:'Cześć / Dzień dobry',cat:'powitania',note:'Używane cały dzień',mnem:'HOLA brzmi jak "olla" — garnek. Wyobraź sobie że pozdrawiasz kogoś machnięciem garnka 🍳'},
@@ -737,7 +590,375 @@ const vocab = [
   {es:'Mitaí / Mita\'i',pron:'[mi-ta-I]',pl:'Dziecko (guaraní)',cat:'guarani',note:'Bardzo popularne!',mnem:'"Mitaí" — mi-ta-ÍI — małe "i" = mały człowiek 👶'},
   {es:'Kokue',pron:'[ko-KWE]',pl:'Pole / Wieś (guaraní)',cat:'guarani',note:'',mnem:'"Kokue" jak "pole kukurydzy" — ko-ku-e = kukurydza na polu 🌽'},
 ];
+const situations = [
+  {id:'poranek', name:'Poranek w domu', icon:'🌅', color:'terra'},
+  {id:'sklep', name:'Sklep i targ', icon:'🛒', color:'verde'},
+  {id:'transport', name:'Transport', icon:'🚌', color:'cielo'},
+  {id:'ludzie', name:'Ludzie i relacje', icon:'👥', color:'violeta'},
+  {id:'zdrowie', name:'Zdrowie', icon:'🏥', color:'terra'},
+  {id:'miasto', name:'Miasto i miejsca', icon:'🏙️', color:'cielo'},
+  {id:'jedzenie', name:'Jedzenie i napoje', icon:'🍽️', color:'oro'},
+  {id:'praca', name:'Praca i sprawy', icon:'💼', color:'violeta'},
+  {id:'przyroda', name:'Przyroda Paragwaju', icon:'🌿', color:'verde'},
+  {id:'uczucia', name:'Uczucia i opinie', icon:'💬', color:'oro'},
+  {id:'pytania', name:'Pytania i struktury', icon:'❓', color:'cielo'},
+];
+const words = [
+// ── PORANEK ──────────────────────────────────────────────────
+{es:'despertar(se)',pron:'[des-per-TAR-se]',pl:'obudzić się',sit:'poranek',note:'Czasownik zwrotny',ctx:'Me despierto a las siete — Budzę się o siódmej',mnem:'"Despertar" jak "desperate" — budzisz się zdespero­wana bo alarm 😄'},
+{es:'el despertador',pron:'[el des-per-ta-DOR]',pl:'budzik',sit:'poranek',note:'',ctx:'El despertador suena a las seis — Budzik dzwoni o szóstej',mnem:'Des-pertador — "pertarza" = ten co perturbuje sen'},
+{es:'la cama',pron:'[la KA-ma]',pl:'łóżko',sit:'poranek',note:'',ctx:'La cama está caliente — Łóżko jest ciepłe',mnem:'"Cama" jak "come" po angielsku — chodź do łóżka 🛏️'},
+{es:'la almohada',pron:'[la al-mo-A-da]',pl:'poduszka',sit:'poranek',note:'',ctx:'Necesito una almohada más — Potrzebuję jeszcze jednej poduszki',mnem:'"Almohada" brzmi miękko i puchato — jak poduszka 🛋️'},
+{es:'la ducha',pron:'[la DU-cza]',pl:'prysznic',sit:'poranek',note:'',ctx:'Me doy una ducha rápida — Biorę szybki prysznic',mnem:'"Ducha" jak "duch" — duchy nie biorą prysznica, ale Ty tak 👻'},
+{es:'el jabón',pron:'[el cha-BON]',pl:'mydło',sit:'poranek',note:'"j" wymawia się "ch"',ctx:'¿Dónde está el jabón? — Gdzie jest mydło?',mnem:'"Jabón" jak "ja bon" — po francusku "ja dobra" (czysta) 🧼'},
+{es:'la toalla',pron:'[la to-A-ja]',pl:'ręcznik',sit:'poranek',note:'ll = j',ctx:'Dame la toalla, por favor — Podaj mi ręcznik',mnem:'"Toalla" jak "towel" po angielsku — ręcznik'},
+{es:'el espejo',pron:'[el es-PE-cho]',pl:'lustro',sit:'poranek',note:'',ctx:'Me miro en el espejo — Patrzę w lustro',mnem:'"Espejo" jak "especial" — w lustrze widzisz kogoś wyjątkowego ✨'},
+{es:'el cepillo de dientes',pron:'[el se-PI-jo de DJEN-tes]',pl:'szczoteczka do zębów',sit:'poranek',note:'',ctx:'¿Dónde está mi cepillo? — Gdzie jest moja szczoteczka?',mnem:'"Dientes" = zęby — jak "diente" = ząb. Cepillo = szczotka'},
+{es:'la pasta de dientes',pron:'[la PAS-ta de DJEN-tes]',pl:'pasta do zębów',sit:'poranek',note:'',ctx:'Se acabó la pasta — Skończyła się pasta',mnem:'"Pasta de dientes" — pasta zębów. Pasta to pasta! 🦷'},
+{es:'vestirse',pron:'[bes-TIR-se]',pl:'ubierać się',sit:'poranek',note:'Czasownik zwrotny',ctx:'Me visto rápido — Ubieram się szybko',mnem:'"Vestir" jak "vest" — kamizelka to ubranie 👔'},
+{es:'la ropa',pron:'[la RRO-pa]',pl:'ubranie / odzież',sit:'poranek',note:'',ctx:'¿Dónde está mi ropa? — Gdzie jest moje ubranie?',mnem:'"Ropa" jak ropa naftowa — czarna jak Twoja elegancka koszula 😄'},
+{es:'la camisa',pron:'[la ka-MI-sa]',pl:'koszula',sit:'poranek',note:'',ctx:'Esa camisa te queda bien — Ta koszula dobrze na Tobie leży',mnem:'"Camisa" jak "chemise" po francusku — koszula'},
+{es:'el pantalón',pron:'[el pan-ta-LON]',pl:'spodnie',sit:'poranek',note:'',ctx:'El pantalón está arrugado — Spodnie są pogniecione',mnem:'"Pantalón" jak "pantalon" po polsku — to samo słowo! 👖'},
+{es:'los zapatos',pron:'[los sa-PA-tos]',pl:'buty',sit:'poranek',note:'',ctx:'Los zapatos nuevos me aprietan — Nowe buty mnie uciskają',mnem:'"Zapatos" jak "sapatos" — brzmią jak stąpanie 👟'},
+{es:'el desayuno',pron:'[el de-sa-JU-no]',pl:'śniadanie',sit:'poranek',note:'',ctx:'El desayuno está listo — Śniadanie jest gotowe',mnem:'"Desayuno" = de-ayuno = koniec postu (ayuno=post). Śniadanie kończy nocny post!'},
+{es:'el café',pron:'[el ka-FE]',pl:'kawa',sit:'poranek',note:'',ctx:'Un café con leche, por favor — Kawę z mlekiem, proszę',mnem:'Café = kawa. Identyczne w 20 językach! ☕'},
+{es:'la leche',pron:'[la LE-cze]',pl:'mleko',sit:'poranek',note:'',ctx:'¿Hay leche en la nevera? — Czy jest mleko w lodówce?',mnem:'"Leche" jak "lait" po francusku (le) + che. Mleko 🥛'},
+{es:'el pan',pron:'[el pan]',pl:'chleb',sit:'poranek',note:'',ctx:'Voy a comprar pan — Idę kupić chleb',mnem:'"Pan" — tak samo jak po polsku! Pan = chleb 🍞'},
+{es:'la mantequilla',pron:'[la man-te-KI-ja]',pl:'masło',sit:'poranek',note:'',ctx:'La mantequilla está en la nevera — Masło jest w lodówce',mnem:'"Mantequilla" jak "mantis" w maśle — wyobraź sobie modliszkę w maśle 🦗'},
+{es:'la nevera',pron:'[la ne-BE-ra]',pl:'lodówka',sit:'poranek',note:'Paragwajskie słowo',ctx:'Abre la nevera — Otwórz lodówkę',mnem:'"Nevera" jak "nieve" (śnieg) — lodówka to śnieżna skrzynka ❄️'},
+{es:'el microondas',pron:'[el mi-kro-ON-das]',pl:'kuchenka mikrofalowa',sit:'poranek',note:'',ctx:'Calienta en el microondas — Podgrzej w mikrofalówce',mnem:'"Microondas" = micro + ondas (fale) — mikrofale! Identyczne znaczenie'},
+{es:'la cocina',pron:'[la ko-SI-na]',pl:'kuchnia',sit:'poranek',note:'',ctx:'Me gusta cocinar en mi cocina — Lubię gotować w mojej kuchni',mnem:'"Cocina" jak "kuchnia" przez "cocinar" = gotować 🍳'},
+{es:'el baño',pron:'[el BA-njo]',pl:'łazienka / toaleta',sit:'poranek',note:'Najważniejsze słowo!',ctx:'¿Dónde está el baño? — Gdzie jest łazienka?',mnem:'"Baño" jak "bania" — łaźnia, kąpiel. Baño = łazienka 🛁'},
+{es:'la llave',pron:'[la JA-be]',pl:'klucz',sit:'poranek',note:'ll = j',ctx:'¿Dónde están mis llaves? — Gdzie są moje klucze?',mnem:'"Llave" — JA-be — JA mam klucze! 🔑'},
+{es:'el bolso',pron:'[el BOL-so]',pl:'torebka',sit:'poranek',note:'',ctx:'¿Dónde está mi bolso? — Gdzie jest moja torebka?',mnem:'"Bolso" jak "bolsa" (torba) — bolso = torebka 👜'},
+{es:'la cartera',pron:'[la kar-TE-ra]',pl:'portfel',sit:'poranek',note:'',ctx:'Olvidé mi cartera — Zapomniałam portfela',mnem:'"Cartera" jak "karta" — w portfelu masz karty 💳'},
+{es:'el celular',pron:'[el se-lu-LAR]',pl:'telefon komórkowy',sit:'poranek',note:'Tak mówią w Paragwaju',ctx:'¿Dónde está mi celular? — Gdzie jest mój telefon?',mnem:'"Celular" jak "cellular" po angielsku — telefon komórkowy 📱'},
+{es:'el cargador',pron:'[el kar-ga-DOR]',pl:'ładowarka',sit:'poranek',note:'',ctx:'El celular necesita cargador — Telefon potrzebuje ładowarki',mnem:'"Cargador" jak "charger" — ładuje (carga) telefon 🔌'},
+{es:'salir',pron:'[sa-LIR]',pl:'wychodzić',sit:'poranek',note:'',ctx:'Salgo a las ocho — Wychodzę o ósmej',mnem:'"Salir" jak "sally forth" — wychodzić odważnie w świat'},
+{es:'cerrar',pron:'[se-RRAR]',pl:'zamykać',sit:'poranek',note:'rr = mocne r',ctx:'Cierra la puerta con llave — Zamknij drzwi na klucz',mnem:'"Cerrar" jak "cerrado" = zamknięte (widujesz na sklepach) 🔒'},
+// ── SKLEP ─────────────────────────────────────────────────────
+{es:'la tienda',pron:'[la TJEN-da]',pl:'sklep',sit:'sklep',note:'',ctx:'La tienda abre a las ocho — Sklep otwiera o ósmej',mnem:'"Tienda" jak "attendance" — chodzisz do sklepu regularnie 🏪'},
+{es:'el mercado',pron:'[el mer-KA-do]',pl:'targ / rynek',sit:'sklep',note:'',ctx:'Voy al mercado los sábados — Chodzę na targ w soboty',mnem:'"Mercado" jak "market" po angielsku — rynek, targ 🛒'},
+{es:'la feria',pron:'[la FE-rja]',pl:'bazar / jarmark',sit:'sklep',note:'Typowe w Paragwaju',ctx:'La feria del barrio — Bazar w dzielnicy',mnem:'"Feria" jak "fair" po angielsku — jarmark, festyn 🎪'},
+{es:'el vendedor',pron:'[el ben-de-DOR]',pl:'sprzedawca',sit:'sklep',note:'',ctx:'El vendedor es muy amable — Sprzedawca jest bardzo miły',mnem:'"Vendedor" jak "vende" = sprzedaje — ten który sprzedaje'},
+{es:'el precio',pron:'[el PRE-sjo]',pl:'cena',sit:'sklep',note:'',ctx:'¿Cuál es el precio? — Jaka jest cena?',mnem:'"Precio" jak "precious" — cenna cena 💰'},
+{es:'la oferta',pron:'[la o-FER-ta]',pl:'oferta / promocja',sit:'sklep',note:'',ctx:'Hay una oferta hoy — Dziś jest promocja',mnem:'"Oferta" = oferta. To samo słowo po polsku! 🏷️'},
+{es:'el descuento',pron:'[el des-KWEN-to]',pl:'rabat / zniżka',sit:'sklep',note:'',ctx:'¿Tiene algún descuento? — Czy jest jakiś rabat?',mnem:'"Descuento" jak "discount" po angielsku — zniżka'},
+{es:'la caja',pron:'[la KA-cha]',pl:'kasa / pudełko',sit:'sklep',note:'',ctx:'Pago en la caja — Płacę przy kasie',mnem:'"Caja" jak "cajón" (szuflada) — kasa to szuflada na pieniądze 💵'},
+{es:'la cola',pron:'[la KO-la]',pl:'kolejka',sit:'sklep',note:'',ctx:'Hay mucha cola en la caja — Jest duża kolejka przy kasie',mnem:'"Cola" jak "cola" (ogon) — kolejka to ogon ludzi 🐒'},
+{es:'pagar',pron:'[pa-GAR]',pl:'płacić',sit:'sklep',note:'',ctx:'¿Cómo va a pagar? — Jak chce Pani zapłacić?',mnem:'"Pagar" jak "pay" po angielsku + "-gar". Płacić'},
+{es:'el efectivo',pron:'[el e-fek-TI-bo]',pl:'gotówka',sit:'sklep',note:'',ctx:'Pago en efectivo — Płacę gotówką',mnem:'"Efectivo" jak "effective" — gotówka jest skuteczna (efektywna) wszędzie 💵'},
+{es:'la tarjeta',pron:'[la tar-CHE-ta]',pl:'karta (płatnicza)',sit:'sklep',note:'',ctx:'¿Acepta tarjeta? — Czy akceptuje kartę?',mnem:'"Tarjeta" jak karta taryfowa — karta płatnicza 💳'},
+{es:'el recibo',pron:'[el rre-SI-bo]',pl:'paragon / rachunek',sit:'sklep',note:'',ctx:'¿Me da el recibo? — Czy mogę dostać paragon?',mnem:'"Recibo" jak "receipt" po angielsku — paragon 🧾'},
+{es:'el kilo',pron:'[el KI-lo]',pl:'kilogram',sit:'sklep',note:'',ctx:'Un kilo de tomates — Kilo pomidorów',mnem:'Kilo = kilo. Identyczne! 1kg 🏋️'},
+{es:'el litro',pron:'[el LI-tro]',pl:'litr',sit:'sklep',note:'',ctx:'Dos litros de agua — Dwa litry wody',mnem:'Litro = litr. Identyczne! 🥤'},
+{es:'la bolsa',pron:'[la BOL-sa]',pl:'torba / worek',sit:'sklep',note:'',ctx:'¿Necesita una bolsa? — Czy potrzebuje Pani torby?',mnem:'"Bolsa" jak giełda (Bolsa) — ale tu to torba na zakupy 🛍️'},
+{es:'fresco / fresca',pron:'[FRES-ko / FRES-ka]',pl:'świeży / świeża',sit:'sklep',note:'',ctx:'¿Está fresco? — Czy to jest świeże?',mnem:'"Fresco" jak fresk — świeżo namalowany 🎨'},
+{es:'pesado / liviano',pron:'[pe-SA-do / li-BJA-no]',pl:'ciężki / lekki',sit:'sklep',note:'Liviano — typowe w Latam',ctx:'Esta bolsa está muy pesada — Ta torba jest bardzo ciężka',mnem:'"Pesado" jak "peso" (waga) — ciężki'},
+{es:'el guaraní',pron:'[el gwa-ra-NI]',pl:'guaraní (waluta)',sit:'sklep',note:'Waluta Paragwaju',ctx:'Cuesta diez mil guaraníes — Kosztuje dziesięć tysięcy guaranís',mnem:'Guaraní to waluta Paragwaju — symbol Gs. Pamiętasz tereré za Gs? 🧉'},
+{es:'el vuelto',pron:'[el BWEL-to]',pl:'reszta (pieniądze)',sit:'sklep',note:'Typowe w Paragwaju / Latam',ctx:'¿Me da el vuelto? — Czy mogę dostać resztę?',mnem:'"Vuelto" jak "vuelve" (wraca) — pieniądze które wracają do Ciebie 💰'},
+{es:'la verdura',pron:'[la ber-DU-ra]',pl:'warzywo',sit:'sklep',note:'',ctx:'Compro verduras frescas — Kupuję świeże warzywa',mnem:'"Verdura" jak "verde" (zielony) — zielone warzywa 🥦'},
+{es:'la fruta',pron:'[la FRU-ta]',pl:'owoc',sit:'sklep',note:'',ctx:'¿Qué frutas tiene? — Jakie owoce Pan/Pani ma?',mnem:'"Fruta" jak "fruit" po angielsku — owoc 🍎'},
+{es:'el tomate',pron:'[el to-MA-te]',pl:'pomidor',sit:'sklep',note:'',ctx:'Un kilo de tomates — Kilo pomidorów',mnem:'"Tomate" = pomidor. Identyczne w wielu językach! 🍅'},
+{es:'la cebolla',pron:'[la se-BO-ja]',pl:'cebula',sit:'sklep',note:'',ctx:'La cebolla está muy cara hoy — Cebula jest dziś bardzo droga',mnem:'"Cebolla" jak cebulada — płaczesz jak krojesz cebollę 😭'},
+{es:'el ajo',pron:'[el A-cho]',pl:'czosnek',sit:'sklep',note:'',ctx:'El ajo tiene buen sabor — Czosnek ma dobry smak',mnem:'"Ajo" — AJ! — krzykniesz gdy poczujesz intensywny zapach 🧄'},
+{es:'la papa',pron:'[la PA-pa]',pl:'ziemniak',sit:'sklep',note:'Latam — w Hiszpanii "patata"',ctx:'Las papas son baratas — Ziemniaki są tanie',mnem:'"Papa" jak papa (tata) — ziemniaki to podstawa jak tata 🥔'},
+{es:'el arroz',pron:'[el a-RROS]',pl:'ryż',sit:'sklep',note:'',ctx:'Medio kilo de arroz — Pół kilo ryżu',mnem:'"Arroz" jak "rice" — ryż. Podstawa diety w Paragwaju 🍚'},
+{es:'el azúcar',pron:'[el a-SU-kar]',pl:'cukier',sit:'sklep',note:'',ctx:'¿Tiene azúcar sin marca? — Czy ma Pani cukier bez marki?',mnem:'"Azúcar" jak arabskie "sukkar" — cukier przyszedł do Europy z Arabii 🍬'},
+{es:'el aceite',pron:'[el a-SEJ-te]',pl:'olej',sit:'sklep',note:'',ctx:'Un litro de aceite — Litr oleju',mnem:'"Aceite" jak arabskie "az-zayt" (oliwa) — olej z Arabii 🫒'},
+{es:'la sal',pron:'[la sal]',pl:'sól',sit:'sklep',note:'',ctx:'Se acabó la sal — Skończyła się sól',mnem:'"Sal" jak angielskie "salt" — sól! Prawie identyczne 🧂'},
+// ── TRANSPORT ─────────────────────────────────────────────────
+{es:'el bus / el ómnibus',pron:'[el bus / el OM-ni-bus]',pl:'autobus',sit:'transport',note:'Bus — codzienne w PY',ctx:'¿A qué hora sale el bus? — O której odjeżdża bus?',mnem:'"Bus" = bus. Identyczne! 🚌'},
+{es:'la parada',pron:'[la pa-RA-da]',pl:'przystanek',sit:'transport',note:'',ctx:'La parada está en la esquina — Przystanek jest na rogu',mnem:'"Parada" jak parada — autobus zatrzymuje się na paradzie 🎺'},
+{es:'el taxi',pron:'[el TAK-si]',pl:'taksówka',sit:'transport',note:'',ctx:'Llamé un taxi — Zadzwoniłam po taksówkę',mnem:'Taxi = taxi. Identyczne wszędzie! 🚕'},
+{es:'el mototaxi',pron:'[el mo-to-TAK-si]',pl:'mototaxi (riksza motorowa)',sit:'transport',note:'Bardzo popularny w Asunción!',ctx:'El mototaxi es más rápido — Mototaxi jest szybsze',mnem:'Moto + taxi = mototaxi. Widzisz je wszędzie w Asunción! 🛺'},
+{es:'la moto',pron:'[la MO-to]',pl:'motocykl / skuter',sit:'transport',note:'',ctx:'Voy en moto al trabajo — Jadę motorem do pracy',mnem:'"Moto" jak moto. Identyczne! 🏍️'},
+{es:'el auto / el carro',pron:'[el AU-to / el KA-rro]',pl:'samochód',sit:'transport',note:'Carro — popularne w PY',ctx:'El carro está en el garaje — Samochód jest w garażu',mnem:'"Carro" jak "car" po angielsku — samochód 🚗'},
+{es:'la esquina',pron:'[la es-KI-na]',pl:'róg (ulicy)',sit:'transport',note:'',ctx:'Está en la esquina — Jest na rogu',mnem:'"Esquina" jak "Eskimosi na rogu" — zapamiętaj przez absurd 🧊'},
+{es:'la cuadra',pron:'[la KWA-dra]',pl:'przecznica / blok',sit:'transport',note:'Typowe w Latam',ctx:'A dos cuadras de aquí — Dwie przecznice stąd',mnem:'"Cuadra" jak "kwadrat" — jeden blok kwadratowy 🔲'},
+{es:'la avenida',pron:'[la a-be-NI-da]',pl:'aleja / bulwar',sit:'transport',note:'',ctx:'La Avenida España está lejos — Aleja Español jest daleko',mnem:'"Avenida" jak "avenue" po angielsku — aleja 🌳'},
+{es:'la calle',pron:'[la KA-je]',pl:'ulica',sit:'transport',note:'',ctx:'¿En qué calle vives? — Na jakiej ulicy mieszkasz?',mnem:'"Calle" jak "alley" po angielsku — uliczka 🏘️'},
+{es:'el semáforo',pron:'[el se-MA-fo-ro]',pl:'sygnalizacja świetlna',sit:'transport',note:'',ctx:'Para en el semáforo — Zatrzymaj się przy semaforze',mnem:'"Semáforo" = semafor po polsku! To samo słowo 🚦'},
+{es:'el cruce',pron:'[el KRU-se]',pl:'skrzyżowanie',sit:'transport',note:'',ctx:'Dobla en el cruce — Skręć na skrzyżowaniu',mnem:'"Cruce" jak "cross" — skrzyżowanie to miejsce gdzie linie się krzyżują ✚'},
+{es:'el puente',pron:'[el PWEN-te]',pl:'most',sit:'transport',note:'',ctx:'Cruzamos el puente — Przekraczamy most',mnem:'"Puente" jak pont po francusku — most. Łaciński "pons" 🌉'},
+{es:'el río',pron:'[el RRI-o]',pl:'rzeka',sit:'transport',note:'',ctx:'El río Paraguay divide la ciudad — Rzeka Paragwaj dzieli miasto',mnem:'"Río" jak "river" — rzeka. Paraguay to kraj rzek 🌊'},
+{es:'rápido / lento',pron:'[RRA-pi-do / LEN-to]',pl:'szybki / wolny',sit:'transport',note:'',ctx:'El tráfico está muy lento hoy — Ruch jest dziś bardzo wolny',mnem:'"Rápido" jak "rapid" — szybki. "Lento" jak "lento" w muzyce — wolno 🐢'},
+{es:'el tráfico / el tránsito',pron:'[el TRA-fi-ko / el TRAN-si-to]',pl:'ruch uliczny',sit:'transport',note:'',ctx:'Hay mucho tráfico — Jest duży ruch',mnem:'"Tráfico" jak "traffic" — ruch uliczny 🚗🚗'},
+{es:'la gasolina',pron:'[la ga-so-LI-na]',pl:'benzyna',sit:'transport',note:'',ctx:'La gasolina está cara — Benzyna jest droga',mnem:'"Gasolina" jak "gasoline" — benzyna ⛽'},
+{es:'la estación',pron:'[la es-ta-SJON]',pl:'stacja / dworzec',sit:'transport',note:'',ctx:'La estación de buses — Dworzec autobusowy',mnem:'"Estación" jak "station" — dworzec 🚉'},
+{es:'el pasaje',pron:'[el pa-SA-che]',pl:'bilet (na przejazd)',sit:'transport',note:'Typowe w Latam',ctx:'¿Cuánto es el pasaje? — Ile kosztuje bilet?',mnem:'"Pasaje" jak "passage" — bilet na przejazd, przepustkę'},
+{es:'bajar(se)',pron:'[ba-CHAR-se]',pl:'wysiadać / zejść',sit:'transport',note:'',ctx:'Me bajo aquí — Wysiadam tutaj',mnem:'"Bajar" jak "bajo" (nisko) — idziesz w dół wysiadając 👇'},
+{es:'subir',pron:'[su-BIR]',pl:'wsiadać / wejść',sit:'transport',note:'',ctx:'¿Sube o baja? — Wsiada czy wysiada?',mnem:'"Subir" jak "subway" — wchodzisz do metra (w górę, do środka) ⬆️'},
+{es:'la dirección',pron:'[la di-rek-SJON]',pl:'adres / kierunek',sit:'transport',note:'',ctx:'¿Cuál es la dirección? — Jaki jest adres?',mnem:'"Dirección" jak "direction" — kierunek, adres 🧭'},
+{es:'perdido / perdida',pron:'[per-DI-do / per-DI-da]',pl:'zgubiony / zgubiona',sit:'transport',note:'',ctx:'Estoy perdida — Zgubiłam się',mnem:'"Perdida" jak "lost" przez "perder" = zgubić. Estoy perdida = zgubiłam się'},
+{es:'el mapa',pron:'[el MA-pa]',pl:'mapa',sit:'transport',note:'',ctx:'¿Tiene un mapa de la ciudad? — Czy ma Pan mapę miasta?',mnem:'"Mapa" jak mapa po polsku — identyczne! 🗺️'},
+{es:'la distancia',pron:'[la dis-TAN-sja]',pl:'odległość',sit:'transport',note:'',ctx:'¿A qué distancia está? — W jakiej odległości jest?',mnem:'"Distancia" jak "distance" — odległość 📏'},
+{es:'el norte / sur / este / oeste',pron:'[el NOR-te / sur / ES-te / o-ES-te]',pl:'północ / południe / wschód / zachód',sit:'transport',note:'',ctx:'Vivo al norte de Asunción — Mieszkam na północy Asunción',mnem:'Norte = North (pn), Sur = South (pd), Este = East (wsch), Oeste = West (zach) 🧭'},
+{es:'a la vuelta',pron:'[a la BWEL-ta]',pl:'za rogiem / po drugiej stronie',sit:'transport',note:'Popularne w PY',ctx:'Está a la vuelta — Jest za rogiem',mnem:'"Vuelta" jak "return" — wróć za róg, tam to jest 🔄'},
+{es:'el barrio',pron:'[el BA-rrjo]',pl:'dzielnica',sit:'transport',note:'',ctx:'¿En qué barrio estás? — W jakiej dzielnicy jesteś?',mnem:'"Barrio" jak bar w Twoim barrio — Twoja dzielnica 🏘️'},
+{es:'cruzar',pron:'[kru-SAR]',pl:'przechodzić / przekraczać',sit:'transport',note:'',ctx:'Cruza la calle con cuidado — Przechodź przez ulicę ostrożnie',mnem:'"Cruzar" jak "cross" — przekraczać drogę ✚'},
+{es:'doblar',pron:'[do-BLAR]',pl:'skręcać',sit:'transport',note:'',ctx:'Dobla a la derecha — Skręć w prawo',mnem:'"Doblar" jak "double" — zginasz (skręcasz) jak kartka papieru'},
+// ── LUDZIE ────────────────────────────────────────────────────
+{es:'el vecino / la vecina',pron:'[el be-SI-no / la be-SI-na]',pl:'sąsiad / sąsiadka',sit:'ludzie',note:'',ctx:'Mi vecina es muy simpática — Moja sąsiadka jest bardzo miła',mnem:'"Vecino" jak "vicinity" — sąsiedztwo, bliskość 🤝'},
+{es:'el amigo / la amiga',pron:'[el a-MI-go / la a-MI-ga]',pl:'przyjaciel / przyjaciółka',sit:'ludzie',note:'',ctx:'Tengo amigas paraguayas — Mam paragwajskie przyjaciółki',mnem:'"Amigo" jak "ami" po francusku — przyjaciel 👫'},
+{es:'el conocido',pron:'[el ko-no-SI-do]',pl:'znajomy',sit:'ludzie',note:'',ctx:'Es un conocido del barrio — To znajomy z dzielnicy',mnem:'"Conocido" jak "conocer" = znać — znajomy'},
+{es:'simpático / simpática',pron:'[sim-PA-ti-ko]',pl:'miły / sympatyczny',sit:'ludzie',note:'',ctx:'El paraguayo es muy simpático — Paragwajczyk jest bardzo sympatyczny',mnem:'"Simpático" jak "sympatyczny" po polsku — identyczne! 😊'},
+{es:'amable',pron:'[a-MA-ble]',pl:'uprzejmy / życzliwy',sit:'ludzie',note:'',ctx:'Son muy amables — Są bardzo uprzejmi',mnem:'"Amable" jak "amiable" po angielsku — życzliwy, miły 💛'},
+{es:'el señor / la señora',pron:'[el se-NJOR / la se-NJO-ra]',pl:'Pan / Pani',sit:'ludzie',note:'',ctx:'Buenos días, señora — Dzień dobry, Pani',mnem:'"Señor" jak "senior" — starszy Pan. Señora = Pani 👒'},
+{es:'la gente',pron:'[la CHEN-te]',pl:'ludzie',sit:'ludzie',note:'',ctx:'La gente en Paraguay es muy cálida — Ludzie w Paragwaju są bardzo ciepli',mnem:'"Gente" jak "gentle" — delikatni ludzie 👥'},
+{es:'el paraguayo / la paraguaya',pron:'[el pa-ra-GWA-jo]',pl:'Paragwajczyk / Paragwajka',sit:'ludzie',note:'',ctx:'Los paraguayos son muy hospitalarios — Paragwajczycy są bardzo gościnni',mnem:'"Paraguayo" — Para-GWAJ-o — z Paragwaju! 🇵🇾'},
+{es:'el extranjero / la extranjera',pron:'[el eks-tran-CHE-ro]',pl:'cudzoziemiec / obcokrajowiec',sit:'ludzie',note:'',ctx:'Soy extranjera pero me siento en casa — Jestem cudzoziemką ale czuję się jak w domu',mnem:'"Extranjero" jak "stranger" — obcy, cudzoziemiec 🌍'},
+{es:'presentarse',pron:'[pre-sen-TAR-se]',pl:'przedstawiać się',sit:'ludzie',note:'',ctx:'Permítame presentarme — Pozwoli Pani, że się przedstawię',mnem:'"Presentarse" jak "present yourself" — przedstaw siebie'},
+{es:'el nombre',pron:'[el NOM-bre]',pl:'imię / nazwa',sit:'ludzie',note:'',ctx:'¿Cuál es su nombre? — Jak się Pan/Pani nazywa?',mnem:'"Nombre" jak "nom" po francusku — imię, nazwa 📛'},
+{es:'el apellido',pron:'[el a-pe-JI-do]',pl:'nazwisko',sit:'ludzie',note:'',ctx:'¿Cuál es su apellido? — Jakie jest Pani nazwisko?',mnem:'"Apellido" — a-PE-llido — coś do-PIS-anego do imienia (nazwisko)'},
+{es:'casado / soltero',pron:'[ka-SA-do / sol-TE-ro]',pl:'żonaty/zamężna / kawaler/panna',sit:'ludzie',note:'',ctx:'Estoy casada — Jestem zamężna',mnem:'"Casa" = dom — casada = ma własny dom (zamężna). Solo = sama'},
+{es:'el marido / el esposo',pron:'[el ma-RI-do / el es-PO-so]',pl:'mąż',sit:'ludzie',note:'Esposo — bardziej formalne',ctx:'Mi marido trabaja en el centro — Mój mąż pracuje w centrum',mnem:'"Marido" jak "married" — mąż 💍'},
+{es:'la pareja',pron:'[la pa-RE-cha]',pl:'partner / para',sit:'ludzie',note:'',ctx:'Mi pareja es muy comprensivo — Mój partner jest bardzo wyrozumiały',mnem:'"Pareja" jak "pair" — para, dwoje ❤️'},
+{es:'el hijo / la hija',pron:'[el I-cho / la I-cha]',pl:'syn / córka',sit:'ludzie',note:'"h" nieme',ctx:'Tengo una hija de cinco años — Mam córkę pięcioletnią',mnem:'"Hija" = I-cha — mała I-cha to córeczka 👶'},
+{es:'el hermano / la hermana',pron:'[el er-MA-no / la er-MA-na]',pl:'brat / siostra',sit:'ludzie',note:'"h" nieme',ctx:'Mi hermana vive en Polonia — Moja siostra mieszka w Polsce',mnem:'"Hermano" = Herman — Herman to mój brat 🤜'},
+{es:'el jefe / la jefa',pron:'[el CHE-fe / la CHE-fa]',pl:'szef / szefowa',sit:'ludzie',note:'',ctx:'La jefa llega a las nueve — Szefowa przyychodzi o dziewiątej',mnem:'"Jefe" jak "chef" po angielsku — szef kuchni, szef w ogóle 👔'},
+{es:'el colega',pron:'[el ko-LE-ga]',pl:'kolega z pracy',sit:'ludzie',note:'',ctx:'Mis colegas son buena gente — Moi koledzy z pracy to dobrzy ludzie',mnem:'"Colega" jak "kolega" po polsku — identyczne! 🤝'},
+{es:'saludar',pron:'[sa-lu-DAR]',pl:'pozdrawiać / witać',sit:'ludzie',note:'',ctx:'Saluda a los vecinos — Pozdrawiaj sąsiadów',mnem:'"Saludar" jak "salute" — oddać honor, pozdrowić 👋'},
+{es:'despedirse',pron:'[des-pe-DIR-se]',pl:'żegnać się',sit:'ludzie',note:'',ctx:'Nos despedimos en la puerta — Żegnamy się w drzwiach',mnem:'"Despedirse" jak "disperse" — rozchodzić się na pożegnanie'},
+{es:'invitar',pron:'[in-bi-TAR]',pl:'zapraszać',sit:'ludzie',note:'',ctx:'Me invitaron a tomar tereré — Zaprosili mnie na tereré',mnem:'"Invitar" jak "invite" — zapraszać 🎉'},
+{es:'el regalo',pron:'[el rre-GA-lo]',pl:'prezent',sit:'ludzie',note:'',ctx:'Traje un regalo — Przyniosłam prezent',mnem:'"Regalo" jak "regalare" po włosku — dawać prezent 🎁'},
+{es:'agradecer',pron:'[a-gra-de-SER]',pl:'dziękować',sit:'ludzie',note:'',ctx:'Le agradezco mucho — Bardzo jej dziękuję',mnem:'"Agradecer" jak "appreciate" — być wdzięcznym 🙏'},
+{es:'disculparse',pron:'[dis-kul-PAR-se]',pl:'przepraszać',sit:'ludzie',note:'',ctx:'Me disculpo por el retraso — Przepraszam za spóźnienie',mnem:'"Disculparse" jak "excuse" — przeprosić, wymówić się'},
+{es:'el chisme',pron:'[el CZIS-me]',pl:'plotka',sit:'ludzie',note:'Bardzo popularne w PY!',ctx:'¿Qué chismes hay? — Co słychać? (co w plotkach?)',mnem:'"Chisme" jak "szeptać" — plotkowanie to szeptanie 🗣️'},
+{es:'confiar',pron:'[kon-FJAR]',pl:'ufać',sit:'ludzie',note:'',ctx:'Confío en ella — Ufam jej',mnem:'"Confiar" jak "confide" — powierzać tajemnice = ufać'},
+{es:'charlar',pron:'[czar-LAR]',pl:'rozmawiać / gawędzić',sit:'ludzie',note:'',ctx:'Me gusta charlar con los vecinos — Lubię gawędzić z sąsiadami',mnem:'"Charlar" jak "chatter" — paplaninaa, rozmowa 💬'},
+{es:'el encuentro',pron:'[el en-KWEN-tro]',pl:'spotkanie',sit:'ludzie',note:'',ctx:'Tenemos un encuentro esta tarde — Mamy spotkanie tego popołudnia',mnem:'"Encuentro" jak "encounter" — spotkanie, przypadkowe lub umówione'},
+// ── ZDROWIE ───────────────────────────────────────────────────
+{es:'la farmacia',pron:'[la far-MA-sja]',pl:'apteka',sit:'zdrowie',note:'',ctx:'La farmacia está en la esquina — Apteka jest na rogu',mnem:'"Farmacia" jak "pharmacy" — apteka 💊'},
+{es:'el médico / la médica',pron:'[el ME-di-ko]',pl:'lekarz / lekarka',sit:'zdrowie',note:'',ctx:'Necesito ver al médico — Muszę iść do lekarza',mnem:'"Médico" jak "medic" — lekarz 👨‍⚕️'},
+{es:'el hospital',pron:'[el os-pi-TAL]',pl:'szpital',sit:'zdrowie',note:'',ctx:'El hospital está lejos — Szpital jest daleko',mnem:'"Hospital" jak "hospital" po angielsku — szpital 🏥'},
+{es:'la clínica',pron:'[la KLI-ni-ka]',pl:'klinika / przychodnia',sit:'zdrowie',note:'',ctx:'Voy a la clínica del barrio — Idę do przychodni w dzielnicy',mnem:'"Clínica" jak "clinic" — klinika, przychodnia'},
+{es:'la receta',pron:'[la rre-SE-ta]',pl:'recepta / przepis',sit:'zdrowie',note:'',ctx:'El médico me dio una receta — Lekarz dał mi receptę',mnem:'"Receta" jak "receipt" + "recipe" — recepta i przepis to jedno słowo! 📋'},
+{es:'el medicamento',pron:'[el me-di-ka-MEN-to]',pl:'lek / lekarstwo',sit:'zdrowie',note:'',ctx:'Tome el medicamento dos veces al día — Proszę brać lek dwa razy dziennie',mnem:'"Medicamento" jak "medication" — lekarstwo 💊'},
+{es:'la pastilla',pron:'[la pas-TI-ja]',pl:'tabletka',sit:'zdrowie',note:'',ctx:'Una pastilla cada ocho horas — Tabletka co osiem godzin',mnem:'"Pastilla" jak mała "pasta" — mała tabletka 💊'},
+{es:'el dolor',pron:'[el do-LOR]',pl:'ból',sit:'zdrowie',note:'',ctx:'Tengo dolor de cabeza — Boli mnie głowa',mnem:'"Dolor" jak angielskie "dolor" (ból/smutek) — ból 😣'},
+{es:'la fiebre',pron:'[la FJE-bre]',pl:'gorączka',sit:'zdrowie',note:'',ctx:'Tengo fiebre — Mam gorączkę',mnem:'"Fiebre" jak "fever" po angielsku — gorączka 🌡️'},
+{es:'el resfriado',pron:'[el rres-FRJa-do]',pl:'przeziębienie',sit:'zdrowie',note:'',ctx:'Tengo un resfriado — Jestem przeziębiona',mnem:'"Resfriado" jak "resfrío" = zimno — przeziębienie od zimna 🤧'},
+{es:'la tos',pron:'[la tos]',pl:'kaszel',sit:'zdrowie',note:'',ctx:'Tengo mucha tos — Bardzo kaszlę',mnem:'"Tos" jak "toss" — kaszlesz i "ciskasz" powietrzem 😷'},
+{es:'el mareo',pron:'[el ma-RE-o]',pl:'zawroty głowy / mdłości',sit:'zdrowie',note:'',ctx:'Tengo mareos — Mam zawroty głowy',mnem:'"Mareo" jak "mare" (morze) — chorobę morską 🌊'},
+{es:'alérgico / alérgica',pron:'[a-LER-chi-ko]',pl:'uczulony / uczulona',sit:'zdrowie',note:'',ctx:'Soy alérgica al polvo — Jestem uczulona na kurz',mnem:'"Alérgico" jak "allergic" — uczulony 🤧'},
+{es:'embarazada',pron:'[em-ba-ra-SA-da]',pl:'w ciąży',sit:'zdrowie',note:'Uwaga: NIE znaczy "zawstydzona"!',ctx:'Estoy embarazada — Jestem w ciąży',mnem:'UWAGA: "embarazada" = w ciąży, NIE zawstydzona! "Avergonzada" = zawstydzona 🤰'},
+{es:'cansado / cansada',pron:'[kan-SA-do / kan-SA-da]',pl:'zmęczony / zmęczona',sit:'zdrowie',note:'',ctx:'Estoy muy cansada — Jestem bardzo zmęczona',mnem:'"Cansada" jak "can\'t" — nie mogę, bo jestem zmęczona 😴'},
+{es:'el seguro médico',pron:'[el se-GU-ro ME-di-ko]',pl:'ubezpieczenie zdrowotne',sit:'zdrowie',note:'',ctx:'¿Tiene seguro médico? — Czy ma Pani ubezpieczenie zdrowotne?',mnem:'"Seguro" jak "secure" — bezpieczny, ubezpieczony 🛡️'},
+{es:'el turno',pron:'[el TUR-no]',pl:'wizyta / kolejka / zmiana',sit:'zdrowie',note:'Typowe w Latam',ctx:'Saqué turno para mañana — Umówiłam wizytę na jutro',mnem:'"Turno" jak "turn" — Twoja kolej/tura na wizytę 📅'},
+{es:'la presión',pron:'[la pre-SJON]',pl:'ciśnienie',sit:'zdrowie',note:'',ctx:'Tiene la presión alta — Ma wysokie ciśnienie',mnem:'"Presión" jak "pressure" — ciśnienie 💉'},
+{es:'la sangre',pron:'[la SAN-gre]',pl:'krew',sit:'zdrowie',note:'',ctx:'El análisis de sangre — Badanie krwi',mnem:'"Sangre" jak "sanguine" — optymistyczny (dawniej krew = temperament) 🩸'},
+{es:'la picadura',pron:'[la pi-ka-DU-ra]',pl:'ukąszenie (owada)',sit:'zdrowie',note:'Ważne w Paragwaju!',ctx:'Me dio una picadura de mosquito — Ukąsił mnie komar',mnem:'"Picadura" jak "pick" — ukłucie, ukąszenie 🦟'},
+{es:'el mosquito',pron:'[el mos-KI-to]',pl:'komar',sit:'zdrowie',note:'Dengue jest w Paragwaju!',ctx:'Hay muchos mosquitos en verano — Latem jest dużo komarów',mnem:'"Mosquito" jak mosquito — identyczne wszędzie! 🦟'},
+{es:'el dengue',pron:'[el DEN-ge]',pl:'denga (choroba tropikalna)',sit:'zdrowie',note:'Poważna choroba w PY',ctx:'Cuidado con el dengue — Uważaj na dengę',mnem:'"Dengue" = denga. Poważna choroba przenoszona przez komary w Paragwaju 🦟'},
+{es:'repelente',pron:'[rre-pe-LEN-te]',pl:'środek na owady',sit:'zdrowie',note:'',ctx:'Usa repelente — Używaj środka na owady',mnem:'"Repelente" jak "repellent" — odpychający owady 🚫'},
+{es:'descansar',pron:'[des-kan-SAR]',pl:'odpoczywać',sit:'zdrowie',note:'',ctx:'Necesito descansar — Muszę odpocząć',mnem:'"Descansar" jak "de-cansada" — przestać być zmęczoną = odpocząć 😌'},
+{es:'la salud',pron:'[la sa-LUD]',pl:'zdrowie',sit:'zdrowie',note:'¡Salud! = Na zdrowie!',ctx:'¡Salud! — Na zdrowie! / Twoje zdrowie!',mnem:'"Salud" jak "salute" — toast "na zdrowie"! 🥂'},
+{es:'sentirse bien / mal',pron:'[sen-TIR-se bjen / mal]',pl:'czuć się dobrze / źle',sit:'zdrowie',note:'',ctx:'No me siento bien — Nie czuję się dobrze',mnem:'"Sentirse" jak "sentiment" — czuć. Bien/mal = dobrze/źle'},
+{es:'recuperarse',pron:'[rre-ku-pe-RAR-se]',pl:'wyzdrowieć / dochodzić do siebie',sit:'zdrowie',note:'',ctx:'Me estoy recuperando — Dochodzę do siebie',mnem:'"Recuperarse" jak "recover" — odzyskiwać zdrowie 💪'},
+{es:'la ambulancia',pron:'[la am-bu-LAN-sja]',pl:'karetka pogotowia',sit:'zdrowie',note:'',ctx:'Llame a la ambulancia — Zadzwoń po karetkę',mnem:'"Ambulancia" jak "ambulance" — karetka 🚑'},
+{es:'urgente',pron:'[ur-CHEN-te]',pl:'pilny / nagły',sit:'zdrowie',note:'',ctx:'Es urgente — To jest pilne',mnem:'"Urgente" jak "urgent" — pilny, nagły 🚨'},
+// ── MIASTO ────────────────────────────────────────────────────
+{es:'el centro',pron:'[el SEN-tro]',pl:'centrum',sit:'miasto',note:'',ctx:'Voy al centro a hacer compras — Jadę do centrum na zakupy',mnem:'"Centro" jak "center" — centrum 🏙️'},
+{es:'la plaza',pron:'[la PLA-sa]',pl:'plac / rynek miejski',sit:'miasto',note:'',ctx:'La Plaza Uruguay está en el centro — Plac Urugwaj jest w centrum',mnem:'"Plaza" jak "place" — miejsce, plac 🌳'},
+{es:'la iglesia',pron:'[la i-GLE-sja]',pl:'kościół',sit:'miasto',note:'',ctx:'La iglesia está frente al parque — Kościół jest naprzeciwko parku',mnem:'"Iglesia" jak "ecclesia" po łacinie — kościół ⛪'},
+{es:'el parque',pron:'[el PAR-ke]',pl:'park',sit:'miasto',note:'',ctx:'Camino por el parque — Spaceruje po parku',mnem:'"Parque" jak "park" — identyczne! 🌿'},
+{es:'el banco',pron:'[el BAN-ko]',pl:'bank',sit:'miasto',note:'Też: ławka!',ctx:'Necesito ir al banco — Muszę iść do banku',mnem:'"Banco" jak "bank" — bank. Ale też ławka w parku! 🏦'},
+{es:'el cajero automático',pron:'[el ka-CHE-ro au-to-MA-ti-ko]',pl:'bankomat',sit:'miasto',note:'',ctx:'¿Dónde hay un cajero automático? — Gdzie jest bankomat?',mnem:'"Cajero" = kasjer + automático = sam wydaje pieniądze 💰'},
+{es:'la municipalidad',pron:'[la mu-ni-si-pa-li-DAD]',pl:'urząd miejski / ratusz',sit:'miasto',note:'',ctx:'Tengo que ir a la municipalidad — Muszę iść do urzędu',mnem:'"Municipalidad" jak "municipality" — urząd miejski 🏛️'},
+{es:'el correo',pron:'[el ko-RRE-o]',pl:'poczta',sit:'miasto',note:'',ctx:'¿Dónde está el correo? — Gdzie jest poczta?',mnem:'"Correo" jak "courier" — poczta, kurier 📮'},
+{es:'la embajada',pron:'[la em-ba-CHA-da]',pl:'ambasada',sit:'miasto',note:'',ctx:'La Embajada de Polonia — Ambasada Polski',mnem:'"Embajada" jak "embassy" — ambasada 🏛️'},
+{es:'el supermercado',pron:'[el su-per-mer-KA-do]',pl:'supermarket',sit:'miasto',note:'',ctx:'El supermercado Stock está cerca — Supermarket Stock jest blisko',mnem:'"Supermercado" = super + mercado. Wielki targ! 🛒'},
+{es:'el shopping',pron:'[el SZO-ping]',pl:'centrum handlowe',sit:'miasto',note:'Anglicyzm w Paragwaju',ctx:'Vamos al shopping el fin de semana — Idziemy do galerii w weekend',mnem:'"Shopping" = shopping. W Paragwaju tak mówią na galerię! 🛍️'},
+{es:'el barrio histórico',pron:'[el BA-rrjo is-TO-ri-ko]',pl:'stare miasto / historyczna dzielnica',sit:'miasto',note:'',ctx:'El barrio histórico de Asunción — Stare miasto Asunción',mnem:'"Histórico" jak "historic" — historyczny. Centro Histórico to serce Asunción 🏛️'},
+{es:'la costanera',pron:'[la kos-ta-NE-ra]',pl:'bulwar nadrzeczny',sit:'miasto',note:'Charakterystyczne dla Asunción',ctx:'La costanera del río Paraguay — Bulwar nad rzeką Paragwaj',mnem:'"Costanera" jak "coast" — nabrzeże, bulwar nad wodą 🌊'},
+{es:'el puerto',pron:'[el PWER-to]',pl:'port',sit:'miasto',note:'',ctx:'El puerto de Asunción — Port w Asunción',mnem:'"Puerto" jak "port" — port. Asunción ma historyczny port nad Paragwajem ⚓'},
+{es:'el edificio',pron:'[el e-di-FI-sjo]',pl:'budynek',sit:'miasto',note:'',ctx:'El edificio tiene veinte pisos — Budynek ma dwadzieścia pięter',mnem:'"Edificio" jak "edifice" — budowla, budynek 🏢'},
+{es:'el piso / el apartamento',pron:'[el PI-so / el a-par-ta-MEN-to]',pl:'mieszkanie / piętro',sit:'miasto',note:'',ctx:'Vivo en el tercer piso — Mieszkam na trzecim piętrze',mnem:'"Piso" jak "piece" gruntu — piętro/mieszkanie. Apartamento = apartament 🏠'},
+{es:'la cuadra',pron:'[la KWA-dra]',pl:'blok / przecznica',sit:'miasto',note:'',ctx:'A tres cuadras del centro — Trzy przecznice od centrum',mnem:'"Cuadra" jak kwadrat — jeden blok kwadratowy 🔲'},
+{es:'la zona',pron:'[la SO-na]',pl:'strefa / obszar',sit:'miasto',note:'',ctx:'¿Es una zona segura? — Czy to jest bezpieczna strefa?',mnem:'"Zona" jak "zone" — strefa, obszar 🗺️'},
+{es:'seguro / peligroso',pron:'[se-GU-ro / pe-li-GRO-so]',pl:'bezpieczny / niebezpieczny',sit:'miasto',note:'',ctx:'Este barrio es seguro — Ta dzielnica jest bezpieczna',mnem:'"Seguro" jak "secure" — bezpieczny. "Peligroso" = niebezpieczny 🔒'},
+{es:'el ruido',pron:'[el RWI-do]',pl:'hałas',sit:'miasto',note:'',ctx:'Hay mucho ruido en la calle — Jest dużo hałasu na ulicy',mnem:'"Ruido" jak "rude" — hałaśliwy = niegrzeczny 🔊'},
+{es:'la luz',pron:'[la lus]',pl:'światło / prąd',sit:'miasto',note:'',ctx:'Se fue la luz — Wyłączył się prąd',mnem:'"Luz" jak "lux" (jednostka światła) — światło 💡'},
+{es:'el agua',pron:'[el A-gwa]',pl:'woda',sit:'miasto',note:'Woda = el (mimo że la!)',ctx:'No hay agua hoy — Dziś nie ma wody',mnem:'"Agua" jak angielskie "aqua" — woda 💧'},
+{es:'la basura',pron:'[la ba-SU-ra]',pl:'śmieci',sit:'miasto',note:'',ctx:'¿A qué hora pasa el camión de basura? — O której przejeżdża śmieciarki?',mnem:'"Basura" jak "baszta" śmierci — śmieci 🗑️'},
+{es:'el calor',pron:'[el ka-LOR]',pl:'gorąco / upał',sit:'miasto',note:'',ctx:'¡Qué calor hace hoy! — Ale dziś jest gorąco!',mnem:'"Calor" jak "calorie" — energia cieplna = gorąco ☀️'},
+{es:'la lluvia',pron:'[la JU-bja]',pl:'deszcz',sit:'miasto',note:'',ctx:'Hay mucha lluvia en enero — W styczniu jest dużo deszczu',mnem:'"Lluvia" jak JU-bia — Jubia (rzeka deszczowa). Lluvia = deszcz 🌧️'},
+{es:'la tormenta',pron:'[la tor-MEN-ta]',pl:'burza',sit:'miasto',note:'',ctx:'Se viene una tormenta — Nadchodzi burza',mnem:'"Tormenta" jak "torment" — burza to tortura ⛈️'},
+// ── JEDZENIE ──────────────────────────────────────────────────
+{es:'el desayuno / almuerzo / cena',pron:'[des-a-JU-no / al-MWER-so / SE-na]',pl:'śniadanie / obiad / kolacja',sit:'jedzenie',note:'',ctx:'El almuerzo es a las doce — Obiad jest o dwunastej',mnem:'"Cena" jak "scene" wieczornego jedzenia — kolacja 🍽️'},
+{es:'rico / sabroso',pron:'[RRI-ko / sa-BRO-so]',pl:'pyszny / smaczny',sit:'jedzenie',note:'',ctx:'¡Qué rico está! — Jakie to pyszne!',mnem:'"Rico" jak "rich" = bogaty w smak = pyszny. ¡Rico rico! 😋'},
+{es:'la chipa',pron:'[la CZI-pa]',pl:'chipa (paragwajski chleb z manioku)',sit:'jedzenie',note:'Symbol Paragwaju!',ctx:'¿Quiere una chipa caliente? — Chce Pani gorącą chipę?',mnem:'Chipa = MUSISZ spróbować! Sprzedawca woła "¡CHIPA!" — zapamiętasz od razu 🍞'},
+{es:'la sopa paraguaya',pron:'[la SO-pa pa-ra-GWA-ja]',pl:'sopa paragwajska (ciasto, nie zupa!)',sit:'jedzenie',note:'UWAGA: nie jest zupą!',ctx:'La sopa paraguaya es un pastel — Sopa paragwajska to ciasto, nie zupa',mnem:'PUŁAPKA: "sopa" = zupa, ale sopa paraguaya = ciasto kukurydziane! Paraguay rządzi się swoimi prawami 😄'},
+{es:'el asado',pron:'[el a-SA-do]',pl:'asado (grillowane mięso)',sit:'jedzenie',note:'Rytuał społeczny!',ctx:'El domingo hacemos asado — W niedzielę robimy asado',mnem:'"Asado" jak "asada" z restauracji meksykańskich — grillowane mięso 🥩'},
+{es:'la mandioca',pron:'[la man-DJO-ka]',pl:'maniok',sit:'jedzenie',note:'Podstawa diety w PY',ctx:'La mandioca es la base de la comida — Maniok jest podstawą jedzenia',mnem:'"Mandioca" jak "maniok" po polsku — prawie identyczne! 🌿'},
+{es:'el tereré',pron:'[el te-re-RE]',pl:'tereré (zimny mate z ziołami)',sit:'jedzenie',note:'Narodowy napój PY!',ctx:'¿Le invito un tereré? — Czy zaproszę Panią na tereré?',mnem:'Tereré = ZIMNY mate. Charakterystyczne dla Paragwaju. Zawsze mów TAK gdy proponują! 🧉'},
+{es:'el mate',pron:'[el MA-te]',pl:'mate (gorąca herbata yerba)',sit:'jedzenie',note:'',ctx:'El mate se toma caliente — Mate pije się gorące',mnem:'"Mate" jak "mate" — przyjaciel (pije się z przyjaciółmi) 🧉'},
+{es:'la yerba',pron:'[la JER-ba]',pl:'yerba mate (zioło do mate)',sit:'jedzenie',note:'',ctx:'Compro yerba en el mercado — Kupuję yerbę na targu',mnem:'"Yerba" jak "herb" po angielsku — zioło 🌿'},
+{es:'el guiso',pron:'[el GI-so]',pl:'gulasz / potrawka',sit:'jedzenie',note:'',ctx:'Mi vecina hizo un guiso — Moja sąsiadka zrobiła gulasz',mnem:'"Guiso" jak "stew" przez "guisar" = dusić. Gulasz paragwajski 🍲'},
+{es:'el locro',pron:'[el LO-kro]',pl:'locro (zupa z kukurydzy)',sit:'jedzenie',note:'Tradycyjne danie',ctx:'El locro es típico del invierno — Locro to typowe danie zimowe',mnem:'"Locro" jak "loco" (szalony) — szalenie smaczna zupa 🍜'},
+{es:'la ensalada',pron:'[la en-sa-LA-da]',pl:'sałatka',sit:'jedzenie',note:'',ctx:'Una ensalada de tomate — Sałatka z pomidorów',mnem:'"Ensalada" jak "salad" — sałatka 🥗'},
+{es:'la carne',pron:'[la KAR-ne]',pl:'mięso',sit:'jedzenie',note:'',ctx:'¿Con o sin carne? — Z mięsem czy bez?',mnem:'"Carne" jak "karnawał" (caro vale = drogie mięso po łacinie) 🥩'},
+{es:'el pollo',pron:'[el PO-jo]',pl:'kurczak',sit:'jedzenie',note:'',ctx:'El pollo asado es muy rico — Pieczony kurczak jest bardzo pyszny',mnem:'"Pollo" jak "pollito" — mały kurczaczek 🐔'},
+{es:'el pescado',pron:'[el pes-KA-do]',pl:'ryba (do jedzenia)',sit:'jedzenie',note:'',ctx:'El pescado del río Paraná — Ryba z rzeki Paraná',mnem:'"Pescado" jak "fished" — złowiona ryba (do jedzenia). Pez = żywa ryba 🐟'},
+{es:'el dulce de leche',pron:'[el DUL-se de LE-cze]',pl:'dulce de leche (karmel mleczny)',sit:'jedzenie',note:'Uwielbiany w Latam!',ctx:'Me encanta el dulce de leche — Uwielbiam dulce de leche',mnem:'"Dulce de leche" = słodkość z mleka. Karmel mleczny — absolutny ulubieniec! 🍮'},
+{es:'el helado',pron:'[el e-LA-do]',pl:'lody',sit:'jedzenie',note:'',ctx:'Un helado de chocolate — Lody czekoladowe',mnem:'"Helado" jak "helado" = zamrożony = lody! ❄️🍦'},
+{es:'hambre / sed',pron:'[AM-bre / sed]',pl:'głód / pragnienie',sit:'jedzenie',note:'Mam głód = tengo hambre',ctx:'Tengo hambre — Jestem głodna (dosł. mam głód)',mnem:'Po hiszpańsku MASZ głód i MASZ pragnienie, nie JESTEŚ głodna! Tengo hambre / sed'},
+{es:'el desayuno',pron:'[el de-sa-JU-no]',pl:'śniadanie',sit:'jedzenie',note:'',ctx:'El desayuno es importante — Śniadanie jest ważne',mnem:'"De-ayuno" = koniec postu nocnego. Śniadanie 🌅'},
+{es:'vegetariano / vegano',pron:'[be-che-ta-RJA-no / be-GA-no]',pl:'wegetariański / wegański',sit:'jedzenie',note:'',ctx:'¿Tiene opciones vegetarianas? — Czy są opcje wegetariańskie?',mnem:'"Vegetariano" jak "vegetarian" — wegetariański 🥦'},
+{es:'picante',pron:'[pi-KAN-te]',pl:'pikantny / ostry',sit:'jedzenie',note:'',ctx:'¿Está picante? — Czy jest pikantne?',mnem:'"Picante" jak "piquant" — pikantny, ostry 🌶️'},
+{es:'dulce / salado',pron:'[DUL-se / sa-LA-do]',pl:'słodki / słony',sit:'jedzenie',note:'',ctx:'¿Es dulce o salado? — Czy jest słodkie czy słone?',mnem:'"Dulce" jak "dolce" po włosku — słodki. "Salado" jak "salted" 🍭'},
+{es:'cocinar',pron:'[ko-si-NAR]',pl:'gotować',sit:'jedzenie',note:'',ctx:'Me encanta cocinar — Uwielbiam gotować',mnem:'"Cocinar" jak "cocina" (kuchnia) — gotować w kuchni 🍳'},
+{es:'la receta',pron:'[la rre-SE-ta]',pl:'przepis kulinarny',sit:'jedzenie',note:'Też: recepta medyczna!',ctx:'¿Me das la receta? — Dasz mi przepis?',mnem:'"Receta" = przepis i recepta. Dwa słowa jedno znaczenie! 📋'},
+{es:'el olor',pron:'[el o-LOR]',pl:'zapach',sit:'jedzenie',note:'',ctx:'¡Qué olor rico! — Jaki pyszny zapach!',mnem:'"Olor" jak "odor" — zapach. Olor rico = pyszny zapach 👃'},
+{es:'la bebida',pron:'[la be-BI-da]',pl:'napój',sit:'jedzenie',note:'',ctx:'¿Qué bebida quiere? — Jaki napój chce Pani?',mnem:'"Bebida" jak "beverage" przez "beber" = pić. Napój 🥤'},
+// ── PRACA ─────────────────────────────────────────────────────
+{es:'el trabajo',pron:'[el tra-BA-cho]',pl:'praca',sit:'praca',note:'',ctx:'¿A qué hora empieza el trabajo? — O której zaczyna się praca?',mnem:'"Trabajo" jak "travail" po francusku — ciężka praca, trud 💼'},
+{es:'la oficina',pron:'[la o-fi-SI-na]',pl:'biuro',sit:'praca',note:'',ctx:'La oficina está en el décimo piso — Biuro jest na dziesiątym piętrze',mnem:'"Oficina" jak "office" — biuro 🏢'},
+{es:'el horario',pron:'[el o-RA-rjo]',pl:'godziny pracy / rozkład',sit:'praca',note:'',ctx:'¿Cuál es el horario de trabajo? — Jaki jest rozkład pracy?',mnem:'"Horario" jak "hour" — godziny, rozkład ⏰'},
+{es:'el sueldo',pron:'[el SWEL-do]',pl:'wynagrodzenie / pensja',sit:'praca',note:'',ctx:'El sueldo se paga el primero — Pensja wypłacana jest pierwszego',mnem:'"Sueldo" jak "sold" — sprzedajesz czas za sueldo 💵'},
+{es:'la reunión',pron:'[la rre-u-NJON]',pl:'zebranie / spotkanie',sit:'praca',note:'',ctx:'Tengo una reunión a las diez — Mam zebranie o dziesiątej',mnem:'"Reunión" jak "reunion" — zjazd, zebranie 🤝'},
+{es:'el contrato',pron:'[el kon-TRA-to]',pl:'umowa / kontrakt',sit:'praca',note:'',ctx:'Firmé el contrato — Podpisałam umowę',mnem:'"Contrato" jak "contract" — kontrakt, umowa 📄'},
+{es:'la empresa',pron:'[la em-PRE-sa]',pl:'firma / przedsiębiorstwo',sit:'praca',note:'',ctx:'Trabajo en una empresa polaca — Pracuję w polskiej firmie',mnem:'"Empresa" jak "enterprise" — firma, przedsiębiorstwo 🏭'},
+{es:'el jefe / la jefa',pron:'[el CHE-fe]',pl:'szef / szefowa',sit:'praca',note:'',ctx:'Mi jefa es muy exigente — Moja szefowa jest bardzo wymagająca',mnem:'"Jefe" jak "chef" — szef 👔'},
+{es:'el compañero',pron:'[el kom-pa-NJE-ro]',pl:'kolega (z pracy)',sit:'praca',note:'',ctx:'Mis compañeros son simpáticos — Moi koledzy są sympatyczni',mnem:'"Compañero" jak "companion" — towarzysz, kolega 🤝'},
+{es:'el correo electrónico',pron:'[el ko-RRE-o e-lek-TRO-ni-ko]',pl:'e-mail',sit:'praca',note:'Lub po prostu "el mail"',ctx:'Te mando un correo — Wyślę Ci maila',mnem:'"Correo electrónico" = elektroniczna poczta. Zwykle mówi się "mail" 📧'},
+{es:'la factura',pron:'[la fak-TU-ra]',pl:'faktura / rachunek',sit:'praca',note:'',ctx:'¿Me puede dar la factura? — Czy może mi Pan wystawić fakturę?',mnem:'"Factura" jak "factor" — czynnik cenowy = faktura 🧾'},
+{es:'el trámite',pron:'[el TRA-mi-te]',pl:'formalność / procedura urzędowa',sit:'praca',note:'Bardzo ważne w PY!',ctx:'Tengo varios trámites que hacer — Mam kilka formalności do załatwienia',mnem:'"Trámite" jak tramwaj biurokratyczny — trwa, trwa i trwa 📋'},
+{es:'la documentación',pron:'[la do-ku-men-ta-SJON]',pl:'dokumenty / dokumentacja',sit:'praca',note:'',ctx:'¿Qué documentación necesito? — Jakich dokumentów potrzebuję?',mnem:'"Documentación" jak "documentation" — dokumentacja 📁'},
+{es:'el pasaporte',pron:'[el pa-sa-POR-te]',pl:'paszport',sit:'praca',note:'',ctx:'Necesito el pasaporte para el trámite — Potrzebuję paszportu do formalności',mnem:'"Pasaporte" jak "passport" — paszport 🛂'},
+{es:'la residencia',pron:'[la rre-si-DEN-sja]',pl:'rezydencja / pozwolenie na pobyt',sit:'praca',note:'Ważne dla emigrantów!',ctx:'Estoy tramitando la residencia — Załatwiam pozwolenie na pobyt',mnem:'"Residencia" jak "residence" — miejsce zamieszkania, rezydencja 🏠'},
+{es:'firmar',pron:'[fir-MAR]',pl:'podpisywać',sit:'praca',note:'',ctx:'¿Puede firmar aquí? — Czy może Pani tu podpisać?',mnem:'"Firmar" jak "firm" — firma podpisuje dokumenty ✍️'},
+{es:'el formulario',pron:'[el for-mu-LA-rjo]',pl:'formularz',sit:'praca',note:'',ctx:'Complete el formulario — Proszę wypełnić formularz',mnem:'"Formulario" jak "form" — formularz 📝'},
+{es:'la cita',pron:'[la SI-ta]',pl:'wizyta / randka / cytat',sit:'praca',note:'',ctx:'Tengo una cita en la embajada — Mam wizytę w ambasadzie',mnem:'"Cita" jak "site" — miejsce spotkania = wizyta. Też randka! 📅'},
+{es:'urgente',pron:'[ur-CHEN-te]',pl:'pilny',sit:'praca',note:'',ctx:'Es urgente, necesito ayuda — To pilne, potrzebuję pomocy',mnem:'"Urgente" jak "urgent" — pilny 🚨'},
+{es:'el plazo',pron:'[el PLA-so]',pl:'termin / deadline',sit:'praca',note:'',ctx:'El plazo vence mañana — Termin upływa jutro',mnem:'"Plazo" jak "place" + czas — termin w miejscu i czasie ⏳'},
+{es:'la multa',pron:'[la MUL-ta]',pl:'kara / mandat',sit:'praca',note:'',ctx:'Me pusieron una multa — Dostałam mandat',mnem:'"Multa" jak "multiple" — wiele problemów = kara 🚫'},
+{es:'el seguro',pron:'[el se-GU-ro]',pl:'ubezpieczenie',sit:'praca',note:'',ctx:'Necesito seguro de casa — Potrzebuję ubezpieczenia domu',mnem:'"Seguro" jak "secure" — bezpieczny przez ubezpieczenie 🛡️'},
+{es:'la cuenta',pron:'[la KWEN-ta]',pl:'rachunek / konto',sit:'praca',note:'',ctx:'Abrir una cuenta en el banco — Otworzyć konto w banku',mnem:'"Cuenta" jak "count" — liczyć, rachunek 💳'},
+{es:'el préstamo',pron:'[el PRES-ta-mo]',pl:'pożyczka / kredyt',sit:'praca',note:'',ctx:'Pedir un préstamo — Wziąć pożyczkę',mnem:'"Préstamo" jak "presto!" — teraz masz pieniądze (pożyczone) 💰'},
+{es:'el impuesto',pron:'[el im-PWES-to]',pl:'podatek',sit:'praca',note:'',ctx:'El impuesto al valor agregado — Podatek VAT',mnem:'"Impuesto" jak "imposed" — narzucony (przez państwo) podatek 💼'},
+// ── PRZYRODA PY ───────────────────────────────────────────────
+{es:'el calor',pron:'[el ka-LOR]',pl:'upał / gorąco',sit:'przyroda',note:'',ctx:'El calor paraguayo es intenso — Paragwajski upał jest intensywny',mnem:'"Calor" jak "calorie" — jednostka ciepła = upał ☀️'},
+{es:'el verano',pron:'[el be-RA-no]',pl:'lato',sit:'przyroda',note:'W PY: grudz.-luty',ctx:'En verano hace mucho calor — Latem jest bardzo gorąco',mnem:'"Verano" jak "vernal" — sezon letni. W PY lato = grudzień-luty! ☀️'},
+{es:'el invierno',pron:'[el in-BJER-no]',pl:'zima',sit:'przyroda',note:'W PY: czerwiec-sierpień',ctx:'El invierno paraguayo es suave — Paragwajska zima jest łagodna',mnem:'"Invierno" jak "infernal" bez ognia — chłodna zima 🌿'},
+{es:'la selva',pron:'[la SEL-ba]',pl:'dżungla / las tropikalny',sit:'przyroda',note:'',ctx:'El Chaco es una selva enorme — Chaco to ogromna dżungla',mnem:'"Selva" jak "sylvan" (leśny) — leśna dżungla 🌴'},
+{es:'el Chaco',pron:'[el CZA-ko]',pl:'Gran Chaco (region Paragwaju)',sit:'przyroda',note:'Półsucha sawanna na zachodzie PY',ctx:'El Chaco paraguayo es único — Paragwajskie Chaco jest wyjątkowe',mnem:'"Chaco" — zapamiętaj przez gorące, suche lasy zachodnie Paragwaju 🌵'},
+{es:'el loro / el papagayo',pron:'[el LO-ro / el pa-pa-GA-jo]',pl:'papuga',sit:'przyroda',note:'',ctx:'Los loros vuelan sobre la ciudad — Papugi latają nad miastem',mnem:'"Loro" jak "lorry" pełna papug. W Asunción naprawdę latają papugi! 🦜'},
+{es:'el carancho',pron:'[el ka-RAN-czo]',pl:'karakara (ptak drapieżny)',sit:'przyroda',note:'Charakterystyczny ptak Latam',ctx:'El carancho es un pájaro rapaz — Karakara to ptak drapieżny',mnem:'"Carancho" — KA-RAN-czo — brzmi jak jego skrzeczący krzyk! 🦅'},
+{es:'el yaguaretê',pron:'[el ja-gwa-re-TE]',pl:'jaguar (z guaraní)',sit:'przyroda',note:'Słowo guaraní!',ctx:'El yaguaretê vive en el Chaco — Jaguar żyje w Chaco',mnem:'"Yaguaretê" = jaguar po guaraní. Yagua = zwierz + reté = prawdziwy 🐆'},
+{es:'el tatú',pron:'[el ta-TU]',pl:'pancernik (zwierzę)',sit:'przyroda',note:'Słowo guaraní, pospol. w PY',ctx:'El tatú es el animal nacional — Pancernik jest zwierzęciem narodowym',mnem:'"Tatú" po guaraní — pancernik. Zobaczysz go na herbie Paragwaju! 🦔'},
+{es:'el ñandú',pron:'[el njan-DU]',pl:'nandu (struś południowoamerykański)',sit:'przyroda',note:'Słowo guaraní',ctx:'El ñandú es el ave nacional — Nandu to ptak narodowy',mnem:'"Ñandú" = pająk duży po guaraní (bo ma długie "nogi"). Ptak narodowy PY! 🦃'},
+{es:'el mosquito / el mbói',pron:'[el mos-KI-to / el mBOJ]',pl:'komar / wąż (guaraní)',sit:'przyroda',note:'',ctx:'Hay muchos mosquitos en verano — Latem jest dużo komarów',mnem:'"Mosquito" = mały komar. "Mbói" = wąż po guaraní — usłyszysz oba 🐍'},
+{es:'la palmera',pron:'[la pal-ME-ra]',pl:'palma',sit:'przyroda',note:'',ctx:'Las palmeras son típicas de Paraguay — Palmy są typowe dla Paragwaju',mnem:'"Palmera" jak "palm" — palma 🌴'},
+{es:'el pindó',pron:'[el pin-DO]',pl:'palma pindó (paragwajska)',sit:'przyroda',note:'Drzewo narodowe PY!',ctx:'El pindó es el árbol nacional — Pindó to drzewo narodowe',mnem:'"Pindó" — drzewo narodowe Paragwaju. Zobaczysz je wszędzie! 🌴'},
+{es:'el ceibo',pron:'[el SEJ-bo]',pl:'ceibo (drzewo tropikalne)',sit:'przyroda',note:'',ctx:'El ceibo florece en primavera — Ceibo kwitnie wiosną',mnem:'"Ceibo" jak "seibo" — czerwone kwiaty ceibo są piękne 🌺'},
+{es:'el río',pron:'[el RRI-o]',pl:'rzeka',sit:'przyroda',note:'',ctx:'El río Paraguay es enorme — Rzeka Paragwaj jest ogromna',mnem:'"Río" jak "river" — rzeka. Kraj kochający rzeki 🌊'},
+{es:'las cataratas',pron:'[las ka-ta-RA-tas]',pl:'wodospady',sit:'przyroda',note:'Iguazú niedaleko!',ctx:'Las cataratas del Iguazú son increíbles — Wodospady Iguazu są niesamowite',mnem:'"Cataratas" jak "cataract" — wielkie wodospady 💧'},
+{es:'la laguna',pron:'[la la-GU-na]',pl:'laguna / jezioro',sit:'przyroda',note:'',ctx:'La laguna Ypacaraí es famosa — Jezioro Ypacaraí jest sławne',mnem:'"Laguna" jak "lagoon" — laguna, jezioro 🏞️'},
+{es:'el amanecer / el atardecer',pron:'[el a-ma-ne-SER / el a-tar-de-SER]',pl:'świt / zmierzch',sit:'przyroda',note:'',ctx:'El amanecer en el Chaco es espectacular — Świt w Chaco jest spektakularny',mnem:'"Amanecer" = a-manecer = świt (mañana = jutro/ranek). "Atardecer" = zmierzch 🌅'},
+{es:'la tierra',pron:'[la TJE-rra]',pl:'ziemia / gleba',sit:'przyroda',note:'',ctx:'La tierra colorada paraguaya — Czerwona gleba paragwajska',mnem:'"Tierra" jak "terra" — ziemia, ląd. Terra firma! 🌍'},
+{es:'la tierra colorada',pron:'[la TJE-rra ko-lo-RA-da]',pl:'czerwona ziemia (cecha PY)',sit:'przyroda',note:'Charakterystyczna dla PY!',ctx:'La tierra colorada tiñe todo — Czerwona ziemia barwi wszystko',mnem:'Tierra colorada = czerwona gleba. Charakterystyczna cecha Paragwaju — zabarwia ubrania! 🔴'},
+{es:'húmedo / seco',pron:'[U-me-do / SE-ko]',pl:'wilgotny / suchy',sit:'przyroda',note:'',ctx:'El clima es húmedo en verano — Klimat jest wilgotny latem',mnem:'"Húmedo" jak "humid" — wilgotny. "Seco" jak "sec" (suchy szampan) 💧'},
+{es:'la mariposa',pron:'[la ma-ri-PO-sa]',pl:'motyl',sit:'przyroda',note:'',ctx:'Paraguay tiene mariposas hermosas — Paragwaj ma piękne motyle',mnem:'"Mariposa" jak "Mary poses" — Mary pozuje jak motyl 🦋'},
+{es:'la horqueta',pron:'[la or-KE-ta]',pl:'rozwidlenie drogi',sit:'przyroda',note:'Typowe w PY',ctx:'En la horqueta, dobla a la izquierda — Na rozwidleniu skręć w lewo',mnem:'"Horqueta" jak "horquilla" (szpilka w kształcie Y) — rozwidlenie 🔱'},
+{es:'el sendero',pron:'[el sen-DE-ro]',pl:'ścieżka / szlak',sit:'przyroda',note:'',ctx:'El sendero lleva al río — Ścieżka prowadzi do rzeki',mnem:'"Sendero" jak "sender" — ścieżka którą ktoś wysłał Cię na spacer 🥾'},
+{es:'fresco',pron:'[FRES-ko]',pl:'chłodny / świeży',sit:'przyroda',note:'',ctx:'Por la mañana está fresco — Rano jest chłodno',mnem:'"Fresco" jak fresk — malowany na świeżym tynku = świeżość 🎨'},
+// ── UCZUCIA ───────────────────────────────────────────────────
+{es:'contento / contenta',pron:'[kon-TEN-to]',pl:'zadowolony / szczęśliwy',sit:'uczucia',note:'',ctx:'Estoy muy contenta aquí — Jestem tu bardzo szczęśliwa',mnem:'"Contenta" jak "content" — zadowolona 😊'},
+{es:'triste',pron:'[TRIS-te]',pl:'smutny / smutna',sit:'uczucia',note:'',ctx:'Estoy un poco triste — Jestem trochę smutna',mnem:'"Triste" jak "tristeza" — smutek. Triste = tristeza 😢'},
+{es:'nervioso / nerviosa',pron:'[ner-BIO-so]',pl:'zdenerwowany / zdenerwowana',sit:'uczucia',note:'',ctx:'Estoy nerviosa antes de hablar — Jestem zdenerwowana przed rozmową',mnem:'"Nervioso" jak "nervous" — zdenerwowany 😰'},
+{es:'tranquilo / tranquila',pron:'[tran-KI-lo]',pl:'spokojny / spokojna',sit:'uczucia',note:'',ctx:'Estoy tranquila — Jestem spokojna',mnem:'"Tranquilo" jak "tranquil" — spokojny, zrównoważony 😌'},
+{es:'asustado / asustada',pron:'[a-sus-TA-do]',pl:'przestraszony / przestraszona',sit:'uczucia',note:'',ctx:'Estaba asustada — Byłam przestraszona',mnem:'"Asustada" jak "susto" (przestrach) — wystraszony 😱'},
+{es:'avergonzado / avergonzada',pron:'[a-ber-gon-SA-do]',pl:'zawstydzony / zawstydzona',sit:'uczucia',note:'NIE myląć z embarazada!',ctx:'Me siento avergonzada — Czuję się zawstydzona',mnem:'"Avergonzado" — a-vergon-zado — zawstydzony. UWAGA: NIE embarazada (to = w ciąży)! 😳'},
+{es:'emocionado / emocionada',pron:'[e-mo-sjo-NA-do]',pl:'podekscytowany / wzruszony',sit:'uczucia',note:'',ctx:'Estoy emocionada con mi nueva vida — Jestem podekscytowana nowym życiem',mnem:'"Emocionada" jak "emotional" — wzruszona, podekscytowana 🥹'},
+{es:'sorprendido / sorprendida',pron:'[sor-pren-DI-do]',pl:'zaskoczony / zaskoczona',sit:'uczucia',note:'',ctx:'Estoy sorprendida — Jestem zaskoczona',mnem:'"Sorprendida" jak "surprised" — zaskoczona 😮'},
+{es:'cómodo / cómoda',pron:'[KO-mo-do]',pl:'wygodny / komfortowy',sit:'uczucia',note:'',ctx:'Me siento cómoda aquí — Czuję się tu komfortowo',mnem:'"Cómodo" jak "comfortable" — komfortowy, wygodny 🛋️'},
+{es:'incómodo / incómoda',pron:'[in-KO-mo-do]',pl:'niekomfortowy / niezręczny',sit:'uczucia',note:'',ctx:'La situación es incómoda — Sytuacja jest niezręczna',mnem:'"Incómodo" = in + cómodo = NIE komfortowy 😬'},
+{es:'orgulloso / orgullosa',pron:'[or-gu-JO-so]',pl:'dumny / dumna',sit:'uczucia',note:'',ctx:'Estoy orgullosa de mí misma — Jestem z siebie dumna',mnem:'"Orgullosa" jak "orgull" (duma w kat.) — jestem dumna 🦚'},
+{es:'celoso / celosa',pron:'[se-LO-so]',pl:'zazdrosny / zazdrosna',sit:'uczucia',note:'',ctx:'¡No seas celosa! — Nie bądź zazdrosna!',mnem:'"Celoso" jak "jealous" przez "celoso" — zazdrosny 💚'},
+{es:'aburrido / aburrida',pron:'[a-bu-RRI-do]',pl:'znudzony / znudzona',sit:'uczucia',note:'',ctx:'Estoy aburrida — Jestem znudzona',mnem:'"Aburrida" jak "bored" przez "aburrir" = nudzić — znudzona 😑'},
+{es:'enojado / enojada',pron:'[e-no-CHA-do]',pl:'zły / zła (zdenerwowany)',sit:'uczucia',note:'',ctx:'Estoy enojada — Jestem zła',mnem:'"Enojado" jak "annoyed" — zezłoszczony, zdenerwowany 😠'},
+{es:'enamorado / enamorada',pron:'[e-na-mo-RA-do]',pl:'zakochany / zakochana',sit:'uczucia',note:'',ctx:'Estoy enamorada de Paraguay — Jestem zakochana w Paragwaju',mnem:'"Enamorada" jak "in love" przez "amor" = miłość. Estoy enamorada ❤️'},
+{es:'solo / sola',pron:'[SO-lo / SO-la]',pl:'sam / sama',sit:'uczucia',note:'',ctx:'A veces me siento sola — Czasem czuję się sama',mnem:'"Sola" jak "solo" — sam/a, bez nikogo 🕊️'},
+{es:'acompañado / acompañada',pron:'[a-kom-pa-NJA-do]',pl:'w towarzystwie / z kimś',sit:'uczucia',note:'',ctx:'Me siento acompañada — Czuję się z kimś (nie sama)',mnem:'"Acompañada" jak "accompanied" — w towarzystwie (companion) 🤝'},
+{es:'agradecido / agradecida',pron:'[a-gra-de-SI-do]',pl:'wdzięczny / wdzięczna',sit:'uczucia',note:'',ctx:'Estoy muy agradecida — Jestem bardzo wdzięczna',mnem:'"Agradecida" jak "grateful" przez "gracia" = łaska — wdzięczna 🙏'},
+{es:'cansado / cansada',pron:'[kan-SA-do]',pl:'zmęczony / zmęczona',sit:'uczucia',note:'',ctx:'Estoy muy cansada hoy — Jestem dziś bardzo zmęczona',mnem:'"Cansada" jak "can\'t" — nie mogę, bo zmęczona 😴'},
+{es:'relajado / relajada',pron:'[rre-la-CHA-do]',pl:'zrelaksowany / zrelaksowana',sit:'uczucia',note:'',ctx:'Estoy relajada — Jestem zrelaksowana',mnem:'"Relajada" jak "relaxed" — zrelaksowana 😌'},
+{es:'extrañar',pron:'[eks-tra-NJAR]',pl:'tęsknić',sit:'uczucia',note:'',ctx:'Extraño a mi familia — Tęsknię za rodziną',mnem:'"Extrañar" jak "strange feeling" — dziwne uczucie nieobecności kogoś = tęsknota 🥺'},
+{es:'adaptarse',pron:'[a-dap-TAR-se]',pl:'adaptować się / przyzwyczajać',sit:'uczucia',note:'',ctx:'Me estoy adaptando a Paraguay — Adaptuję się do Paragwaju',mnem:'"Adaptarse" jak "adapt" — dostosowywać się do nowego miejsca 🌍'},
+{es:'echar de menos',pron:'[e-CZAR de ME-nos]',pl:'tęsknić (za kimś/czymś)',sit:'uczucia',note:'Też: extrañar',ctx:'Echo de menos la nieve — Tęsknię za śniegiem',mnem:'"Echar de menos" = dosłownie "wyrzucać z mniej" — brakuje Ci czegoś. Tęsknota 💙'},
+{es:'acostumbrarse',pron:'[a-kos-tum-BRAR-se]',pl:'przyzwyczajać się',sit:'uczucia',note:'',ctx:'Ya me acostumbré al calor — Już przyzwyczaiłam się do upału',mnem:'"Acostumbrarse" jak "accustom" — przyzwyczajać się do zwyczajów (costumbres) 🌿'},
+{es:'sentirse en casa',pron:'[sen-TIR-se en KA-sa]',pl:'czuć się jak w domu',sit:'uczucia',note:'',ctx:'Me siento en casa en Paraguay — Czuję się jak w domu w Paragwaju',mnem:'"Sentirse en casa" = dosłownie czuć się w domu. Idealne dla Ciebie w Asunción! 🏠🇵🇾'},
+// ── PYTANIA I STRUKTURY ──────────────────────────────────────
+{es:'¿Dónde está...?',pron:'[DON-de es-TA]',pl:'Gdzie jest...?',sit:'pytania',note:'Najważniejsze pytanie!',ctx:'¿Dónde está el baño? — Gdzie jest łazienka?',mnem:'DON-de = gdzie. Don to pan — gdzie jest ten pan? 🗺️'},
+{es:'¿Dónde están...?',pron:'[DON-de es-TAN]',pl:'Gdzie są...? (l.mn.)',sit:'pytania',note:'Dla wielu rzeczy/osób',ctx:'¿Dónde están los baños? — Gdzie są toalety?',mnem:'Están = są (oni/one). Dónde están = gdzie są? 🗺️'},
+{es:'¿Hay...?',pron:'[aj]',pl:'Czy jest / Czy ma...?',sit:'pytania',note:'Bardzo universalne!',ctx:'¿Hay pan fresco? — Czy jest świeży chleb?',mnem:'"Hay" wymawia się "aj!" — jak westchnienie gdy czegoś brakuje 😮'},
+{es:'¿Tiene...?',pron:'[TJE-ne]',pl:'Czy ma Pan/Pani...?',sit:'pytania',note:'Do jednej osoby (usted)',ctx:'¿Tiene cambio? — Czy ma Pani resztę?',mnem:'"Tiene" jak "tener" = mieć. Czy ma? 🤔'},
+{es:'¿Tienen...?',pron:'[TJE-nen]',pl:'Czy mają...? / Czy macie...?',sit:'pytania',note:'Do grupy / sklepu',ctx:'¿Tienen pan sin gluten? — Czy macie chleb bezglutenowy?',mnem:'"Tienen" = mają (oni). Do sklepu: "czy mają/macie?" 🏪'},
+{es:'¿Qué es esto?',pron:'[ke es ES-to]',pl:'Co to jest?',sit:'pytania',note:'Wskazujesz na coś',ctx:'¿Qué es esto? Es una chipa — Co to jest? To chipa',mnem:'"Qué" = co, "esto" = to. Co-to-jest? ❓'},
+{es:'¿Qué es eso?',pron:'[ke es E-so]',pl:'Co to jest? (dalej od Ciebie)',sit:'pytania',note:'Esto = blisko, eso = dalej',ctx:'¿Qué es eso que vendés? — Co to sprzedajesz?',mnem:'"Esto" (tu, blisko) vs "eso" (tam, dalej). To rozróżnienie! 👆'},
+{es:'¿Cómo se llama esto?',pron:'[KO-mo se JA-ma ES-to]',pl:'Jak się to nazywa?',sit:'pytania',note:'Pytasz o nazwę rzeczy',ctx:'¿Cómo se llama esta fruta? — Jak się nazywa ten owoc?',mnem:'"Llamar" = nazywać. "Cómo se llama" = jak się woła/nazywa? 📛'},
+{es:'¿Cómo se dice...?',pron:'[KO-mo se DI-se]',pl:'Jak się mówi...?',sit:'pytania',note:'Pytasz o tłumaczenie',ctx:'¿Cómo se dice "ręcznik" en español? — Jak się mówi "ręcznik" po hiszpańsku?',mnem:'"Dice" jak "dictate" — jak się dyktuje to słowo? 🗣️'},
+{es:'¿Qué significa...?',pron:'[ke sig-ni-FI-ka]',pl:'Co znaczy...?',sit:'pytania',note:'Pytasz o znaczenie',ctx:'¿Qué significa "kokue"? — Co znaczy "kokue"?',mnem:'"Significa" jak "signify" — co oznacza, co znaczy? 🤔'},
+{es:'¿Cuánto cuesta?',pron:'[KWAN-to KWES-ta]',pl:'Ile kosztuje?',sit:'pytania',note:'Pojedyncza rzecz',ctx:'¿Cuánto cuesta el kilo? — Ile kosztuje kilo?',mnem:'"Cuanto" = ile, "cuesta" = kosztuje. Ile-kosztuje? 💰'},
+{es:'¿Cuánto es?',pron:'[KWAN-to es]',pl:'Ile płacę? / Ile to jest?',sit:'pytania',note:'Przy kasie / podsumowanie',ctx:'¿Cuánto es todo? — Ile płacę za wszystko?',mnem:'Krótsze od "cuesta" — ile jest do zapłaty? 💵'},
+{es:'¿Cuánto cuesta todo?',pron:'[KWAN-to KWES-ta TO-do]',pl:'Ile kosztuje wszystko?',sit:'pytania',note:'',ctx:'¿Cuánto cuesta todo junto? — Ile kosztuje wszystko razem?',mnem:'"Todo" = wszystko. Całkowita suma 🧮'},
+{es:'¿A cuánto está el kilo?',pron:'[a KWAN-to es-TA el KI-lo]',pl:'Po ile jest kilo?',sit:'pytania',note:'Na targu — typowe!',ctx:'¿A cuánto está el kilo de tomates? — Po ile jest kilo pomidorów?',mnem:'Na targu ZAWSZE pytasz tak. "A cuánto" = po ile? 🥩'},
+{es:'¿Dónde puedo...?',pron:'[DON-de PWE-do]',pl:'Gdzie mogę...?',sit:'pytania',note:'Szablon do wszystkiego',ctx:'¿Dónde puedo comprar? — Gdzie mogę kupić?',mnem:'"Puedo" = mogę. Gdzie-mogę + czasownik = gotowe pytanie! 💪'},
+{es:'¿Dónde puedo pagar?',pron:'[DON-de PWE-do pa-GAR]',pl:'Gdzie mogę zapłacić?',sit:'pytania',note:'',ctx:'¿Dónde puedo pagar la factura? — Gdzie mogę zapłacić fakturę?',mnem:'Dónde puedo + pagar (płacić) = gdzie zapłacić? 💳'},
+{es:'¿Dónde se hace el trámite?',pron:'[DON-de se A-se el TRA-mi-te]',pl:'Gdzie załatwię formalność?',sit:'pytania',note:'Do urzędów!',ctx:'¿Dónde se hace el trámite de residencia? — Gdzie załatwię formalności rezydencji?',mnem:'"Se hace" = robi się. Gdzie-się-robi ta formalność? 🏛️'},
+{es:'¿Dónde se tramita...?',pron:'[DON-de se tra-MI-ta]',pl:'Gdzie się załatwia...?',sit:'pytania',note:'Typowe dla urzędów',ctx:'¿Dónde se tramita el pasaporte? — Gdzie się załatwia paszport?',mnem:'"Tramitar" = załatwiać formalności. Gdzie-się-załatwia? 📋'},
+{es:'¿Cómo llego a...?',pron:'[KO-mo JE-go a]',pl:'Jak dojadę / dojdę do...?',sit:'pytania',note:'',ctx:'¿Cómo llego al centro? — Jak dojadę do centrum?',mnem:'"Llego" jak "llegada" = przybycie. Jak dotrzeć? 🗺️'},
+{es:'¿Cuándo abre / cierra?',pron:'[KWAN-do A-bre / SJE-rra]',pl:'Kiedy otwiera / zamyka?',sit:'pytania',note:'',ctx:'¿Cuándo abre el banco? — Kiedy otwiera bank?',mnem:'"Abre" = otwiera, "cierra" = zamyka. Otwieranie i zamykanie ⏰'},
+{es:'¿A qué hora abre?',pron:'[a ke O-ra A-bre]',pl:'O której godzinie otwiera?',sit:'pytania',note:'',ctx:'¿A qué hora abre la farmacia? — O której otwiera apteka?',mnem:'"A qué hora" = o której godzinie. Szablon do godzin ⏰'},
+{es:'¿A qué hora cierra?',pron:'[a ke O-ra SJE-rra]',pl:'O której godzinie zamyka?',sit:'pytania',note:'',ctx:'¿A qué hora cierra el mercado? — O której zamyka targ?',mnem:'"Cierra" jak "cerrado" = zamknięte. O której zamknięcie? 🔒'},
+{es:'¿Cuándo estará listo?',pron:'[KWAN-do es-ta-RA LIS-to]',pl:'Kiedy będzie gotowe?',sit:'pytania',note:'',ctx:'¿Cuándo estará listo el pedido? — Kiedy będzie gotowe zamówienie?',mnem:'"Listo" = gotowy. Kiedy-będzie-gotowe? ✅'},
+{es:'¿Cuándo será?',pron:'[KWAN-do se-RA]',pl:'Kiedy to będzie?',sit:'pytania',note:'',ctx:'¿Cuándo será la reunión? — Kiedy będzie zebranie?',mnem:'"Será" = będzie (przyszłość). Kiedy-będzie? 📅'},
+{es:'¿Cuánto tiempo tarda?',pron:'[KWAN-to TJEM-po TAR-da]',pl:'Ile czasu zajmuje?',sit:'pytania',note:'',ctx:'¿Cuánto tiempo tarda el trámite? — Ile czasu zajmuje formalność?',mnem:'"Tarda" jak "tardy" = spóźniony — ile czasu trwa? ⏳'},
+{es:'¿Cuánto tiempo tengo que esperar?',pron:'[KWAN-to TJEM-po TEN-go ke es-pe-RAR]',pl:'Jak długo muszę czekać?',sit:'pytania',note:'W kolejce / urzędzie',ctx:'¿Cuánto tiempo tengo que esperar? — Jak długo muszę czekać?',mnem:'"Esperar" = czekać. Ile czasu muszę czekać? 😤'},
+{es:'¿Puede ayudarme?',pron:'[PWE-de a-ju-DAR-me]',pl:'Czy może mi Pan/Pani pomóc?',sit:'pytania',note:'',ctx:'Disculpe, ¿puede ayudarme? — Przepraszam, czy może mi Pani pomóc?',mnem:'"Ayudar" = pomagać. Czy-może + mi-pomóc? 🤝'},
+{es:'¿Puede repetir, por favor?',pron:'[PWE-de rre-pe-TIR por fa-BOR]',pl:'Czy może powtórzyć?',sit:'pytania',note:'',ctx:'No entendí, ¿puede repetir? — Nie zrozumiałam, może powtórzyć?',mnem:'"Repetir" jak repetycja — powtórz proszę 🔁'},
+{es:'¿Puede hablar más despacio?',pron:'[PWE-de a-BLAR mas des-PA-sjo]',pl:'Czy może mówić wolniej?',sit:'pytania',note:'Używaj śmiało!',ctx:'Por favor, ¿puede hablar más despacio? — Proszę, może mówić wolniej?',mnem:'"Despacio" = wolno. Mów-wolniej = despacio! 🐢'},
+{es:'¿Puede escribirlo?',pron:'[PWE-de es-kri-BIR-lo]',pl:'Czy może to napisać?',sit:'pytania',note:'Gdy nie rozumiesz wymowy',ctx:'¿Puede escribirlo, por favor? — Czy może to napisać, proszę?',mnem:'"Escribir" = pisać. Napisz mi to! ✍️'},
+{es:'¿Qué necesito?',pron:'[ke ne-se-SI-to]',pl:'Czego potrzebuję?',sit:'pytania',note:'W urzędach!',ctx:'¿Qué necesito para el trámite? — Czego potrzebuję do formalności?',mnem:'"Necesito" jak "necessity" — co jest mi potrzebne? 📋'},
+{es:'¿Qué documentos necesito?',pron:'[ke do-ku-MEN-tos ne-se-SI-to]',pl:'Jakich dokumentów potrzebuję?',sit:'pytania',note:'Kluczowe w urzędach!',ctx:'¿Qué documentos necesito para residencia? — Jakich dokumentów potrzebuję do rezydencji?',mnem:'Dokumentos + necesito = dokumenty + potrzebuję. Klasyczne urzędowe pytanie 📁'},
+{es:'¿Es posible...?',pron:'[es po-SI-ble]',pl:'Czy jest możliwe...?',sit:'pytania',note:'',ctx:'¿Es posible pagar en cuotas? — Czy jest możliwa płatność ratalna?',mnem:'"Posible" jak "possible" — możliwe? ✅'},
+{es:'¿Se puede...?',pron:'[se PWE-de]',pl:'Czy można...?',sit:'pytania',note:'Ogólne "czy wolno"',ctx:'¿Se puede estacionar aquí? — Czy można tu parkować?',mnem:'"Se puede" = można (bezosobowo). Czy-można + czasownik 🚦'},
+{es:'¿Cuál es el horario?',pron:'[kwal es el o-RA-rjo]',pl:'Jaki jest rozkład/godziny?',sit:'pytania',note:'',ctx:'¿Cuál es el horario de atención? — Jakie są godziny obsługi?',mnem:'"Horario" jak "hours" — godziny pracy/otwarcia ⏰'},
+{es:'¿Cómo funciona?',pron:'[KO-mo fun-SJO-na]',pl:'Jak to działa?',sit:'pytania',note:'',ctx:'¿Cómo funciona el sistema? — Jak działa system?',mnem:'"Funciona" jak "function" — jak funkcjonuje? ⚙️'},
+{es:'¿Cuál es el precio?',pron:'[kwal es el PRE-sjo]',pl:'Jaka jest cena?',sit:'pytania',note:'',ctx:'¿Cuál es el precio final? — Jaka jest ostateczna cena?',mnem:'"Precio" jak "price" — jaka cena? 💰'},
+{es:'¿Hay descuento?',pron:'[aj des-KWEN-to]',pl:'Czy jest zniżka?',sit:'pytania',note:'Zawsze warto zapytać!',ctx:'¿Hay algún descuento? — Czy jest jakaś zniżka?',mnem:'"Hay descuento" = jest zniżka? Zawsze pytaj! 🏷️'},
+{es:'¿Me puede dar...?',pron:'[me PWE-de dar]',pl:'Czy może mi Pan/Pani dać...?',sit:'pytania',note:'Grzeczna prośba',ctx:'¿Me puede dar el recibo? — Czy może mi dać paragon?',mnem:'"Dar" = dawać. Może-mi-dać = grzeczna prośba 🙏'},
+{es:'¿Me puede mostrar...?',pron:'[me PWE-de mos-TRAR]',pl:'Czy może mi pokazać...?',sit:'pytania',note:'',ctx:'¿Me puede mostrar cómo funciona? — Czy może mi pokazać jak to działa?',mnem:'"Mostrar" jak "demonstrate" — pokaż mi 👁️'},
+{es:'¿Tiene algo más barato?',pron:'[TJE-ne AL-go mas ba-RA-to]',pl:'Czy ma coś tańszego?',sit:'pytania',note:'Na targu!',ctx:'¿Tiene algo más barato? — Czy ma Pani coś tańszego?',mnem:'"Barato" = tanie. Coś-tańszego? Targuj się! 💵'},
+{es:'¿Qué recomienda?',pron:'[ke rre-ko-MJEN-da]',pl:'Co Pan/Pani poleca?',sit:'pytania',note:'',ctx:'¿Qué recomienda del menú? — Co poleca z menu?',mnem:'"Recomienda" jak "recommend" — co rekomenduje? 👍'},
+{es:'¿Está incluido?',pron:'[es-TA in-klwi-DO]',pl:'Czy jest wliczone?',sit:'pytania',note:'',ctx:'¿El desayuno está incluido? — Czy śniadanie jest wliczone?',mnem:'"Incluido" jak "included" — czy jest w cenie? ✅'},
+{es:'¿Con qué viene?',pron:'[kon ke BJE-ne]',pl:'Z czym to jest? / Co wchodzi w skład?',sit:'pytania',note:'W restauracji',ctx:'¿Con qué viene el plato? — Z czym przychodzi to danie?',mnem:'"Viene" = przychodzi. Z-czym-przychodzi danie? 🍽️'},
+{es:'¿Tiene ingredientes con gluten?',pron:'[TJE-ne in-gre-DJEN-tes kon glu-TEN]',pl:'Czy zawiera gluten?',sit:'pytania',note:'',ctx:'¿Tiene gluten? Soy celíaca — Czy zawiera gluten? Jestem na diecie bezglutenowej',mnem:'"Gluten" = gluten. Identyczne słowo! Czy-ma-gluten? 🌾'},
+{es:'¿Es picante?',pron:'[es pi-KAN-te]',pl:'Czy jest pikantne?',sit:'pytania',note:'',ctx:'¿Es picante? No me gusta el picante — Czy jest pikantne? Nie lubię pikantnych rzeczy',mnem:'"Picante" = pikantne. Proste i ważne! 🌶️'},
+{es:'¿Cómo se paga?',pron:'[KO-mo se PA-ga]',pl:'Jak się płaci?',sit:'pytania',note:'',ctx:'¿Cómo se paga, en efectivo o tarjeta? — Jak się płaci, gotówką czy kartą?',mnem:'"Paga" = płaci. Jak-się-płaci = gotówka czy karta? 💳'},
+{es:'¿Cuál es el número de teléfono?',pron:'[kwal es el NU-me-ro de te-LE-fo-no]',pl:'Jaki jest numer telefonu?',sit:'pytania',note:'',ctx:'¿Cuál es el número de teléfono de la clínica? — Jaki jest numer telefonu kliniki?',mnem:'"Número de teléfono" jak "phone number" — numer telefonu 📞'},
+{es:'¿Me puede dar su número?',pron:'[me PWE-de dar su NU-me-ro]',pl:'Czy może mi dać swój numer?',sit:'pytania',note:'',ctx:'¿Me puede dar su número para coordinar? — Czy może mi dać numer żeby skoordynować?',mnem:'Może-mi-dać + numer = prośba o kontakt 📱'},
+{es:'¿Cuándo me pueden atender?',pron:'[KWAN-do me PWE-den a-ten-DER]',pl:'Kiedy mogą mnie obsłużyć?',sit:'pytania',note:'W urzędach, klinikach',ctx:'¿Cuándo me pueden atender? — Kiedy mogą mnie przyjąć?',mnem:'"Atender" = obsługiwać/przyjmować. Kiedy-mogą-mnie-przyjąć? 📅'},
+{es:'¿Qué pasa si...?',pron:'[ke PA-sa si]',pl:'Co się stanie jeśli...?',sit:'pytania',note:'',ctx:'¿Qué pasa si no tengo el documento? — Co się stanie jeśli nie mam dokumentu?',mnem:'"Qué pasa" = co się dzieje. Co-się-stanie-jeśli? 🤔'},
+{es:'¿Hay que...?',pron:'[aj ke]',pl:'Czy trzeba...? / Czy należy...?',sit:'pytania',note:'',ctx:'¿Hay que sacar turno primero? — Czy trzeba najpierw wziąć kolejkę?',mnem:'"Hay que" = trzeba. Hay-que + czasownik = czy trzeba? 📋'},
+{es:'¿Puedo...?',pron:'[PWE-do]',pl:'Czy mogę...?',sit:'pytania',note:'',ctx:'¿Puedo entrar? — Czy mogę wejść?',mnem:'"Puedo" = mogę. Puedo + czasownik = czy mogę? 🙋'},
+{es:'¿Dónde queda...?',pron:'[DON-de KE-da]',pl:'Gdzie się znajduje...?',sit:'pytania',note:'Typowe w Latam / PY',ctx:'¿Dónde queda la municipalidad? — Gdzie się znajduje urząd miejski?',mnem:'"Queda" jak "quedarse" = zostawać/być. Gdzie-zostaje (jest) ten budynek? 🏛️'},
+{es:'¿Cómo se va a...?',pron:'[KO-mo se ba a]',pl:'Jak się jedzie / idzie do...?',sit:'pytania',note:'',ctx:'¿Cómo se va al aeropuerto? — Jak się jedzie na lotnisko?',mnem:'"Se va" = jedzie się. Jak-się-jedzie do...? 🚌'},
+{es:'¿Cuál es el número de la línea?',pron:'[kwal es el NU-me-ro de la LI-nja]',pl:'Jaki numer linii (autobusu)?',sit:'pytania',note:'',ctx:'¿Cuál es el número de la línea al centro? — Jaki numer linii do centrum?',mnem:'"Línea" jak "line" — linia autobusu. Jaki numer? 🚌'},
+{es:'¿Esto está bien?',pron:'[ES-to es-TA bjen]',pl:'Czy to jest dobrze? / Czy tak jest dobrze?',sit:'pytania',note:'',ctx:'¿Llené bien el formulario? ¿Esto está bien? — Wypełniłam dobrze formularz? Czy tak jest dobrze?',mnem:'"Está bien" = jest dobrze. Czy-to-jest-dobrze? ✅'},
+{es:'¿Puede explicarme?',pron:'[PWE-de eks-pli-KAR-me]',pl:'Czy może mi wyjaśnić?',sit:'pytania',note:'',ctx:'No entiendo, ¿puede explicarme? — Nie rozumiem, czy może mi wyjaśnić?',mnem:'"Explicar" jak "explain" — wyjaśnić. Może-mi-wyjaśnić? 🧩'},
+{es:'¿Qué quiere decir?',pron:'[ke KJE-re de-SIR]',pl:'Co to chce powiedzieć? / Co to znaczy?',sit:'pytania',note:'',ctx:'¿Qué quiere decir "trámite"? — Co znaczy "trámite"?',mnem:'"Quiere decir" = chce powiedzieć = znaczy. Co znaczy to słowo? 💬'},
+{es:'¿Hay alguien que hable polaco?',pron:'[aj AL-gjen ke A-ble po-LA-ko]',pl:'Czy jest ktoś kto mówi po polsku?',sit:'pytania',note:'Awaryjne! 😄',ctx:'¿Hay alguien que hable polaco o inglés? — Czy jest ktoś kto mówi po polsku lub angielsku?',mnem:'W nagłej potrzebie! Hay-alguien = czy jest ktoś. Ratunkowe pytanie 🆘'},
+{es:'¿En qué puedo ayudarle?',pron:'[en ke PWE-do a-ju-DAR-le]',pl:'W czym mogę pomóc?',sit:'pytania',note:'Usłyszysz to często!',ctx:'¿En qué puedo ayudarle? — W czym mogę Pani pomóc?',mnem:'To usłyszysz w sklepie i urzędzie. Odpowiedz: "Necesito..." 🤝'},
+{es:'¿A nombre de quién?',pron:'[a NOM-bre de kjen]',pl:'Na czyje imię / nazwisko?',sit:'pytania',note:'W urzędach, rezerwacjach',ctx:'¿A nombre de quién es la reserva? — Na czyje nazwisko jest rezerwacja?',mnem:'"Nombre" = imię/nazwisko. Na-czyje-imię? Przy rezerwacji 📋'},
+{es:'¿Cuál es su dirección?',pron:'[kwal es su di-rek-SJON]',pl:'Jaki jest Pani/Pana adres?',sit:'pytania',note:'',ctx:'¿Cuál es su dirección? — Jaki jest Pani adres?',mnem:'"Dirección" jak "direction/address" — adres zamieszkania 🏠'},
+{es:'¿Qué hay que hacer?',pron:'[ke aj ke a-SER]',pl:'Co trzeba zrobić?',sit:'pytania',note:'Kluczowe w urzędach!',ctx:'¿Qué hay que hacer para registrarme? — Co trzeba zrobić żeby się zarejestrować?',mnem:'"Hay que hacer" = trzeba zrobić. Co-trzeba-zrobić? 📋'},
+{es:'¿Esto es correcto?',pron:'[ES-to es ko-RREK-to]',pl:'Czy to jest poprawne?',sit:'pytania',note:'',ctx:'¿Llené el formulario correcto? — Wypełniłam poprawnie formularz?',mnem:'"Correcto" jak "correct" — poprawny. Czy-to-poprawne? ✅'},
+{es:'¿Me puede dar un recibo?',pron:'[me PWE-de dar un rre-SI-bo]',pl:'Czy może mi dać paragon/potwierdzenie?',sit:'pytania',note:'',ctx:'¿Me puede dar un recibo del pago? — Czy może mi dać potwierdzenie płatności?',mnem:'"Recibo" jak "receipt" — paragon, dowód zapłaty 🧾'},
 
+];
 const dialogs = [
   {
     id:'sklep', title:'W sklepie', subtitle:'En la tienda — Mercado Municipal, Asunción',
@@ -806,7 +1027,6 @@ const dialogs = [
     ]
   },
 ];
-
 const grammarData = [
   {
     title:'SER — być (stałe cechy: skąd jestem, kim jestem)',
@@ -871,40 +1091,6 @@ const grammarData = [
     mnem:'Naucz się tych 7 pytań na pamięć — z nimi możesz pytać o WSZYSTKO!'
   },
 ];
-
-const numbers = [
-  {n:1,es:'uno',pron:'[U-no]'},{n:2,es:'dos',pron:'[dos]'},{n:3,es:'tres',pron:'[tres]'},
-  {n:4,es:'cuatro',pron:'[KWA-tro]'},{n:5,es:'cinco',pron:'[SIN-ko]'},
-  {n:6,es:'seis',pron:'[sejs]'},{n:7,es:'siete',pron:'[SJE-te]'},{n:8,es:'ocho',pron:'[O-czo]'},
-  {n:9,es:'nueve',pron:'[NWE-be]'},{n:10,es:'diez',pron:'[djes]'},
-  {n:11,es:'once',pron:'[ON-se]'},{n:12,es:'doce',pron:'[DO-se]'},{n:13,es:'trece',pron:'[TRE-se]'},
-  {n:14,es:'catorce',pron:'[ka-TOR-se]'},{n:15,es:'quince',pron:'[KIN-se]'},
-  {n:16,es:'dieciséis',pron:'[dje-si-SEJS]'},{n:17,es:'diecisiete',pron:'[dje-si-SJE-te]'},
-  {n:18,es:'dieciocho',pron:'[dje-sjo-O-czo]'},{n:19,es:'diecinueve',pron:'[dje-si-NWE-be]'},
-  {n:20,es:'veinte',pron:'[BEJN-te]'},{n:21,es:'veintiuno',pron:'[bejn-tju-NO]'},
-  {n:30,es:'treinta',pron:'[TREJN-ta]'},{n:40,es:'cuarenta',pron:'[kwa-REN-ta]'},
-  {n:50,es:'cincuenta',pron:'[sin-KWEN-ta]'},{n:60,es:'sesenta',pron:'[se-SEN-ta]'},
-  {n:70,es:'setenta',pron:'[se-TEN-ta]'},{n:80,es:'ochenta',pron:'[o-CZEN-ta]'},
-  {n:90,es:'noventa',pron:'[no-BEN-ta]'},{n:100,es:'cien',pron:'[sjen]'},
-  {n:1000,es:'mil',pron:'[mil]'},{n:1000000,es:'un millón',pron:'[un mi-LJON]'},
-];
-
-const days = [
-  {n:'Poniedziałek',es:'lunes',pron:'[LU-nes]'},{n:'Wtorek',es:'martes',pron:'[MAR-tes]'},
-  {n:'Środa',es:'miércoles',pron:'[MJER-ko-les]'},{n:'Czwartek',es:'jueves',pron:'[CHWe-bes]'},
-  {n:'Piątek',es:'viernes',pron:'[BJER-nes]'},{n:'Sobota',es:'sábado',pron:'[SA-ba-do]'},
-  {n:'Niedziela',es:'domingo',pron:'[do-MIN-go]'},
-];
-
-const months = [
-  {n:'Styczeń',es:'enero',pron:'[e-NE-ro]'},{n:'Luty',es:'febrero',pron:'[fe-BRE-ro]'},
-  {n:'Marzec',es:'marzo',pron:'[MAR-so]'},{n:'Kwiecień',es:'abril',pron:'[a-BRIL]'},
-  {n:'Maj',es:'mayo',pron:'[MA-jo]'},{n:'Czerwiec',es:'junio',pron:'[CHU-njo]'},
-  {n:'Lipiec',es:'julio',pron:'[CHU-ljo]'},{n:'Sierpień',es:'agosto',pron:'[a-GOS-to]'},
-  {n:'Wrzesień',es:'septiembre',pron:'[sep-TJEM-bre]'},{n:'Październik',es:'octubre',pron:'[ok-TU-bre]'},
-  {n:'Listopad',es:'noviembre',pron:'[no-BJEM-bre]'},{n:'Grudzień',es:'diciembre',pron:'[di-SJEM-bre]'},
-];
-
 const facts = [
   {
     icon:'🧠',
@@ -957,433 +1143,434 @@ const facts = [
     text:'Paragwajczycy są ZACHWYCENI gdy cudzoziemiec zna kilka słów guaraní. To bardzo rzadkie! Naucz się: "Mba\'éichapa?" (jak się masz?), "Iporã" (dobrze), "Che" (hej/ja), "Mitaí" (dziecko) — i obserwuj reakcje. Otwiera drzwi bardziej niż doskonały hiszpański!'
   },
 ];
+const numbers = [
+  {n:1,es:'uno',pron:'[U-no]'},{n:2,es:'dos',pron:'[dos]'},{n:3,es:'tres',pron:'[tres]'},
+  {n:4,es:'cuatro',pron:'[KWA-tro]'},{n:5,es:'cinco',pron:'[SIN-ko]'},
+  {n:6,es:'seis',pron:'[sejs]'},{n:7,es:'siete',pron:'[SJE-te]'},{n:8,es:'ocho',pron:'[O-czo]'},
+  {n:9,es:'nueve',pron:'[NWE-be]'},{n:10,es:'diez',pron:'[djes]'},
+  {n:11,es:'once',pron:'[ON-se]'},{n:12,es:'doce',pron:'[DO-se]'},{n:13,es:'trece',pron:'[TRE-se]'},
+  {n:14,es:'catorce',pron:'[ka-TOR-se]'},{n:15,es:'quince',pron:'[KIN-se]'},
+  {n:16,es:'dieciséis',pron:'[dje-si-SEJS]'},{n:17,es:'diecisiete',pron:'[dje-si-SJE-te]'},
+  {n:18,es:'dieciocho',pron:'[dje-sjo-O-czo]'},{n:19,es:'diecinueve',pron:'[dje-si-NWE-be]'},
+  {n:20,es:'veinte',pron:'[BEJN-te]'},{n:21,es:'veintiuno',pron:'[bejn-tju-NO]'},
+  {n:30,es:'treinta',pron:'[TREJN-ta]'},{n:40,es:'cuarenta',pron:'[kwa-REN-ta]'},
+  {n:50,es:'cincuenta',pron:'[sin-KWEN-ta]'},{n:60,es:'sesenta',pron:'[se-SEN-ta]'},
+  {n:70,es:'setenta',pron:'[se-TEN-ta]'},{n:80,es:'ochenta',pron:'[o-CZEN-ta]'},
+  {n:90,es:'noventa',pron:'[no-BEN-ta]'},{n:100,es:'cien',pron:'[sjen]'},
+  {n:200,es:'doscientos',pron:'[do-SJEN-tos]'},{n:500,es:'quinientos',pron:'[ki-NJEN-tos]'},
+  {n:1000,es:'mil',pron:'[mil]'},{n:10000,es:'diez mil',pron:'[djes mil]'},
+  {n:100000,es:'cien mil',pron:'[sjen mil]'},{n:1000000,es:'un millón',pron:'[un mi-LJON]'},
+];
+const days = [
+  {n:'Poniedziałek',es:'lunes',pron:'[LU-nes]'},{n:'Wtorek',es:'martes',pron:'[MAR-tes]'},
+  {n:'Środa',es:'miércoles',pron:'[MJER-ko-les]'},{n:'Czwartek',es:'jueves',pron:'[CHWe-bes]'},
+  {n:'Piątek',es:'viernes',pron:'[BJER-nes]'},{n:'Sobota',es:'sábado',pron:'[SA-ba-do]'},
+  {n:'Niedziela',es:'domingo',pron:'[do-MIN-go]'},
+];
+const months = [
+  {n:'Styczeń',es:'enero',pron:'[e-NE-ro]'},{n:'Luty',es:'febrero',pron:'[fe-BRE-ro]'},
+  {n:'Marzec',es:'marzo',pron:'[MAR-so]'},{n:'Kwiecień',es:'abril',pron:'[a-BRIL]'},
+  {n:'Maj',es:'mayo',pron:'[MA-jo]'},{n:'Czerwiec',es:'junio',pron:'[CHU-njo]'},
+  {n:'Lipiec',es:'julio',pron:'[CHU-ljo]'},{n:'Sierpień',es:'agosto',pron:'[a-GOS-to]'},
+  {n:'Wrzesień',es:'septiembre',pron:'[sep-TJEM-bre]'},{n:'Październik',es:'octubre',pron:'[ok-TU-bre]'},
+  {n:'Listopad',es:'noviembre',pron:'[no-BJEM-bre]'},{n:'Grudzień',es:'diciembre',pron:'[di-SJEM-bre]'},
+];
 
-// ============================================================
-// STATE
-// ============================================================
-let progress = JSON.parse(localStorage.getItem('esp_progress') || '{}');
-let sessions = parseInt(localStorage.getItem('esp_sessions') || '0');
-let quizStats = JSON.parse(localStorage.getItem('esp_quiz') || '{"ok":0,"total":0}');
-let currentModule = 'powitania';
+// ── STATE ────────────────────────────────────────────────────
+let prog = {};
+let sessions = 0;
+let qStats = {ok:0,total:0};
+try{prog=JSON.parse(localStorage.getItem('esp_all_prog')||'{}');sessions=parseInt(localStorage.getItem('esp_all_sess')||'0');qStats=JSON.parse(localStorage.getItem('esp_all_q')||'{"ok":0,"total":0}');}catch(e){}
+function save(){try{localStorage.setItem('esp_all_prog',JSON.stringify(prog));localStorage.setItem('esp_all_sess',sessions);localStorage.setItem('esp_all_q',JSON.stringify(qStats));}catch(e){}}
+
+// All cards combined
+const allCards = [...vocab.map(v=>({...v,source:'a0',cat:v.cat,ctx:v.ctx||'',mnem:v.mnem||''})),
+                  ...words.map(w=>({...w,source:'mil',cat:w.sit,ctx:w.ctx||'',mnem:w.mnem||''}))];
+
+// ── STATE for cards ──────────────────────────────────────────
+let fcList = [...allCards];
 let fcIdx = 0;
-let fcFiltered = [];
 let fcFlipped = false;
-let qOk = 0, qErr = 0, qTotal = 0;
+let currentSource = 'all';
+let currentSit = 'all';
 let qType = 'es_pl';
-let qModule = 'all';
+let qSource = 'all';
+let qSit = 'all';
+let qOk = 0, qErr = 0;
 let currentDialog = 0;
+let currentDashTab = 'a0';
 
-function saveProgress() {
-  localStorage.setItem('esp_progress', JSON.stringify(progress));
-  localStorage.setItem('esp_sessions', sessions);
-  localStorage.setItem('esp_quiz', JSON.stringify(quizStats));
+// ── HELPERS ──────────────────────────────────────────────────
+function getColor(cat){
+  const m = modules.find(x=>x.id===cat);
+  if(m) return 'c-'+m.color;
+  const s = situations.find(x=>x.id===cat);
+  if(s) return 'c-'+s.color;
+  return 'c-terra';
+}
+function getLabel(cat){
+  const m = modules.find(x=>x.id===cat);
+  if(m) return m.name;
+  const s = situations.find(x=>x.id===cat);
+  if(s) return s.name;
+  return cat;
+}
+function getIcon(cat){
+  const m = modules.find(x=>x.id===cat);
+  if(m) return m.icon;
+  const s = situations.find(x=>x.id===cat);
+  if(s) return s.icon;
+  return '📚';
+}
+function knownCount(){return Object.values(prog).filter(v=>v>=2).length;}
+function updateSide(){
+  const k = knownCount();
+  const pct = Math.min(100,k/4.35);
+  document.getElementById('xpFill').style.width=pct+'%';
+  document.getElementById('xpVal').textContent=k+' słów';
+  document.getElementById('sm-known').textContent=k;
+  document.getElementById('sm-sessions').textContent=sessions;
+  const qp=qStats.total>0?Math.round(qStats.ok/qStats.total*100)+'%':'—';
+  document.getElementById('sm-quiz').textContent=qp;
+  const levels=[{n:50,l:'Początkująca'},{n:150,l:'Turystka'},{n:300,l:'Rozmówczyni'},{n:600,l:'Mieszkanka'},{n:1000,l:'Fluent!'}];
+  const lv=levels.find(l=>k<l.n)||levels[levels.length-1];
+  document.getElementById('levelBadge').textContent=lv.l;
+  document.getElementById('xpTarget').textContent='cel: '+lv.n;
 }
 
-function getXP() {
-  return Object.values(progress).filter(v => v >= 2).length * 10;
+// ── NAVIGATION ───────────────────────────────────────────────
+function goPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.nb,.mob-btn').forEach(b=>b.classList.remove('active'));
+  if(id==='dashboard') renderDash();
+  if(id==='dialogi') renderDialogs();
+  if(id==='gramatyka') renderGrammar();
+  if(id==='liczby') renderNumbers();
+  if(id==='ciekawostki') renderFacts();
+  if(id==='postep') renderPostep();
+  if(id==='quiz') initQuiz();
+  updateSide();
 }
-
-// ============================================================
-// NAVIGATION
-// ============================================================
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.mob-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(b => {
-    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes(id)) b.classList.add('active');
-  });
-  document.querySelectorAll('.mob-btn').forEach(b => {
-    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes(id)) b.classList.add('active');
-  });
-  if (id === 'dashboard') renderDashboard();
-  if (id === 'fiszki') initFiszki();
-  if (id === 'quiz') initQuiz();
-  if (id === 'dialogi') renderDialogs();
-  if (id === 'gramatyka') renderGrammar();
-  if (id === 'liczby') renderNumbers();
-  if (id === 'ciekawostki') renderFacts();
-  if (id === 'postep') renderPostep();
-  updateSidebar();
+function goSit(id){
+  currentSit=id; currentSource='mil';
+  goPage('fiszki');
+  buildFCFilter();
+  filterFC();
 }
-
-// ============================================================
-// DASHBOARD
-// ============================================================
-function renderDashboard() {
-  const totalWords = vocab.length;
-  const known = Object.values(progress).filter(v => v >= 2).length;
-  document.getElementById('stat-words').textContent = totalWords;
-  document.getElementById('stat-known').textContent = known;
-  document.getElementById('stat-sessions').textContent = sessions;
-  const qPct = quizStats.total > 0 ? Math.round(quizStats.ok / quizStats.total * 100) : 0;
-  document.getElementById('stat-quiz').textContent = qPct + '%';
-
-  const grid = document.getElementById('modules-grid');
-  grid.innerHTML = modules.map(m => {
-    const mVocab = vocab.filter(v => v.cat === m.id);
-    const mKnown = mVocab.filter(v => (progress[v.es] || 0) >= 2).length;
-    const pct = mVocab.length > 0 ? Math.round(mKnown / mVocab.length * 100) : 0;
-    const stars = Math.floor(pct / 34);
-    const starHtml = '⭐'.repeat(stars) + '☆'.repeat(3 - stars);
-    return `<div class="module-card" onclick="goModule('${m.id}')">
-      <div class="mc-icon">${m.icon}</div>
-      <div class="mc-title">${m.name}</div>
-      <div class="mc-count">${mKnown}/${mVocab.length} słów</div>
-      <div class="mc-progress"><div class="mc-fill" style="width:${pct}%"></div></div>
-      <div class="mc-stars">${starHtml}</div>
-    </div>`;
-  }).join('');
-}
-
-function goModule(id) {
-  currentModule = id;
-  showPage('fiszki');
-}
-
-// ============================================================
-// SIDEBAR
-// ============================================================
-function updateSidebar() {
-  const xp = getXP();
-  document.getElementById('xpFill').style.width = Math.min(100, xp / 5) + '%';
-  document.getElementById('xpVal').textContent = xp + ' XP';
-}
-
-// ============================================================
-// FISZKI
-// ============================================================
-function initFiszki() {
-  sessions++;
-  saveProgress();
-  const sel = document.getElementById('lesson-sel');
-  sel.innerHTML = `<button class="lesson-btn ${currentModule === 'all' ? 'active' : ''}" onclick="setFCModule('all',this)">Wszystkie</button>` +
-    modules.map(m => `<button class="lesson-btn ${currentModule === m.id ? 'active' : ''}" onclick="setFCModule('${m.id}',this)">${m.icon} ${m.name.split(' ')[0]}</button>`).join('');
-  loadFCModule();
-}
-
-function setFCModule(id, btn) {
-  currentModule = id;
-  document.querySelectorAll('.lesson-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  loadFCModule();
-}
-
-function loadFCModule() {
-  fcFiltered = currentModule === 'all' ? [...vocab] : vocab.filter(v => v.cat === currentModule);
-  fcFiltered.sort(() => Math.random() - 0.5);
-  fcIdx = 0;
-  fcFlipped = false;
-  renderFC();
-}
-
-function renderFC() {
-  const card = fcFiltered[fcIdx];
-  if (!card) return;
-  const fc = document.getElementById('fcCard');
-  fc.classList.remove('fc-flipped');
-  document.getElementById('fcCat').textContent = modules.find(m => m.id === card.cat)?.name || card.cat;
-  document.getElementById('fcNum').textContent = `${fcIdx + 1} / ${fcFiltered.length}`;
-  document.getElementById('fcWord').textContent = card.es;
-  document.getElementById('fcPron').textContent = card.pron;
-  document.getElementById('fcTrans').textContent = card.pl;
-  document.getElementById('fcNote').textContent = card.note || '';
-  document.getElementById('fcNote').style.display = card.note ? 'inline-block' : 'none';
-  document.getElementById('fcMnemText').textContent = card.mnem || '';
-  document.getElementById('fcMnem').style.display = card.mnem ? 'flex' : 'none';
-  document.getElementById('ratingBtns').classList.remove('show');
-  document.getElementById('fcControls').style.display = 'flex';
-  fcFlipped = false;
-}
-
-function flipFC() {
-  if (!fcFlipped) {
-    document.getElementById('fcCard').classList.add('fc-flipped');
-    document.getElementById('ratingBtns').classList.add('show');
-    document.getElementById('fcControls').style.display = 'none';
-    fcFlipped = true;
+function setSource(s){
+  currentSource=s; currentSit='all';
+  if(document.getElementById('page-fiszki').classList.contains('active')){
+    buildFCFilter(); filterFC();
   }
 }
 
-function rateCard(knew) {
-  const card = fcFiltered[fcIdx];
-  if (!progress[card.es]) progress[card.es] = 0;
-  if (knew) progress[card.es] = Math.min(3, progress[card.es] + 1);
-  else progress[card.es] = Math.max(0, progress[card.es] - 1);
-  saveProgress();
-  updateSidebar();
-  nextFC();
+// ── DASHBOARD ────────────────────────────────────────────────
+function setDashTab(tab,btn){
+  currentDashTab=tab;
+  document.querySelectorAll('.dash-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderDashCards();
+}
+function renderDash(){
+  document.getElementById('d-known').textContent=knownCount();
+  document.getElementById('d-sessions').textContent=sessions;
+  const qp=qStats.total>0?Math.round(qStats.ok/qStats.total*100)+'%':'—';
+  document.getElementById('d-quiz').textContent=qp;
+  renderDashCards();
+}
+function renderDashCards(){
+  const grid=document.getElementById('dash-cards');
+  if(currentDashTab==='a0'){
+    grid.innerHTML=modules.map(m=>{
+      const mw=vocab.filter(v=>v.cat===m.id);
+      const mk=mw.filter(v=>(prog[v.es]||0)>=2).length;
+      const pct=mw.length?Math.round(mk/mw.length*100):0;
+      const stars=Math.floor(pct/34);
+      return `<div class="mod-card c-${m.color}" onclick="goSitA0('${m.id}')">
+        <div class="mc-icon">${m.icon}</div>
+        <div class="mc-title">${m.name}</div>
+        <div class="mc-count">${mk}/${mw.length} słów</div>
+        <div class="mc-bar"><div class="mc-fill c-${m.color}" style="width:${pct}%"></div></div>
+        <div class="mc-stars">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)}</div>
+      </div>`;
+    }).join('');
+  } else {
+    grid.innerHTML=situations.map(s=>{
+      const sw=words.filter(w=>w.sit===s.id);
+      const sk=sw.filter(w=>(prog[w.es]||0)>=2).length;
+      const pct=sw.length?Math.round(sk/sw.length*100):0;
+      const stars=Math.floor(pct/34);
+      return `<div class="mod-card c-${s.color}" onclick="goSit('${s.id}')">
+        <div class="mc-icon">${s.icon}</div>
+        <div class="mc-title">${s.name}</div>
+        <div class="mc-count">${sk}/${sw.length} słów</div>
+        <div class="mc-bar"><div class="mc-fill c-${s.color}" style="width:${pct}%"></div></div>
+        <div class="mc-stars">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)}</div>
+      </div>`;
+    }).join('');
+  }
+}
+function goSitA0(id){
+  currentSource='a0'; currentSit=id;
+  goPage('fiszki'); buildFCFilter(); filterFC();
 }
 
-function nextFC() {
-  fcIdx = (fcIdx + 1) % fcFiltered.length;
-  fcFlipped = false;
+// ── FISZKI ───────────────────────────────────────────────────
+function buildFCFilter(){
+  sessions++; save();
+  const f=document.getElementById('fc-filter');
+  if(currentSource==='a0'){
+    f.innerHTML=`<button class="fbtn active" onclick="setFCCat('all',this)">Wszystkie A0</button>`+
+      modules.map(m=>`<button class="fbtn ${currentSit===m.id?'active':''}" onclick="setFCCat('${m.id}',this)">${m.icon} ${m.name.split(' ')[0]}</button>`).join('');
+  } else if(currentSource==='mil'){
+    f.innerHTML=`<button class="fbtn active" onclick="setFCCat('all',this)">Wszystkie 1000</button>`+
+      situations.map(s=>`<button class="fbtn ${currentSit===s.id?'active':''}" onclick="setFCCat('${s.id}',this)">${s.icon} ${s.name.split(' ')[0]}</button>`).join('');
+  } else {
+    f.innerHTML=`<button class="fbtn" onclick="setSource('a0');buildFCFilter();filterFC()">📚 A0</button>
+      <button class="fbtn" onclick="setSource('mil');buildFCFilter();filterFC()">🌆 1000 słów</button>`;
+  }
+  filterFC();
+}
+function setFCCat(id,btn){
+  currentSit=id;
+  document.querySelectorAll('#fc-filter .fbtn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  filterFC();
+}
+function filterFC(){
+  let pool = currentSource==='a0'?vocab.map(v=>({...v,source:'a0',ctx:v.ctx||'',mnem:v.mnem||''})):
+             currentSource==='mil'?words:allCards;
+  if(currentSit!=='all') pool=pool.filter(w=>(w.cat||w.sit)===currentSit);
+  fcList=[...pool].sort(()=>Math.random()-0.5);
+  fcIdx=0; fcFlipped=false;
   renderFC();
 }
-
-function prevFC() {
-  fcIdx = (fcIdx - 1 + fcFiltered.length) % fcFiltered.length;
-  fcFlipped = false;
-  renderFC();
+function renderFC(){
+  const w=fcList[fcIdx];
+  if(!w) return;
+  const cat=w.cat||w.sit||'';
+  const col=getColor(cat);
+  const lbl=getLabel(cat);
+  const card=document.getElementById('fcCard');
+  card.classList.remove('flipped');
+  document.getElementById('fcBar').className='card-bar '+col;
+  document.getElementById('fcTag').textContent=lbl;
+  document.getElementById('fcNum').textContent=(fcIdx+1)+' / '+fcList.length;
+  document.getElementById('fcEs').textContent=w.es;
+  document.getElementById('fcPron').textContent=w.pron||'';
+  document.getElementById('fcPl').textContent=w.pl;
+  document.getElementById('fcNote').textContent=w.note||'';
+  document.getElementById('fcNote').style.display=w.note?'inline-block':'none';
+  document.getElementById('fcCtxTxt').textContent=w.ctx||'';
+  document.getElementById('fcCtx').style.display=w.ctx?'flex':'none';
+  document.getElementById('fcMnemTxt').textContent=w.mnem||'';
+  document.getElementById('fcMnem').style.display=w.mnem?'flex':'none';
+  document.getElementById('rateRow').classList.remove('show');
+  document.getElementById('navRow').style.display='flex';
+  fcFlipped=false;
 }
+function flipCard(){
+  if(!fcFlipped){
+    document.getElementById('fcCard').classList.add('flipped');
+    document.getElementById('rateRow').classList.add('show');
+    document.getElementById('navRow').style.display='none';
+    fcFlipped=true;
+  }
+}
+function rateCard(knew){
+  const w=fcList[fcIdx];
+  if(!prog[w.es]) prog[w.es]=0;
+  prog[w.es]=knew?Math.min(3,prog[w.es]+1):Math.max(0,prog[w.es]-1);
+  save(); updateSide(); nextCard();
+}
+function nextCard(){fcIdx=(fcIdx+1)%fcList.length;fcFlipped=false;renderFC();}
+function prevCard(){fcIdx=(fcIdx-1+fcList.length)%fcList.length;fcFlipped=false;renderFC();}
 
-// ============================================================
-// QUIZ
-// ============================================================
-function setQType(t, btn) {
-  qType = t;
-  document.querySelectorAll('.qtype-btn').forEach(b => b.classList.remove('active'));
+// ── QUIZ ─────────────────────────────────────────────────────
+function setQT(t,btn){
+  qType=t;
+  document.querySelectorAll('.qt-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   buildQuiz();
 }
-
-function initQuiz() {
-  const sel = document.getElementById('quiz-lesson-sel');
-  sel.innerHTML = `<button class="lesson-btn active" onclick="setQModule('all',this)">Wszystkie</button>` +
-    modules.map(m => `<button class="lesson-btn" onclick="setQModule('${m.id}',this)">${m.icon} ${m.name.split(' ')[0]}</button>`).join('');
+function initQuiz(){
+  const f=document.getElementById('quiz-filter');
+  f.innerHTML=`<button class="fbtn active" onclick="setQSrc('all',this)">Wszystkie</button>
+    <button class="fbtn" onclick="setQSrc('a0',this)">A0</button>
+    <button class="fbtn" onclick="setQSrc('mil',this)">1000 słów</button>`;
   buildQuiz();
 }
-
-function setQModule(id, btn) {
-  qModule = id;
-  document.querySelectorAll('#quiz-lesson-sel .lesson-btn').forEach(b => b.classList.remove('active'));
+function setQSrc(s,btn){
+  qSource=s; qSit='all';
+  document.querySelectorAll('#quiz-filter .fbtn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   buildQuiz();
 }
-
-function buildQuiz() {
-  const pool = (qModule === 'all' ? vocab : vocab.filter(v => v.cat === qModule));
-  if (pool.length < 4) return;
-  const idx = Math.floor(Math.random() * pool.length);
-  const correct = pool[idx];
-  const type = qType === 'mixed' ? (Math.random() > 0.5 ? 'es_pl' : 'pl_es') : qType;
-  const wrong = pool.filter((_, i) => i !== idx).sort(() => Math.random() - 0.5).slice(0, 3);
-  const opts = [...wrong, correct].sort(() => Math.random() - 0.5);
-
-  document.getElementById('qLabel').textContent = type === 'es_pl' ? 'Jak przetłumaczyć na polski?' : 'Jak powiedzieć po hiszpańsku?';
-  document.getElementById('qText').textContent = type === 'es_pl' ? correct.es : correct.pl;
-  document.getElementById('qPron').textContent = type === 'es_pl' ? correct.pron : '';
-  document.getElementById('qFeedback').className = 'quiz-feedback';
-  document.getElementById('qFeedback').innerHTML = '';
-  document.getElementById('qNextBtn').style.display = 'none';
-  document.getElementById('qProgress').textContent = `Pytanie ${qTotal + 1}`;
-
-  const oEl = document.getElementById('qOpts');
-  oEl.innerHTML = '';
-  opts.forEach(o => {
-    const label = type === 'es_pl' ? o.pl : o.es;
-    const pron = type === 'pl_es' ? o.pron : '';
-    const btn = document.createElement('button');
-    btn.className = 'quiz-opt';
-    btn.innerHTML = `<strong>${label}</strong>${pron ? `<br><small style="color:var(--green2);font-style:italic">${pron}</small>` : ''}`;
-    btn.onclick = () => checkQ(o, correct, type, btn);
+function buildQuiz(){
+  let pool = qSource==='a0'?vocab:qSource==='mil'?words:allCards;
+  if(pool.length<4) pool=allCards;
+  const correct=pool[Math.floor(Math.random()*pool.length)];
+  const type=qType==='mix'?(Math.random()>0.5?'es_pl':'pl_es'):qType;
+  const wrong=pool.filter(w=>w.es!==correct.es).sort(()=>Math.random()-0.5).slice(0,3);
+  const opts=[...wrong,correct].sort(()=>Math.random()-0.5);
+  if(type==='ctx'){
+    document.getElementById('qLbl').textContent='Słyszysz to zdanie — co znaczy podkreślone słowo?';
+    document.getElementById('qWord').textContent=correct.es;
+    document.getElementById('qPron').textContent=correct.pron||'';
+    document.getElementById('qCtx').textContent=correct.ctx||'';
+  } else if(type==='es_pl'){
+    document.getElementById('qLbl').textContent='Jak przetłumaczyć na polski?';
+    document.getElementById('qWord').textContent=correct.es;
+    document.getElementById('qPron').textContent=correct.pron||'';
+    document.getElementById('qCtx').textContent=correct.ctx||'';
+  } else {
+    document.getElementById('qLbl').textContent='Jak powiedzieć po hiszpańsku?';
+    document.getElementById('qWord').textContent=correct.pl;
+    document.getElementById('qPron').textContent='';
+    document.getElementById('qCtx').textContent='';
+  }
+  document.getElementById('qFeedback').className='q-feedback';
+  document.getElementById('qFeedback').innerHTML='';
+  document.getElementById('qNext').style.display='none';
+  document.getElementById('qProg').textContent='Pytanie '+(qStats.total+1);
+  const oEl=document.getElementById('qOpts');
+  oEl.innerHTML='';
+  opts.forEach(o=>{
+    const label=type==='pl_es'?o.es:o.pl;
+    const sub=type==='pl_es'?(o.pron||''):'';
+    const btn=document.createElement('button');
+    btn.className='q-opt';
+    btn.innerHTML=`<strong>${label}</strong>${sub?`<br><small style="font-size:11px;color:var(--verde2);font-style:italic">${sub}</small>`:''}`;
+    btn.onclick=()=>checkQ(o,correct,type,btn);
     oEl.appendChild(btn);
   });
 }
-
-function checkQ(chosen, correct, type, btn) {
-  document.querySelectorAll('.quiz-opt').forEach(b => b.disabled = true);
-  const isOk = chosen.es === correct.es;
-  const fb = document.getElementById('qFeedback');
-  if (isOk) {
-    btn.classList.add('correct');
-    qOk++; quizStats.ok++;
-    fb.className = 'quiz-feedback ok';
-    fb.innerHTML = `✅ <strong>¡Muy bien!</strong> Brawo!<div class="mnemonic">💡 ${correct.mnem || 'Świetna robota! Zapamiętaj wymowę: ' + correct.pron}</div>`;
-  } else {
-    btn.classList.add('wrong');
-    qErr++;
-    document.querySelectorAll('.quiz-opt').forEach(b => {
-      if (b.querySelector('strong') && b.querySelector('strong').textContent === (type === 'es_pl' ? correct.pl : correct.es)) b.classList.add('correct');
-    });
-    fb.className = 'quiz-feedback err';
-    fb.innerHTML = `❌ Prawidłowo: <strong>${correct.es}</strong> = <strong>${correct.pl}</strong> ${correct.pron}<div class="mnemonic">💡 ${correct.mnem || ''}</div>`;
-  }
-  quizStats.total++;
-  qTotal++;
-  document.getElementById('qScOk').textContent = '✅ ' + qOk;
-  document.getElementById('qScErr').textContent = '❌ ' + qErr;
-  document.getElementById('qNextBtn').style.display = 'inline-block';
-  saveProgress();
+function checkQ(chosen,correct,type,btn){
+  document.querySelectorAll('.q-opt').forEach(b=>b.disabled=true);
+  const isOk=chosen.es===correct.es;
+  const fb=document.getElementById('qFeedback');
+  if(isOk){btn.classList.add('correct');qOk++;qStats.ok++;fb.className='q-feedback ok';fb.innerHTML=`✅ <strong>¡Muy bien!</strong> Brawo!<div class="qmnem">💡 ${correct.mnem||'Wymowa: '+(correct.pron||'')}</div>`;}
+  else{btn.classList.add('wrong');qErr++;document.querySelectorAll('.q-opt').forEach(b=>{if(b.querySelector('strong')&&b.querySelector('strong').textContent===(type==='pl_es'?correct.es:correct.pl))b.classList.add('correct');});fb.className='q-feedback err';fb.innerHTML=`❌ Prawidłowo: <strong>${correct.es}</strong> = ${correct.pl} ${correct.pron||''}<div class="qmnem">💡 ${correct.mnem||''}</div>`;}
+  qStats.total++; save();
+  document.getElementById('qOk').textContent='✅ '+qOk;
+  document.getElementById('qErr').textContent='❌ '+qErr;
+  document.getElementById('qNext').style.display='inline-block';
 }
+function nextQuiz(){buildQuiz();}
 
-function nextQuiz() { buildQuiz(); }
-
-// ============================================================
-// DIALOGI
-// ============================================================
-function renderDialogs() {
-  const sel = document.getElementById('dialog-sel');
-  sel.innerHTML = dialogs.map((d, i) =>
-    `<button class="lesson-btn ${i === currentDialog ? 'active' : ''}" onclick="setDialog(${i},this)">${d.title}</button>`
-  ).join('');
+// ── DIALOGI ──────────────────────────────────────────────────
+function renderDialogs(){
+  const sel=document.getElementById('dialogSel');
+  sel.innerHTML=dialogs.map((d,i)=>`<button class="fbtn ${i===currentDialog?'active':''}" onclick="setDialog(${i},this)">${d.title.split('(')[0].trim()}</button>`).join('');
   renderDialog();
 }
-
-function setDialog(i, btn) {
-  currentDialog = i;
-  document.querySelectorAll('#dialog-sel .lesson-btn').forEach(b => b.classList.remove('active'));
+function setDialog(i,btn){
+  currentDialog=i;
+  document.querySelectorAll('#dialogSel .fbtn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderDialog();
 }
-
-function renderDialog() {
-  const d = dialogs[currentDialog];
-  const bubbles = d.bubbles.map(b => {
-    const side = b.side;
-    const av = side === 'right' ? 'you' : 'them';
-    const initial = b.who[0];
-    return `<div class="bubble ${side}">
-      <div class="av ${av}">${initial}</div>
-      <div class="btext">
-        <div class="bes">${b.es}</div>
-        <div class="bpron">${b.pron}</div>
-        <div class="bpl">${b.pl}</div>
-      </div>
-    </div>`;
-  }).join('');
-  document.getElementById('dialog-container').innerHTML = `
-    <div class="dialog-scene">
-      <div class="dialog-scene-title">${d.title}</div>
-      <div class="dialog-scene-sub">${d.subtitle}</div>
-      ${bubbles}
-      <div class="dialog-tip"><strong>💡 Wskazówka paragwajska</strong>${d.tip}</div>
-    </div>`;
+function renderDialog(){
+  const d=dialogs[currentDialog];
+  const bubbles=d.bubbles.map(b=>`<div class="bubble ${b.side}">
+    <div class="av ${b.side==='right'?'you':'them'}">${b.who[0]}</div>
+    <div class="btext"><div class="bes">${b.es}</div><div class="bpron">${b.pron}</div><div class="bpl">${b.pl}</div></div>
+  </div>`).join('');
+  document.getElementById('dialogContainer').innerHTML=`<div class="dialog-scene">
+    <div class="dialog-scene-title">${d.title}</div>
+    <div class="dialog-scene-sub">${d.subtitle}</div>
+    ${bubbles}
+    <div class="dialog-tip"><strong>💡 Wskazówka paragwajska</strong>${d.tip}</div>
+  </div>`;
 }
 
-// ============================================================
-// GRAMATYKA
-// ============================================================
-function renderGrammar() {
-  document.getElementById('gram-container').innerHTML = grammarData.map(g => {
-    const rows = g.rows.map(r =>
-      `<tr><td style="color:var(--text3);font-size:13px">${r.per}</td><td class="es">${r.es}</td><td class="pron">${r.pron}</td><td style="font-size:13px;color:var(--text2)">${r.ex}</td></tr>`
-    ).join('');
+// ── GRAMATYKA ────────────────────────────────────────────────
+function renderGrammar(){
+  document.getElementById('gramContainer').innerHTML=grammarData.map(g=>{
+    const rows=g.rows.map(r=>`<tr><td style="color:var(--ink3);font-size:12px">${r.per}</td><td class="es">${r.es}</td><td class="pron">${r.pron}</td><td style="font-size:12px;color:var(--ink2)">${r.ex}</td></tr>`).join('');
     return `<div class="gram-card">
       <div class="gram-title">${g.title}</div>
-      <table class="gram-table">
-        <tr><th>Osoba</th><th>Forma</th><th>Wymowa</th><th>Przykład</th></tr>
-        ${rows}
-      </table>
+      <table class="gram-table"><tr><th>Osoba</th><th>Forma</th><th>Wymowa</th><th>Przykład</th></tr>${rows}</table>
       <div class="gram-example">📌 ${g.example}</div>
       <div class="gram-mnemonic"><strong>💡 Jak zapamiętać</strong>${g.mnem}</div>
     </div>`;
   }).join('');
 }
 
-// ============================================================
-// LICZBY
-// ============================================================
-function renderNumbers() {
-  document.getElementById('numbers-grid').innerHTML = numbers.map(n =>
-    `<div class="num-card">
-      <div class="num-n">${n.n.toLocaleString()}</div>
-      <div class="num-es">${n.es}</div>
-      <div class="num-pron">${n.pron}</div>
-    </div>`
-  ).join('');
-
-  document.getElementById('days-grid').innerHTML = days.map(d =>
-    `<div class="num-card">
-      <div class="num-n" style="font-size:13px;color:var(--text3)">${d.n}</div>
-      <div class="num-es">${d.es}</div>
-      <div class="num-pron">${d.pron}</div>
-    </div>`
-  ).join('');
-
-  document.getElementById('months-grid').innerHTML = months.map(m =>
-    `<div class="num-card">
-      <div class="num-n" style="font-size:13px;color:var(--text3)">${m.n}</div>
-      <div class="num-es">${m.es}</div>
-      <div class="num-pron">${m.pron}</div>
-    </div>`
-  ).join('');
-
-  document.getElementById('time-grid').innerHTML = `
-    <div class="gram-card">
-      <div class="gram-title">Godziny — Las horas</div>
-      <table class="gram-table">
-        <tr><th>Godzina</th><th>Español</th><th>Wymowa</th></tr>
-        <tr><td>1:00</td><td class="es">Es la una</td><td class="pron">[es la U-na]</td></tr>
-        <tr><td>2:00</td><td class="es">Son las dos</td><td class="pron">[son las dos]</td></tr>
-        <tr><td>3:30</td><td class="es">Son las tres y media</td><td class="pron">[son las tres i ME-dja]</td></tr>
-        <tr><td>4:15</td><td class="es">Son las cuatro y cuarto</td><td class="pron">[son las KWA-tro i KWAR-to]</td></tr>
-        <tr><td>5:45</td><td class="es">Son las seis menos cuarto</td><td class="pron">[son las sejs ME-nos KWAR-to]</td></tr>
-        <tr><td>¿Qué hora es?</td><td class="es">¿Qué hora es?</td><td class="pron">[ke O-ra es]</td></tr>
-      </table>
-      <div class="gram-example">📌 Tylko dla "1:00" mówimy "Es la UNA". Od 2 wzwyż: "Son las DOS, TRES..." itd.</div>
-    </div>
-    <div class="gram-card">
-      <div class="gram-title">Przydatne wyrażenia czasowe</div>
-      <table class="gram-table">
-        <tr><th>PL</th><th>ES</th><th>Wymowa</th></tr>
-        <tr><td>Dzisiaj</td><td class="es">Hoy</td><td class="pron">[oj]</td></tr>
-        <tr><td>Jutro</td><td class="es">Mañana</td><td class="pron">[ma-NJA-na]</td></tr>
-        <tr><td>Wczoraj</td><td class="es">Ayer</td><td class="pron">[a-JER]</td></tr>
-        <tr><td>Teraz</td><td class="es">Ahora</td><td class="pron">[a-O-ra]</td></tr>
-        <tr><td>Później</td><td class="es">Después / Más tarde</td><td class="pron">[des-PWES / mas TAR-de]</td></tr>
-        <tr><td>Zawsze</td><td class="es">Siempre</td><td class="pron">[SJEM-pre]</td></tr>
-        <tr><td>Nigdy</td><td class="es">Nunca</td><td class="pron">[NUN-ka]</td></tr>
-      </table>
-    </div>`;
+// ── LICZBY ───────────────────────────────────────────────────
+function renderNumbers(){
+  document.getElementById('numGrid').innerHTML=numbers.map(n=>`<div class="num-card"><div class="num-n">${n.n.toLocaleString()}</div><div class="num-es">${n.es}</div><div class="num-pron">${n.pron}</div></div>`).join('');
+  document.getElementById('daysGrid').innerHTML=days.map(d=>`<div class="num-card"><div class="num-n" style="font-size:12px;color:var(--ink3)">${d.n}</div><div class="num-es">${d.es}</div><div class="num-pron">${d.pron}</div></div>`).join('');
+  document.getElementById('monthsGrid').innerHTML=months.map(m=>`<div class="num-card"><div class="num-n" style="font-size:12px;color:var(--ink3)">${m.n}</div><div class="num-es">${m.es}</div><div class="num-pron">${m.pron}</div></div>`).join('');
+  document.getElementById('timeGrid').innerHTML=`<div class="gram-card">
+    <div class="gram-title">Godziny — Las horas</div>
+    <table class="gram-table"><tr><th>Godzina</th><th>Español</th><th>Wymowa</th></tr>
+    <tr><td>1:00</td><td class="es">Es la una</td><td class="pron">[es la U-na]</td></tr>
+    <tr><td>2:00</td><td class="es">Son las dos</td><td class="pron">[son las dos]</td></tr>
+    <tr><td>3:30</td><td class="es">Son las tres y media</td><td class="pron">[son las tres i ME-dja]</td></tr>
+    <tr><td>4:15</td><td class="es">Son las cuatro y cuarto</td><td class="pron">[son las KWA-tro i KWAR-to]</td></tr>
+    <tr><td>5:45</td><td class="es">Son las seis menos cuarto</td><td class="pron">[son las sejs ME-nos KWAR-to]</td></tr>
+    <tr><td>¿Qué hora es?</td><td class="es">¿Qué hora es?</td><td class="pron">[ke O-ra es]</td></tr>
+    </table>
+    <div class="gram-example">📌 Tylko "1:00" = Es la UNA. Od 2 wzwyż: Son las DOS, TRES...</div>
+  </div>
+  <div class="gram-card">
+    <div class="gram-title">Wyrażenia czasowe</div>
+    <table class="gram-table"><tr><th>PL</th><th>ES</th><th>Wymowa</th></tr>
+    <tr><td>Dzisiaj</td><td class="es">Hoy</td><td class="pron">[oj]</td></tr>
+    <tr><td>Jutro</td><td class="es">Mañana</td><td class="pron">[ma-NJA-na]</td></tr>
+    <tr><td>Wczoraj</td><td class="es">Ayer</td><td class="pron">[a-JER]</td></tr>
+    <tr><td>Teraz</td><td class="es">Ahora</td><td class="pron">[a-O-ra]</td></tr>
+    <tr><td>Później</td><td class="es">Después / Más tarde</td><td class="pron">[des-PWES]</td></tr>
+    <tr><td>Zawsze</td><td class="es">Siempre</td><td class="pron">[SJEM-pre]</td></tr>
+    <tr><td>Nigdy</td><td class="es">Nunca</td><td class="pron">[NUN-ka]</td></tr>
+    <tr><td>Już</td><td class="es">Ya</td><td class="pron">[ja]</td></tr>
+    <tr><td>Jeszcze nie</td><td class="es">Todavía no</td><td class="pron">[to-da-BI-a no]</td></tr>
+    </table>
+  </div>`;
 }
 
-// ============================================================
-// FACTS
-// ============================================================
-function renderFacts() {
-  document.getElementById('facts-container').innerHTML = facts.map(f =>
-    `<div class="fact-card">
-      <div class="fact-icon">${f.icon}</div>
-      <div>
-        <div class="fact-title">${f.title}</div>
-        <div class="fact-text">${f.text}</div>
-      </div>
-    </div>`
-  ).join('');
+// ── CIEKAWOSTKI ──────────────────────────────────────────────
+function renderFacts(){
+  document.getElementById('factsContainer').innerHTML=facts.map(f=>`<div class="fact-card">
+    <div class="fact-icon">${f.icon}</div>
+    <div><div class="fact-title">${f.title}</div><div class="fact-text">${f.text}</div></div>
+  </div>`).join('');
 }
 
-// ============================================================
-// POSTĘP
-// ============================================================
-function renderPostep() {
-  const modHtml = modules.map(m => {
-    const mv = vocab.filter(v => v.cat === m.id);
-    const mk = mv.filter(v => (progress[v.es] || 0) >= 2).length;
-    const pct = mv.length > 0 ? Math.round(mk / mv.length * 100) : 0;
-    const stars = Math.floor(pct / 34);
+// ── POSTĘP ───────────────────────────────────────────────────
+function renderPostep(){
+  const allGroups=[
+    ...modules.map(m=>({id:m.id,name:m.name,icon:m.icon,color:m.color,words:vocab.filter(v=>v.cat===m.id)})),
+    ...situations.map(s=>({id:s.id,name:s.name,icon:s.icon,color:s.color,words:words.filter(w=>w.sit===s.id)}))
+  ];
+  const colMap={terra:'#c4521a',verde:'#2a6048',cielo:'#2856a0',violeta:'#6040a0',oro:'#c08020',green:'#2a6048',amber:'#c08020',purple:'#6040a0'};
+  document.getElementById('progGrid').innerHTML=allGroups.map(g=>{
+    const k=g.words.filter(w=>(prog[w.es]||0)>=2).length;
+    const pct=g.words.length?Math.round(k/g.words.length*100):0;
+    const stars=Math.floor(pct/34);
+    const col=colMap[g.color]||'#888';
     return `<div class="prog-row">
-      <div class="prog-icon">${m.icon}</div>
+      <div class="prog-icon">${g.icon}</div>
       <div class="prog-info">
-        <div class="prog-name">${m.name}</div>
-        <div class="prog-bar"><div class="prog-fill" style="width:${pct}%"></div></div>
-        <div class="prog-stars-big">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)} <span style="font-size:12px;color:var(--text3);margin-left:4px">${mk}/${mv.length} słów</span></div>
+        <div class="prog-name">${g.name}</div>
+        <div class="prog-bar"><div class="prog-fill" style="width:${pct}%;background:${col}"></div></div>
+        <div class="prog-stars">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)} <span style="font-size:11px;color:var(--ink3);margin-left:5px">${k}/${g.words.length}</span></div>
       </div>
-      <div class="prog-pct">${pct}%</div>
+      <div class="prog-pct" style="color:${col}">${pct}%</div>
     </div>`;
   }).join('');
-  document.getElementById('progress-modules').innerHTML = modHtml;
-
-  const mastered = vocab.filter(v => (progress[v.es] || 0) >= 2);
-  if (mastered.length === 0) {
-    document.getElementById('mastery-grid').innerHTML = '<div style="color:var(--text3);font-size:14px;padding:16px">Ćwicz fiszki i oznaczaj słowa które znasz — pojawią się tutaj! ⭐</div>';
-  } else {
-    document.getElementById('mastery-grid').innerHTML = mastered.map(w =>
-      `<div class="mastery-word">
-        <div class="mw-es">${w.es}</div>
-        <div class="mw-pl">${w.pl}</div>
-        <div class="mw-stars">${'⭐'.repeat(progress[w.es] || 0)}</div>
-      </div>`
-    ).join('');
-  }
+  const mastered=allCards.filter(w=>(prog[w.es]||0)>=2);
+  document.getElementById('masteredGrid').innerHTML=mastered.length
+    ?mastered.map(w=>`<div class="mastered-word"><div class="mw-es">${w.es}</div><div class="mw-pl">${w.pl}</div><div class="mw-stars">${'⭐'.repeat(prog[w.es]||0)}</div></div>`).join('')
+    :'<div style="color:var(--ink3);font-size:13px;padding:14px">Ćwicz fiszki i oznaczaj słowa — pojawią się tutaj! ⭐</div>';
 }
 
-// ============================================================
-// INIT
-// ============================================================
-renderDashboard();
-updateSidebar();
+// ── INIT ─────────────────────────────────────────────────────
+renderDash();
+updateSide();
+
 </script>
 </body>
 </html>
