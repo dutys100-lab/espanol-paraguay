@@ -38,13 +38,13 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-
 .tb-level{font-size:11px;background:var(--acc3);color:var(--acc);padding:2px 9px;border-radius:99px;font-weight:500}
 
 /* NAV TABS */
-.navtabs{background:var(--bg2);border-bottom:1px solid var(--brd);padding:0 24px;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
-.navtabs::-webkit-scrollbar{display:none}
-.tnb{padding:10px 14px;border:none;background:none;font-family:'Outfit',sans-serif;font-size:13px;color:var(--ink3);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap}
-.tnb:hover{color:var(--ink2)}
-.tnb.active{color:var(--acc);border-bottom-color:var(--acc);font-weight:500}
+.navtabs{background:var(--bg2);border-bottom:1px solid var(--brd);padding:4px 12px;display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-start}
+.tnb{padding:7px 12px;border:none;background:none;font-family:'Outfit',sans-serif;font-size:13px;color:var(--ink3);cursor:pointer;border-radius:var(--r);transition:all 0.15s;white-space:nowrap}
+.tnb:hover{color:var(--ink2);background:var(--bg3)}
+.tnb.active{color:var(--acc);background:var(--acc3);font-weight:500}
 .tnb.highlight{color:var(--grn);font-weight:500}
-.tnb.highlight.active{color:var(--grn);border-bottom-color:var(--grn)}
+.tnb.highlight.active{color:var(--grn);background:var(--grn3)}
+@media(max-width:600px){.tnb{font-size:12px;padding:6px 10px}}
 
 /* MAIN */
 .main{padding:28px 24px;max-width:860px;margin:0 auto}
@@ -130,14 +130,15 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-
 /* PARY */
 .pary-settings{display:flex;gap:10px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
 .pary-settings select{padding:6px 12px;border-radius:var(--r);border:1px solid var(--brd);background:var(--card);font-family:'Outfit',sans-serif;font-size:13px;color:var(--ink)}
-.pary-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px}
-.pary-col{display:flex;flex-direction:column;gap:8px}
-.pary-card{padding:12px 16px;border-radius:var(--r);border:1px solid var(--brd);background:var(--card);font-size:14px;cursor:pointer;transition:all 0.2s;line-height:1.4;box-shadow:var(--sh)}
-.pary-card:hover:not(.matched):not(.wrong){border-color:var(--acc);color:var(--acc)}
-.pary-card.selected{border-color:var(--acc);background:var(--acc3);color:var(--acc)}
-.pary-card.matched{border-color:var(--grn);background:var(--grn3);color:var(--grn);cursor:default;opacity:0.7}
+.pary-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.pary-col{display:grid;grid-template-rows:auto;gap:8px}
+.pary-col-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--ink3);margin-bottom:4px;text-align:center}
+.pary-card{padding:16px 14px;border-radius:var(--r);border:2px solid var(--brd);background:var(--card);font-size:14px;font-weight:500;cursor:pointer;transition:all 0.18s;line-height:1.4;text-align:center;min-height:72px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.pary-card:hover:not(.matched):not(.wrong){border-color:var(--acc);background:var(--acc3);transform:scale(1.02)}
+.pary-card.selected{border-color:var(--acc);background:var(--acc3);color:var(--acc);transform:scale(1.03);box-shadow:0 3px 12px rgba(196,82,26,0.2)}
+.pary-card.matched{border-color:var(--grn);background:var(--grn3);color:var(--grn);cursor:default;opacity:0.8}
 .pary-card.wrong{border-color:#e24b4a;background:#fcebeb;animation:shake 0.4s}
-.pary-pron{display:block;font-size:11px;color:var(--ink3);font-style:italic;margin-top:2px}
+.pary-pron{font-size:11px;color:var(--ink3);font-style:italic}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
 #pary-done{display:none;text-align:center;padding:1.5rem;background:var(--grn3);border-radius:var(--r2);border:1px solid var(--grn)}
 
@@ -211,12 +212,25 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-
 .gram-mn{font-size:12px;background:var(--acc3);border-radius:8px;padding:8px 12px;margin-top:6px;color:var(--acc);line-height:1.6}
 
 /* LICZBY */
-.num-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin-bottom:18px}
-.num-card{background:var(--card);border-radius:var(--r);border:1px solid var(--brd);padding:10px 8px;text-align:center;transition:all 0.2s}
+.num-grid{display:grid;gap:10px;margin-bottom:18px}
+.num-accordion{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);overflow:hidden;transition:all 0.2s}
+.num-accordion:hover{border-color:var(--acc2)}
+.num-acc-header{padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.num-acc-title{font-family:'Playfair Display',serif;font-size:15px;color:var(--ink);min-width:180px}
+.num-acc-preview{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.num-chip{background:var(--bg2);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--ink2);display:flex;gap:5px;align-items:center}
+.num-chip span{color:var(--acc);font-weight:500}
+.num-chip-more{background:var(--acc3);border-radius:8px;padding:4px 10px;font-size:12px;color:var(--acc);font-weight:500}
+.num-acc-arrow{margin-left:auto;font-size:12px;color:var(--ink3);transition:transform 0.2s;flex-shrink:0}
+.num-acc-body{padding:0 16px 16px;border-top:1px solid var(--brd)}
+.num-rule{font-size:13px;color:var(--acc);background:var(--acc3);border-radius:var(--r);padding:7px 12px;margin:12px 0;line-height:1.5}
+.num-group-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin-top:10px}
+.tiles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin-bottom:18px}
+.num-card{background:var(--card);border-radius:var(--r);border:1px solid var(--brd);padding:12px 8px;text-align:center;transition:all 0.2s;cursor:default}
 .num-card:hover{border-color:var(--grn);background:var(--grn3)}
-.num-n{font-family:'Playfair Display',serif;font-size:20px;color:var(--grn)}
-.num-es{font-size:12px;font-weight:500;margin-top:2px}
-.num-pron{font-size:10px;color:var(--ink3);font-style:italic}
+.num-n{font-family:'Playfair Display',serif;font-size:22px;color:var(--grn);line-height:1.2}
+.num-es{font-size:13px;font-weight:500;color:var(--ink);margin-top:4px}
+.num-pron{font-size:10px;color:var(--ink3);font-style:italic;margin-top:2px}
 .section-title{font-family:'Playfair Display',serif;font-size:17px;margin:20px 0 12px}
 
 /* POSTĘP */
@@ -489,12 +503,28 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-
     <h2>🔢 Liczby i czas</h2>
     <p>Niezbędne do zakupów w guaraníes, godzin i dat.</p>
   </div>
-  <div class="section-title">Liczby</div>
-  <div class="num-grid" id="num-grid"></div>
+  <div class="section-title">Liczby 1–1 000 000</div>
+  <div id="num-grid"></div>
+
+  <div class="section-title" style="margin-top:28px">🎯 Quiz z liczb</div>
+  <p style="font-size:13px;color:var(--ink3);margin-bottom:16px">Sprawdź czy umiesz liczby — bardzo ważne przy cenach w guaraníes!</p>
+  <div class="quiz-meta" style="margin-bottom:12px">
+    <span class="qm-pill qm-ok" id="nq-ok">✅ 0</span>
+    <span class="qm-pill qm-err" id="nq-err">❌ 0</span>
+  </div>
+  <div class="qcard" style="max-width:560px;min-height:120px">
+    <div class="q-lbl" id="nq-lbl">Ładowanie...</div>
+    <div class="q-word" id="nq-word" style="font-size:36px"></div>
+    <div class="q-pron" id="nq-pron"></div>
+  </div>
+  <div class="q-opts" id="nq-opts" style="max-width:560px"></div>
+  <div class="q-feedback" id="nq-feedback" style="display:none;max-width:560px"></div>
+  <div style="margin-bottom:28px"><button class="btn-primary" id="nq-next" onclick="buildNumQuiz()" style="display:none">Następna liczba →</button></div>
+
   <div class="section-title">Dni tygodnia</div>
-  <div class="num-grid" id="days-grid"></div>
+  <div class="tiles-grid" id="days-grid"></div>
   <div class="section-title">Miesiące</div>
-  <div class="num-grid" id="months-grid"></div>
+  <div class="tiles-grid" id="months-grid"></div>
 </div>
 
 <!-- CIEKAWOSTKI -->
@@ -1181,66 +1211,103 @@ const dialogs = [
 ];
 const grammarData = [
   {
+    title:'Zaimki osobowe — kto mówi?',
+    rows:[
+      {per:'Yo',pl:'ja',es:'—',pron:'[jo]',ex:'Yo soy Małgosia — Ja jestem Małgosia'},
+      {per:'Tú',pl:'ty',es:'—',pron:'[tu]',ex:'¿Tú hablas español? — Ty mówisz po hiszpańsku?'},
+      {per:'Él / Ella',pl:'on / ona',es:'—',pron:'[el / E-ja]',ex:'Ella es mi vecina — Ona jest moją sąsiadką'},
+      {per:'Usted',pl:'Pan / Pani (grzecznie)',es:'—',pron:'[us-TED]',ex:'¿Usted habla español? — Czy Pan mówi po hiszpańsku?'},
+      {per:'Nosotros / Nosotras',pl:'my',es:'—',pron:'[no-SO-tros]',ex:'Nosotras somos amigas — My jesteśmy przyjaciółkami'},
+      {per:'Ustedes',pl:'wy / Państwo',es:'—',pron:'[us-TE-des]',ex:'¿Ustedes son de Polonia? — Czy Państwo są z Polski?'},
+      {per:'Ellos / Ellas',pl:'oni / one',es:'—',pron:'[E-jos / E-jas]',ex:'Ellas trabajan aquí — One tu pracują'},
+    ],
+    example:'W Paragwaju NIE używa się "vosotros" (jak w Hiszpanii). Zamiast tego zawsze "ustedes" dla wy/Państwo.',
+    mnem:'Zapamiętaj: Yo=ja, Tú=ty, Él/Ella=on/ona, Nosotros=my, Ustedes=wy. Vosotros NIE istnieje w PY!'
+  },
+  {
     title:'SER — być (stałe cechy: skąd jestem, kim jestem)',
     rows:[
-      {per:'Yo',es:'soy',pron:'[soj]',ex:'Soy de Polonia — Jestem z Polski'},
-      {per:'Tú',es:'eres',pron:'[E-res]',ex:'¿Eres estudiante? — Jesteś studentką?'},
-      {per:'Él / Ella / Usted',es:'es',pron:'[es]',ex:'Ella es amable — Ona jest miła'},
-      {per:'Nosotros',es:'somos',pron:'[SO-mos]',ex:'Somos vecinos — Jesteśmy sąsiadami'},
-      {per:'Ustedes',es:'son',pron:'[son]',ex:'¿De dónde son? — Skąd jesteście?'},
+      {per:'Yo',pl:'ja',es:'soy',pron:'[soj]',ex:'Soy de Polonia — Jestem z Polski'},
+      {per:'Tú',pl:'ty',es:'eres',pron:'[E-res]',ex:'¿Eres estudiante? — Jesteś studentką?'},
+      {per:'Él / Ella / Usted',pl:'on/ona/Pan',es:'es',pron:'[es]',ex:'Ella es amable — Ona jest miła'},
+      {per:'Nosotros',pl:'my',es:'somos',pron:'[SO-mos]',ex:'Somos vecinas — Jesteśmy sąsiadkami'},
+      {per:'Ustedes',pl:'wy/Państwo',es:'son',pron:'[son]',ex:'¿De dónde son? — Skąd jesteście?'},
+      {per:'Ellos / Ellas',pl:'oni/one',es:'son',pron:'[son]',ex:'Son paraguayos — Oni są Paragwajczykami'},
     ],
     example:'SER używasz gdy mówisz o stałych cechach: skąd jesteś, kim jesteś, jak wyglądasz.',
-    mnem:'Zapamiętaj: SER = STAŁY. Jestem Polką (stałe) = SER. Jestem chora (tymczasowe) = ESTAR.'
+    mnem:'SER = STAŁY. Jestem Polką (na zawsze) = SER. Jestem chora (teraz) = ESTAR.'
   },
   {
     title:'ESTAR — być (stan tymczasowy i lokalizacja)',
     rows:[
-      {per:'Yo',es:'estoy',pron:'[es-TOJ]',ex:'Estoy bien — Dobrze mi / Jestem dobrze'},
-      {per:'Tú',es:'estás',pron:'[es-TAS]',ex:'¿Estás en casa? — Jesteś w domu?'},
-      {per:'Él / Ella / Usted',es:'está',pron:'[es-TA]',ex:'El mercado está cerca — Targ jest blisko'},
-      {per:'Nosotros',es:'estamos',pron:'[es-TA-mos]',ex:'Estamos aprendiendo — Uczymy się'},
-      {per:'Ustedes',es:'están',pron:'[es-TAN]',ex:'¿Cómo están? — Jak się macie?'},
+      {per:'Yo',pl:'ja',es:'estoy',pron:'[es-TOJ]',ex:'Estoy bien — Jestem dobrze'},
+      {per:'Tú',pl:'ty',es:'estás',pron:'[es-TAS]',ex:'¿Estás en casa? — Jesteś w domu?'},
+      {per:'Él / Ella / Usted',pl:'on/ona/Pan',es:'está',pron:'[es-TA]',ex:'El mercado está cerca — Targ jest blisko'},
+      {per:'Nosotros',pl:'my',es:'estamos',pron:'[es-TA-mos]',ex:'Estamos aprendiendo — Uczymy się'},
+      {per:'Ustedes',pl:'wy/Państwo',es:'están',pron:'[es-TAN]',ex:'¿Cómo están? — Jak się macie?'},
+      {per:'Ellos / Ellas',pl:'oni/one',es:'están',pron:'[es-TAN]',ex:'Están en el mercado — Są na targu'},
     ],
-    example:'ESTAR używasz dla: miejsca (gdzie jest?) i stanu tymczasowego (jak się czujesz?).',
-    mnem:'ESTAR = CHWILOWY. Jestem w sklepie (chwilowo) = ESTAR. Jestem smutna (teraz) = ESTAR.'
+    example:'ESTAR używasz dla miejsca (gdzie jest?) i stanu tymczasowego (jak się czujesz?).',
+    mnem:'ESTAR = CHWILOWY. Jestem w sklepie (teraz) = ESTAR. Jestem smutna (teraz) = ESTAR.'
   },
   {
     title:'TENER — mieć',
     rows:[
-      {per:'Yo',es:'tengo',pron:'[TEN-go]',ex:'Tengo hambre — Jestem głodna (mam głód)'},
-      {per:'Tú',es:'tienes',pron:'[TJE-nes]',ex:'¿Tienes tiempo? — Masz czas?'},
-      {per:'Él / Ella',es:'tiene',pron:'[TJE-ne]',ex:'¿Tiene pan? — Czy ma Pani chleb?'},
-      {per:'Nosotros',es:'tenemos',pron:'[te-NE-mos]',ex:'Tenemos sed — Jesteśmy spragnione'},
-      {per:'Ustedes',es:'tienen',pron:'[TJE-nen]',ex:'¿Tienen mesa libre? — Czy mają wolny stolik?'},
+      {per:'Yo',pl:'ja',es:'tengo',pron:'[TEN-go]',ex:'Tengo hambre — Jestem głodna (mam głód)'},
+      {per:'Tú',pl:'ty',es:'tienes',pron:'[TJE-nes]',ex:'¿Tienes tiempo? — Masz czas?'},
+      {per:'Él / Ella / Usted',pl:'on/ona/Pan',es:'tiene',pron:'[TJE-ne]',ex:'¿Tiene pan? — Czy ma Pani chleb?'},
+      {per:'Nosotros',pl:'my',es:'tenemos',pron:'[te-NE-mos]',ex:'Tenemos sed — Mamy pragnienie'},
+      {per:'Ustedes',pl:'wy/Państwo',es:'tienen',pron:'[TJE-nen]',ex:'¿Tienen mesa libre? — Czy mają wolny stolik?'},
+      {per:'Ellos / Ellas',pl:'oni/one',es:'tienen',pron:'[TJE-nen]',ex:'Tienen hijos — Mają dzieci'},
     ],
-    example:'TENER = mieć. Ale uwaga: "Mam głód" = "Tengo hambre" (dosłownie: mam głód, nie: jestem głodna!)',
+    example:'TENER = mieć. Uwaga: "Mam głód" = "Tengo hambre", "Mam zimno" = "Tengo frío" — nie "jestem głodna"!',
     mnem:'Hambre (głód), sed (pragnienie), frío (zimno), calor (gorąco) — po hiszpańsku się MA, nie JEST!'
   },
   {
-    title:'IR — iść/jechać (najważniejszy czasownik!)',
+    title:'IR — iść / jechać',
     rows:[
-      {per:'Yo',es:'voy',pron:'[boj]',ex:'Voy al mercado — Idę na targ'},
-      {per:'Tú',es:'vas',pron:'[bas]',ex:'¿Vas al trabajo? — Idziesz do pracy?'},
-      {per:'Él / Ella',es:'va',pron:'[ba]',ex:'Va a la farmacia — Idzie do apteki'},
-      {per:'Nosotros',es:'vamos',pron:'[BA-mos]',ex:'¡Vamos! — Chodźmy!'},
-      {per:'Ustedes',es:'van',pron:'[ban]',ex:'¿A dónde van? — Dokąd idą?'},
+      {per:'Yo',pl:'ja',es:'voy',pron:'[boj]',ex:'Voy al mercado — Idę na targ'},
+      {per:'Tú',pl:'ty',es:'vas',pron:'[bas]',ex:'¿Vas al trabajo? — Idziesz do pracy?'},
+      {per:'Él / Ella / Usted',pl:'on/ona/Pan',es:'va',pron:'[ba]',ex:'Va a la farmacia — Idzie do apteki'},
+      {per:'Nosotros',pl:'my',es:'vamos',pron:'[BA-mos]',ex:'¡Vamos! — Chodźmy!'},
+      {per:'Ustedes',pl:'wy/Państwo',es:'van',pron:'[ban]',ex:'¿A dónde van? — Dokąd idą?'},
+      {per:'Ellos / Ellas',pl:'oni/one',es:'van',pron:'[ban]',ex:'Van al centro — Idą do centrum'},
     ],
-    example:'IR + a + infinitivo = przyszłość! "Voy a comer" = Zamierzam zjeść (będę jeść)',
-    mnem:'VAMOS! Zapamiętaj przez "Vamanos" z Dory Poznajemy Świat — chodźmy! 🐠'
+    example:'IR + a + bezokolicznik = przyszłość! "Voy a comer" = Zamierzam zjeść / Będę jeść',
+    mnem:'¡VAMOS! Chodźmy — najbardziej używane słowo w Paragwaju. Van, vas, voy — zapamiętaj przez "van"!'
+  },
+  {
+    title:'Nosotros vs Nosotras — my (rodzaj)',
+    rows:[
+      {per:'Nosotros',pl:'my (mieszana grupa lub sami mężczyźni)',es:'',pron:'[no-SO-tros]',ex:'Nosotros vamos al mercado — Idziemy na targ (z mężem)'},
+      {per:'Nosotras',pl:'my (TYLKO kobiety)',es:'',pron:'[no-SO-tras]',ex:'Nosotras somos amigas — Jesteśmy przyjaciółkami'},
+    ],
+    example:'Zasada dotyczy wszystkich grup: mieszana lub sami mężczyźni = -os. Tylko kobiety = -as. Przykład: Ellos (oni/mieszani), Ellas (tylko kobiety).',
+    mnem:'Łatwy sposób: jeśli w grupie jest CHOĆBY JEDEN mężczyzna — forma męska (-os). Tylko same kobiety = -as. Jako kobieta z koleżankami → Nosotras!'
+  },
+  {
+    title:'Vosotros — dlaczego go nie ma w Paragwaju?',
+    rows:[
+      {per:'Vosotros (Hiszpania)',pl:'wy — TYLKO w Hiszpanii!',es:'habláis',pron:'[bo-SO-tros a-BLAIS]',ex:'¿Vosotros sois de Polonia? — Wy jesteście z Polski?'},
+      {per:'Ustedes (Paragwaj)',pl:'wy / Państwo — zawsze w PY',es:'hablan',pron:'[us-TE-des A-blan]',ex:'¿Ustedes son de Polonia? — Czy Państwo są z Polski?'},
+    ],
+    example:'W Paragwaju i całej Ameryce Łacińskiej vosotros NIE ISTNIEJE. Zawsze używaj ustedes — dla "wy" i dla "Państwo". To prostsze niż w Hiszpanii!',
+    mnem:'Historyczna ciekawostka: gdy Hiszpanie kolonizowali Amerykę w XVI w., vosotros było rzadkie — i nigdy się tam nie przyjęło. Latam poszła własną drogą. Dla Ciebie = łatwiej!'
   },
   {
     title:'Pytania kluczowe',
     rows:[
-      {per:'¿Qué?',es:'Co?',pron:'[ke]',ex:'¿Qué es esto? — Co to jest?'},
-      {per:'¿Dónde?',es:'Gdzie?',pron:'[DON-de]',ex:'¿Dónde está el baño? — Gdzie jest łazienka?'},
-      {per:'¿Cuánto?',es:'Ile?',pron:'[KWAN-to]',ex:'¿Cuánto cuesta? — Ile kosztuje?'},
-      {per:'¿Cómo?',es:'Jak?',pron:'[KO-mo]',ex:'¿Cómo se llama? — Jak się Pan/Pani nazywa?'},
-      {per:'¿Cuándo?',es:'Kiedy?',pron:'[KWAN-do]',ex:'¿Cuándo llega el bus? — Kiedy przyjeżdża bus?'},
-      {per:'¿Por qué?',es:'Dlaczego?',pron:'[por KE]',ex:'¿Por qué? — Dlaczego?'},
-      {per:'¿Quién?',es:'Kto?',pron:'[kjen]',ex:'¿Quién es? — Kto to jest?'},
+      {per:'¿Qué?',pl:'Co?',es:'',pron:'[ke]',ex:'¿Qué es esto? — Co to jest?'},
+      {per:'¿Dónde?',pl:'Gdzie?',es:'',pron:'[DON-de]',ex:'¿Dónde está el baño? — Gdzie jest łazienka?'},
+      {per:'¿Cuánto?',pl:'Ile?',es:'',pron:'[KWAN-to]',ex:'¿Cuánto cuesta? — Ile kosztuje?'},
+      {per:'¿Cómo?',pl:'Jak?',es:'',pron:'[KO-mo]',ex:'¿Cómo se llama? — Jak się nazywa?'},
+      {per:'¿Cuándo?',pl:'Kiedy?',es:'',pron:'[KWAN-do]',ex:'¿Cuándo llega el bus? — Kiedy przyjeżdża bus?'},
+      {per:'¿Por qué?',pl:'Dlaczego?',es:'',pron:'[por KE]',ex:'¿Por qué? — Dlaczego?'},
+      {per:'¿Quién?',pl:'Kto?',es:'',pron:'[kjen]',ex:'¿Quién es? — Kto to jest?'},
+      {per:'¿Cuál?',pl:'Który/a?',es:'',pron:'[kwal]',ex:'¿Cuál es su nombre? — Jak się Pan/Pani nazywa?'},
     ],
-    example:'Wszystkie pytania zaczynają się od ¿ i kończą ?. Akcent na pytajniku!',
-    mnem:'Naucz się tych 7 pytań na pamięć — z nimi możesz pytać o WSZYSTKO!'
+    example:'Wszystkie pytania zaczynają się od ¿ i kończą ?. W Paragwaju używaj Usted z nieznajomymi!',
+    mnem:'7 pytań na pamięć = możesz pytać o WSZYSTKO. Qué, Dónde, Cuánto, Cómo, Cuándo, Por qué, Quién!'
   },
 ];
 const facts = [
@@ -1297,7 +1364,48 @@ const facts = [
 ];
 
 // ── NUMBERS ─────────────────────────────────────────────────
-const numbers=[{n:1,es:'uno',pron:'[U-no]'},{n:2,es:'dos',pron:'[dos]'},{n:3,es:'tres',pron:'[tres]'},{n:4,es:'cuatro',pron:'[KWA-tro]'},{n:5,es:'cinco',pron:'[SIN-ko]'},{n:6,es:'seis',pron:'[sejs]'},{n:7,es:'siete',pron:'[SJE-te]'},{n:8,es:'ocho',pron:'[O-czo]'},{n:9,es:'nueve',pron:'[NWE-be]'},{n:10,es:'diez',pron:'[djes]'},{n:11,es:'once',pron:'[ON-se]'},{n:12,es:'doce',pron:'[DO-se]'},{n:13,es:'trece',pron:'[TRE-se]'},{n:14,es:'catorce',pron:'[ka-TOR-se]'},{n:15,es:'quince',pron:'[KIN-se]'},{n:16,es:'dieciséis',pron:'[dje-si-SEJS]'},{n:17,es:'diecisiete',pron:'[dje-si-SJE-te]'},{n:18,es:'dieciocho',pron:'[dje-sjo-O-czo]'},{n:19,es:'diecinueve',pron:'[dje-si-NWE-be]'},{n:20,es:'veinte',pron:'[BEJN-te]'},{n:30,es:'treinta',pron:'[TREJN-ta]'},{n:40,es:'cuarenta',pron:'[kwa-REN-ta]'},{n:50,es:'cincuenta',pron:'[sin-KWEN-ta]'},{n:60,es:'sesenta',pron:'[se-SEN-ta]'},{n:70,es:'setenta',pron:'[se-TEN-ta]'},{n:80,es:'ochenta',pron:'[o-CZEN-ta]'},{n:90,es:'noventa',pron:'[no-BEN-ta]'},{n:100,es:'cien',pron:'[sjen]'},{n:1000,es:'mil',pron:'[mil]'},{n:1000000,es:'un millón',pron:'[un mi-LJON]'}];
+const numbers=[
+{n:1,es:'uno',pron:'[U-no]'},{n:2,es:'dos',pron:'[dos]'},{n:3,es:'tres',pron:'[tres]'},
+{n:4,es:'cuatro',pron:'[KWA-tro]'},{n:5,es:'cinco',pron:'[SIN-ko]'},{n:6,es:'seis',pron:'[sejs]'},
+{n:7,es:'siete',pron:'[SJE-te]'},{n:8,es:'ocho',pron:'[O-czo]'},{n:9,es:'nueve',pron:'[NWE-be]'},
+{n:10,es:'diez',pron:'[djes]'},{n:11,es:'once',pron:'[ON-se]'},{n:12,es:'doce',pron:'[DO-se]'},
+{n:13,es:'trece',pron:'[TRE-se]'},{n:14,es:'catorce',pron:'[ka-TOR-se]'},{n:15,es:'quince',pron:'[KIN-se]'},
+{n:16,es:'dieciséis',pron:'[dje-si-SEJS]'},{n:17,es:'diecisiete',pron:'[dje-si-SJE-te]'},
+{n:18,es:'dieciocho',pron:'[dje-sjo-O-czo]'},{n:19,es:'diecinueve',pron:'[dje-si-NWE-be]'},
+{n:20,es:'veinte',pron:'[BEJN-te]'},
+{n:21,es:'veintiuno',pron:'[bejn-tju-NO]'},{n:22,es:'veintidós',pron:'[bejn-ti-DOS]'},
+{n:23,es:'veintitrés',pron:'[bejn-ti-TRES]'},{n:24,es:'veinticuatro',pron:'[bejn-ti-KWA-tro]'},
+{n:25,es:'veinticinco',pron:'[bejn-ti-SIN-ko]'},{n:26,es:'veintiséis',pron:'[bejn-ti-SEJS]'},
+{n:27,es:'veintisiete',pron:'[bejn-ti-SJE-te]'},{n:28,es:'veintiocho',pron:'[bejn-tjo-O-czo]'},
+{n:29,es:'veintinueve',pron:'[bejn-ti-NWE-be]'},
+{n:30,es:'treinta',pron:'[TREJN-ta]'},{n:31,es:'treinta y uno',pron:'[TREJN-ta i U-no]'},
+{n:32,es:'treinta y dos',pron:'[TREJN-ta i dos]'},{n:33,es:'treinta y tres',pron:'[TREJN-ta i tres]'},
+{n:34,es:'treinta y cuatro',pron:'[TREJN-ta i KWA-tro]'},{n:35,es:'treinta y cinco',pron:'[TREJN-ta i SIN-ko]'},
+{n:36,es:'treinta y seis',pron:'[TREJN-ta i sejs]'},{n:37,es:'treinta y siete',pron:'[TREJN-ta i SJE-te]'},
+{n:38,es:'treinta y ocho',pron:'[TREJN-ta i O-czo]'},{n:39,es:'treinta y nueve',pron:'[TREJN-ta i NWE-be]'},
+{n:40,es:'cuarenta',pron:'[kwa-REN-ta]'},{n:41,es:'cuarenta y uno',pron:'[kwa-REN-ta i U-no]'},
+{n:42,es:'cuarenta y dos',pron:'[kwa-REN-ta i dos]'},{n:45,es:'cuarenta y cinco',pron:'[kwa-REN-ta i SIN-ko]'},
+{n:48,es:'cuarenta y ocho',pron:'[kwa-REN-ta i O-czo]'},{n:49,es:'cuarenta y nueve',pron:'[kwa-REN-ta i NWE-be]'},
+{n:50,es:'cincuenta',pron:'[sin-KWEN-ta]'},{n:51,es:'cincuenta y uno',pron:'[sin-KWEN-ta i U-no]'},
+{n:55,es:'cincuenta y cinco',pron:'[sin-KWEN-ta i SIN-ko]'},{n:59,es:'cincuenta y nueve',pron:'[sin-KWEN-ta i NWE-be]'},
+{n:60,es:'sesenta',pron:'[se-SEN-ta]'},{n:61,es:'sesenta y uno',pron:'[se-SEN-ta i U-no]'},
+{n:65,es:'sesenta y cinco',pron:'[se-SEN-ta i SIN-ko]'},{n:69,es:'sesenta y nueve',pron:'[se-SEN-ta i NWE-be]'},
+{n:70,es:'setenta',pron:'[se-TEN-ta]'},{n:71,es:'setenta y uno',pron:'[se-TEN-ta i U-no]'},
+{n:75,es:'setenta y cinco',pron:'[se-TEN-ta i SIN-ko]'},{n:79,es:'setenta y nueve',pron:'[se-TEN-ta i NWE-be]'},
+{n:80,es:'ochenta',pron:'[o-CZEN-ta]'},{n:81,es:'ochenta y uno',pron:'[o-CZEN-ta i U-no]'},
+{n:85,es:'ochenta y cinco',pron:'[o-CZEN-ta i SIN-ko]'},{n:89,es:'ochenta y nueve',pron:'[o-CZEN-ta i NWE-be]'},
+{n:90,es:'noventa',pron:'[no-BEN-ta]'},{n:91,es:'noventa y uno',pron:'[no-BEN-ta i U-no]'},
+{n:95,es:'noventa y cinco',pron:'[no-BEN-ta i SIN-ko]'},{n:99,es:'noventa y nueve',pron:'[no-BEN-ta i NWE-be]'},
+{n:100,es:'cien',pron:'[sjen]'},{n:101,es:'ciento uno',pron:'[SJEN-to U-no]'},
+{n:200,es:'doscientos',pron:'[do-SJEN-tos]'},{n:300,es:'trescientos',pron:'[tre-SJEN-tos]'},
+{n:400,es:'cuatrocientos',pron:'[kwa-tro-SJEN-tos]'},{n:500,es:'quinientos',pron:'[ki-NJEN-tos]'},
+{n:600,es:'seiscientos',pron:'[sejs-SJEN-tos]'},{n:700,es:'setecientos',pron:'[se-te-SJEN-tos]'},
+{n:800,es:'ochocientos',pron:'[o-czo-SJEN-tos]'},{n:900,es:'novecientos',pron:'[no-be-SJEN-tos]'},
+{n:1000,es:'mil',pron:'[mil]'},{n:2000,es:'dos mil',pron:'[dos mil]'},
+{n:5000,es:'cinco mil',pron:'[SIN-ko mil]'},{n:10000,es:'diez mil',pron:'[djes mil]'},
+{n:50000,es:'cincuenta mil',pron:'[sin-KWEN-ta mil]'},{n:100000,es:'cien mil',pron:'[sjen mil]'},
+{n:1000000,es:'un millón',pron:'[un mi-LJON]'}
+];
 const days=[{n:'Poniedziałek',es:'lunes',pron:'[LU-nes]'},{n:'Wtorek',es:'martes',pron:'[MAR-tes]'},{n:'Środa',es:'miércoles',pron:'[MJER-ko-les]'},{n:'Czwartek',es:'jueves',pron:'[CHWe-bes]'},{n:'Piątek',es:'viernes',pron:'[BJER-nes]'},{n:'Sobota',es:'sábado',pron:'[SA-ba-do]'},{n:'Niedziela',es:'domingo',pron:'[do-MIN-go]'}];
 const months=[{n:'Styczeń',es:'enero',pron:'[e-NE-ro]'},{n:'Luty',es:'febrero',pron:'[fe-BRE-ro]'},{n:'Marzec',es:'marzo',pron:'[MAR-so]'},{n:'Kwiecień',es:'abril',pron:'[a-BRIL]'},{n:'Maj',es:'mayo',pron:'[MA-jo]'},{n:'Czerwiec',es:'junio',pron:'[CHU-njo]'},{n:'Lipiec',es:'julio',pron:'[CHU-ljo]'},{n:'Sierpień',es:'agosto',pron:'[a-GOS-to]'},{n:'Wrzesień',es:'septiembre',pron:'[sep-TJEM-bre]'},{n:'Październik',es:'octubre',pron:'[ok-TU-bre]'},{n:'Listopad',es:'noviembre',pron:'[no-BJEM-bre]'},{n:'Grudzień',es:'diciembre',pron:'[di-SJEM-bre]'}];
 
@@ -1512,8 +1620,22 @@ function renderPary(){
   const left=document.getElementById('pary-left');
   const right=document.getElementById('pary-right');
   const shuffledPl=[...paryPool].sort(()=>Math.random()-0.5);
-  left.innerHTML=paryPool.map(w=>`<div class="pary-card ${paryMatched.includes(w.es)?'matched':''}" data-es="${w.es}" data-side="es" onclick="pickPary(this,'${w.es}','es')">${w.es}<span class="pary-pron">${w.pron||''}</span></div>`).join('');
-  right.innerHTML=shuffledPl.map(w=>`<div class="pary-card ${paryMatched.includes(w.es)?'matched':''}" data-es="${w.es}" data-side="pl" onclick="pickPary(this,'${w.es}','pl')">${w.pl}</div>`).join('');
+  // Build rows together so heights match
+  const n=paryPool.length;
+  const rowStyle='display:contents';
+  left.innerHTML='<div class="pary-col-label">🇪🇸 Español</div>'+paryPool.map((w,i)=>`<div class="pary-card ${paryMatched.includes(w.es)?'matched':''}" data-es="${w.es}" data-side="es" data-idx="${i}" onclick="pickPary(this,'${w.es}','es')">${w.es}<span class="pary-pron">${w.pron||''}</span></div>`).join('');
+  right.innerHTML='<div class="pary-col-label">🇵🇱 Polski</div>'+shuffledPl.map((w,i)=>`<div class="pary-card ${paryMatched.includes(w.es)?'matched':''}" data-es="${w.es}" data-side="pl" data-idx="${i}" onclick="pickPary(this,'${w.es}','pl')">${w.pl}</div>`).join('');
+  // Sync heights after render
+  setTimeout(()=>{
+    const lCards=[...left.querySelectorAll('.pary-card')];
+    const rCards=[...right.querySelectorAll('.pary-card')];
+    lCards.forEach((lc,i)=>{
+      if(!rCards[i])return;
+      lc.style.height='';rCards[i].style.height='';
+      const h=Math.max(lc.offsetHeight,rCards[i].offsetHeight);
+      lc.style.height=h+'px';rCards[i].style.height=h+'px';
+    });
+  },50);
 }
 function pickPary(el,es,side){
   if(paryMatched.includes(es))return;
@@ -1600,7 +1722,7 @@ function buildQuiz(){
   document.getElementById('q-lbl').textContent=type==='es_pl'?'Przetłumacz na polski:':'Jak powiedzieć po hiszpańsku?';
   document.getElementById('q-word').textContent=type==='es_pl'?correct.es:correct.pl;
   document.getElementById('q-pron').textContent=type==='es_pl'?(correct.pron||''):'';
-  document.getElementById('q-ctx').textContent=correct.ctx||'';
+  document.getElementById('q-ctx').textContent='';
   document.getElementById('q-feedback').className='q-feedback';
   document.getElementById('q-feedback').innerHTML='';
   document.getElementById('q-next').style.display='none';
@@ -1624,7 +1746,9 @@ function checkQ(chosen,correct,type,btn){
   qStats.total++;save();
   const fb=document.getElementById('q-feedback');
   fb.className='q-feedback '+(isOk?'ok':'err');
-  fb.innerHTML=isOk?`✅ Brawo! 💡 ${correct.mnem||correct.pron||''}`:`❌ Prawidłowo: <strong>${correct.es}</strong> = ${correct.pl}<br><small>💡 ${correct.mnem||''}</small>`;
+  fb.innerHTML=isOk
+    ?`✅ Brawo! ${correct.pron?'<em>'+correct.pron+'</em>':''}<br><small style="color:var(--grn2)">${correct.ctx||''}</small>`
+    :`❌ Prawidłowo: <strong>${correct.es}</strong> = ${correct.pl} ${correct.pron||''}<br><small style="color:var(--ink3)">${correct.ctx||''}</small><br><small>💡 ${correct.mnem||''}</small>`;
   document.getElementById('q-ok').textContent='✅ '+qOk;
   document.getElementById('q-err').textContent='❌ '+qErr;
   document.getElementById('q-next').style.display='inline-block';
@@ -1647,14 +1771,77 @@ function renderDialog(){
 
 // ── GRAMATYKA ────────────────────────────────────────────────
 function renderGramatyka(){
-  document.getElementById('gram-box').innerHTML=grammarData.map(g=>`<div class="gram-card"><div class="gram-title">${g.title}</div><table class="gram-table"><tr><th>Osoba</th><th>Forma</th><th>Wymowa</th><th>Przykład</th></tr>${g.rows.map(r=>`<tr><td style="color:#9c8b78;font-size:12px">${r.per}</td><td style="color:#2a6048;font-weight:500">${r.es}</td><td style="color:#3d8a68;font-style:italic;font-size:12px">${r.pron}</td><td style="font-size:12px;color:#5c4d3c">${r.ex}</td></tr>`).join('')}</table><div class="gram-ex">📌 ${g.example}</div><div class="gram-mn">💡 ${g.mnem}</div></div>`).join('');
+  document.getElementById('gram-box').innerHTML=grammarData.map(g=>{
+    const hasPl = g.rows[0] && g.rows[0].pl;
+    const hasEs = g.rows[0] && g.rows[0].es;
+    const headers = hasPl
+      ? `<tr><th>Forma ES</th><th>Po polsku</th><th>Czasownik</th><th>Wymowa</th><th>Przykład</th></tr>`
+      : `<tr><th>Osoba</th><th>Forma</th><th>Wymowa</th><th>Przykład</th></tr>`;
+    const rows = g.rows.map(r => hasPl
+      ? `<tr>
+          <td style="color:#1a1208;font-weight:500;font-size:14px">${r.per}</td>
+          <td style="color:#9c8b78;font-size:13px;font-style:italic">${r.pl||''}</td>
+          <td style="color:#2a6048;font-weight:500;font-size:14px">${r.es||''}</td>
+          <td style="color:#3d8a68;font-style:italic;font-size:12px">${r.pron}</td>
+          <td style="font-size:12px;color:#5c4d3c">${r.ex}</td>
+        </tr>`
+      : `<tr>
+          <td style="color:#9c8b78;font-size:12px">${r.per}</td>
+          <td style="color:#2a6048;font-weight:500">${r.es}</td>
+          <td style="color:#3d8a68;font-style:italic;font-size:12px">${r.pron}</td>
+          <td style="font-size:12px;color:#5c4d3c">${r.ex}</td>
+        </tr>`
+    ).join('');
+    return `<div class="gram-card">
+      <div class="gram-title">${g.title}</div>
+      <table class="gram-table">${headers}${rows}</table>
+      <div class="gram-ex">📌 ${g.example}</div>
+      <div class="gram-mn">💡 ${g.mnem}</div>
+    </div>`;
+  }).join('');
 }
 
 // ── LICZBY ───────────────────────────────────────────────────
 function renderLiczby(){
-  document.getElementById('num-grid').innerHTML=numbers.map(n=>`<div class="num-card"><div class="num-n">${n.n.toLocaleString()}</div><div class="num-es">${n.es}</div><div class="num-pron">${n.pron}</div></div>`).join('');
+  const groups=[
+    {label:'1–20 (podstawowe)',rule:'',nums:numbers.filter(n=>n.n<=20)},
+    {label:'21–29 — piszemy RAZEM!',rule:'⚠️ Jedno słowo: veinti + liczba. Np. veintiuno, veintidós, veintitrés...',nums:numbers.filter(n=>n.n>=21&&n.n<=29)},
+    {label:'30–39 — osobno z "y"',rule:'✅ Dziesiątka + y + jedność: treinta y uno, treinta y dos...',nums:numbers.filter(n=>n.n>=30&&n.n<=39)},
+    {label:'40–99 — ta sama zasada co 30+',rule:'✅ X + y + Y: cuarenta y cinco, setenta y tres, noventa y nueve...',nums:numbers.filter(n=>n.n>=40&&n.n<=99)},
+    {label:'100–999 — setki',rule:'💡 Samo 100 = cien, ale 101+ = ciento uno. Od 200: doscientos, trescientos...',nums:numbers.filter(n=>n.n>=100&&n.n<=999)},
+    {label:'1 000 i więcej',rule:'💡 mil (1000), dos mil (2000), diez mil (10 000), un millón (1 000 000)',nums:numbers.filter(n=>n.n>=1000)},
+  ];
+
+  const numCard = n => `<div class="num-card"><div class="num-n">${n.n.toLocaleString()}</div><div class="num-es">${n.es}</div><div class="num-pron">${n.pron}</div></div>`;
+
+  document.getElementById('num-grid').innerHTML = groups.map((g,i)=>`
+    <div class="num-accordion">
+      <div class="num-acc-header" onclick="toggleAcc(${i})">
+        <div class="num-acc-title">${g.label}</div>
+        <div class="num-acc-preview">
+          ${g.nums.slice(0,3).map(n=>`<div class="num-chip">${n.n}<span>${n.es}</span></div>`).join('')}
+          ${g.nums.length>3?`<div class="num-chip-more">+${g.nums.length-3}</div>`:''}
+        </div>
+        <div class="num-acc-arrow" id="arr-${i}">▼</div>
+      </div>
+      <div class="num-acc-body" id="acc-${i}" style="display:none">
+        ${g.rule?`<div class="num-rule">${g.rule}</div>`:''}
+        <div class="num-group-grid">${g.nums.map(numCard).join('')}</div>
+      </div>
+    </div>
+  `).join('');
+
   document.getElementById('days-grid').innerHTML=days.map(d=>`<div class="num-card"><div class="num-n" style="font-size:12px;color:#9c8b78">${d.n}</div><div class="num-es">${d.es}</div><div class="num-pron">${d.pron}</div></div>`).join('');
   document.getElementById('months-grid').innerHTML=months.map(m=>`<div class="num-card"><div class="num-n" style="font-size:12px;color:#9c8b78">${m.n}</div><div class="num-es">${m.es}</div><div class="num-pron">${m.pron}</div></div>`).join('');
+  setTimeout(()=>buildNumQuiz(),100);
+}
+
+function toggleAcc(i){
+  const b=document.getElementById('acc-'+i);
+  const a=document.getElementById('arr-'+i);
+  const open=b.style.display!=='none';
+  b.style.display=open?'none':'block';
+  a.textContent=open?'▼':'▲';
 }
 
 // ── CIEKAWOSTKI ──────────────────────────────────────────────
@@ -1797,7 +1984,7 @@ function buildPytQuiz() {
   const opts = [...wrong, correct].sort(() => Math.random() - 0.5);
   document.getElementById('pq-lbl').textContent = type === 'es_pl' ? 'Przetłumacz na polski:' : 'Jak powiedzieć po hiszpańsku?';
   document.getElementById('pq-word').textContent = type === 'es_pl' ? correct.es : correct.pl;
-  document.getElementById('pq-ctx').textContent = correct.ctx || '';
+  document.getElementById('pq-ctx').textContent = '';
   document.getElementById('pq-feedback').style.display = 'none';
   document.getElementById('pq-next').style.display = 'none';
   document.getElementById('pq-prog').textContent = 'Pytanie ' + (pqTotal + 1);
@@ -1902,6 +2089,56 @@ function renderPytLista() {
     </div>`;
   });
   document.getElementById('pyt-lista').innerHTML = html;
+}
+
+
+// ── QUIZ Z LICZB ─────────────────────────────────────────────
+let numQOk=0, numQErr=0;
+function buildNumQuiz(){
+  const pool=numbers.filter(n=>n.n>=10);
+  const correct=pool[Math.floor(Math.random()*pool.length)];
+  const type=Math.random()>0.5?'n_to_es':'es_to_n';
+  const wrong=pool.filter(n=>n.n!==correct.n).sort(()=>Math.random()-0.5).slice(0,3);
+  const opts=[...wrong,correct].sort(()=>Math.random()-0.5);
+  document.getElementById('nq-lbl').textContent=type==='n_to_es'?'Jak powiedzieć po hiszpańsku?':'Jaka to liczba?';
+  document.getElementById('nq-word').textContent=type==='n_to_es'?correct.n.toLocaleString():correct.es;
+  document.getElementById('nq-pron').textContent=type==='n_to_es'?'':'Wymowa: '+correct.pron;
+  document.getElementById('nq-feedback').style.display='none';
+  document.getElementById('nq-next').style.display='none';
+  document.getElementById('nq-ok').textContent='✅ '+numQOk;
+  document.getElementById('nq-err').textContent='❌ '+numQErr;
+  const oEl=document.getElementById('nq-opts');
+  oEl.innerHTML='';
+  opts.forEach(o=>{
+    const label=type==='n_to_es'?o.es:o.n.toLocaleString();
+    const sub=type==='n_to_es'?o.pron:'';
+    const btn=document.createElement('button');
+    btn.className='q-opt';
+    btn.innerHTML=`<strong>${label}</strong>${sub?`<br><small style="font-size:11px;color:var(--grn2);font-style:italic">${sub}</small>`:''}`;
+    btn.onclick=()=>checkNumQ(o,correct,type,btn);
+    oEl.appendChild(btn);
+  });
+}
+function checkNumQ(chosen,correct,type,btn){
+  document.querySelectorAll('#nq-opts .q-opt').forEach(b=>b.disabled=true);
+  const isOk=chosen.n===correct.n;
+  if(isOk){btn.classList.add('correct');numQOk++;}
+  else{
+    btn.classList.add('wrong');numQErr++;
+    document.querySelectorAll('#nq-opts .q-opt').forEach(b=>{
+      if(b.querySelector('strong')&&b.querySelector('strong').textContent===(type==='n_to_es'?correct.es:correct.n.toLocaleString()))
+        b.classList.add('correct');
+    });
+  }
+  const fb=document.getElementById('nq-feedback');
+  fb.style.display='block';
+  fb.className='q-feedback '+(isOk?'ok':'err');
+  fb.innerHTML=isOk
+    ?`✅ Brawo! <em>${correct.es}</em> ${correct.pron}`
+    :`❌ Prawidłowo: <strong>${correct.n}</strong> = <strong>${correct.es}</strong> ${correct.pron}`;
+  document.getElementById('nq-ok').textContent='✅ '+numQOk;
+  document.getElementById('nq-err').textContent='❌ '+numQErr;
+  document.getElementById('nq-next').style.display='inline-block';
 }
 
 </script>
